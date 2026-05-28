@@ -1,0 +1,146 @@
+/* ============================================================
+   Bulldog 360 — page-gate overlay
+   Self-contained styles. Linked from any HTML page that opens
+   with <html class="bdog-locked"> and includes the .bdog-gate
+   markup at the top of <body>.
+   ============================================================ */
+
+html.bdog-locked,
+html.bdog-locked body {
+  overflow: hidden;
+}
+
+html:not(.bdog-locked) .bdog-gate {
+  display: none;
+}
+
+.bdog-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background:
+    radial-gradient(circle at 78% 28%, rgba(230, 57, 70, 0.14), transparent 55%),
+    radial-gradient(circle at 18% 80%, rgba(43, 76, 126, 0.20), transparent 55%),
+    #1e1e24;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1.25rem;
+  box-sizing: border-box;
+  color: #f8f9fa;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.bdog-gate__card {
+  width: 100%;
+  max-width: 460px;
+  background: rgba(248, 249, 250, 0.04);
+  border: 1px solid rgba(248, 249, 250, 0.15);
+  border-radius: 16px;
+  padding: 2.5rem 2rem 2rem;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.bdog-gate__logo {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 1.75rem;
+  display: block;
+}
+
+.bdog-gate__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid rgba(248, 249, 250, 0.22);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 1.4rem;
+  color: #f8f9fa;
+}
+.bdog-gate__pill::before {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #e63946;
+}
+
+.bdog-gate__title {
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+  color: #f8f9fa;
+  margin: 0 0 0.6rem;
+  line-height: 1.2;
+}
+
+.bdog-gate__sub {
+  font-size: 0.92rem;
+  color: rgba(248, 249, 250, 0.7);
+  margin: 0 0 1.8rem;
+  line-height: 1.5;
+}
+
+.bdog-gate__form { display: grid; gap: 0.7rem; }
+
+.bdog-gate__input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: rgba(248, 249, 250, 0.06);
+  border: 1px solid rgba(248, 249, 250, 0.25);
+  border-radius: 8px;
+  color: #f8f9fa;
+  font-family: inherit;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  box-sizing: border-box;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+.bdog-gate__input:focus {
+  outline: none;
+  border-color: #e63946;
+  background: rgba(248, 249, 250, 0.09);
+}
+.bdog-gate__input::placeholder { color: rgba(248, 249, 250, 0.45); }
+
+.bdog-gate__btn {
+  padding: 0.9rem 1rem;
+  background: #e63946;
+  color: #f8f9fa;
+  border: none;
+  border-radius: 8px;
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+.bdog-gate__btn:hover { background: #c01f2c; }
+.bdog-gate__btn:active { transform: translateY(1px); }
+.bdog-gate__btn[disabled] { opacity: 0.6; cursor: progress; }
+
+.bdog-gate__err {
+  margin: 1rem 0 0;
+  font-size: 0.85rem;
+  color: #ff8a93;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  letter-spacing: 0.02em;
+}
+
+.bdog-gate__foot {
+  margin: 1.6rem 0 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(248, 249, 250, 0.45);
+}

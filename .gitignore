@@ -19,10 +19,3 @@ generated_imgs/
 # Rendered video — Cloudinary-hosted, never in git
 *.mp4
 *.mov
-
-# Unencrypted source of password-gated HTML pages — never commit to public repo
-_source/
-
-# Python
-__pycache__/
-*.pyc
