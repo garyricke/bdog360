@@ -153,7 +153,8 @@ li { margin-bottom: 0.4em; }
   color: var(--ink-soft);
   max-width: 58ch;
 }
-.section--dark .lede { color: rgba(248, 249, 250, 0.78); }
+.section--dark .lede,
+.hero .lede { color: rgba(248, 249, 250, 0.78); }
 
 /* ============================================================
    Hero
