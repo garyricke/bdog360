@@ -1,0 +1,28 @@
+# Secrets and Credentials
+.env
+.env.local
+.env.*
+*.pem
+
+# Dependency & System Logs
+node_modules/
+*.log
+.DS_Store
+
+# Claude Code local state and hidden file histories
+.claude/settings.local.json
+.claude/file-history/
+
+# Nano-banana / image-gen local output cache (originals live in Cloudinary)
+generated_imgs/
+
+# Rendered video — Cloudinary-hosted, never in git
+*.mp4
+*.mov
+
+# Unencrypted source of password-gated HTML pages — never commit to public repo
+_source/
+
+# Python
+__pycache__/
+*.pyc

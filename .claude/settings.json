@@ -1,0 +1,16 @@
+{
+  "sensitive": {
+    "envPatterns": ["*_KEY", "*_SECRET", "*_TOKEN", "CLOUDINARY_URL"],
+    "paths": [".env", ".env.local", ".env.*", "**/secrets/**"]
+  },
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Edit(./.env)",
+      "Edit(./.env.*)",
+      "Write(./.env)",
+      "Write(./.env.*)"
+    ]
+  }
+}
