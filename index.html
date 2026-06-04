@@ -83,8 +83,8 @@
           <span class="l">Stable display + retargeting CPA</span>
         </div>
         <div class="hero__num">
-          <span class="v">$22.5<em>K</em>→<em>$43K</em></span>
-          <span class="l">Recommended monthly spend, Conservative → Aggressive</span>
+          <span class="v">$6<em>K</em>→<em>$43K</em></span>
+          <span class="l">Monthly spend range, Cheap → Conservative → Aggressive</span>
         </div>
       </div>
     </div>
@@ -801,6 +801,16 @@
           <p>Stage 2 does not begin until Stage 1's calculator + CRM are live in production. Stage 3 does not begin until Stage 2 prints CPA &lt; $100 for two consecutive months. If Stage 2 misses that threshold, do not scale — diagnose the funnel before adding spend.</p>
         </div>
       </div>
+
+      <div class="callout callout--north-star">
+        <div class="callout__glyph" aria-hidden="true">★</div>
+        <div>
+          <p class="callout__label">Alternative path · Cheap Plan</p>
+        </div>
+        <div class="callout__body">
+          <p>If the customer cannot commit to the recommended three-stage budget, there is a lean version of the same idea: <strong>site + print + email only, AI-assisted throughout</strong>. ~$18K to build the AI-assisted calculator site and produce the first round of print + email creative, then $6K/month to keep mail flying and email sequences running. No paid media, no lead purchases, no Forth CRM, no retargeting — strictly the offline-to-online loop, slowed down. <strong>12-month total: $90K</strong> versus $319K for the full plan. Full breakdown in <a href="#budget" style="color:inherit;text-decoration:underline">§07 Budget</a>.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -810,10 +820,40 @@
   <section class="section" id="budget">
     <div class="wrap">
       <p class="eyebrow">07 · Monthly Budget Framework</p>
-      <h2>Conservative first. Aggressive only after proof.</h2>
-      <p class="lede">Two operating budgets sized to a sales team of 3–5 enrollment reps. The recommendation is to run Conservative through Stages 1–2, then graduate to Aggressive once CPA gating is met.</p>
+      <h2>Three tiers. One philosophy: only scale spend after the lower tier proves it works.</h2>
+      <p class="lede">Three operating budgets sized to different risk tolerances and team sizes. The <strong>Cheap Plan</strong> is the leanest entry point — site, print, and email only, AI-assisted throughout — for customers who want to test the offline-to-online thesis without committing to paid media or a Forth CRM stack. <strong>Conservative</strong> is the full recommended path through Stages 1–2. <strong>Aggressive</strong> only triggers once Conservative prints CPA &lt; $100.</p>
 
       <div class="budget-compare">
+
+        <article class="budget-card">
+          <div class="budget-card__head">
+            <p class="budget-card__tag">Entry tier · AI-assisted lean</p>
+            <h3 class="budget-card__name">Cheap Plan</h3>
+            <p class="budget-card__total">$6,000<small>/ month</small></p>
+          </div>
+          <ul class="budget-card__lines">
+            <li>
+              <span class="item">Direct mail program<small>print + postage + list rental (~4,700 pieces/mo)</small></span>
+              <span class="amt">$4,000</span>
+            </li>
+            <li>
+              <span class="item">AI tooling &amp; content<small>Claude / ChatGPT / image gen + creative refreshes</small></span>
+              <span class="amt">$700</span>
+            </li>
+            <li>
+              <span class="item">Email marketing platform<small>sends, list mgmt, sequence updates</small></span>
+              <span class="amt">$500</span>
+            </li>
+            <li>
+              <span class="item">Hosting &amp; tech<small>site, forms, basic uptime</small></span>
+              <span class="amt">$300</span>
+            </li>
+            <li>
+              <span class="item">Light account management<small>~10 hrs/mo oversight + QA</small></span>
+              <span class="amt">$500</span>
+            </li>
+          </ul>
+        </article>
 
         <article class="budget-card budget-card--rec">
           <div class="budget-card__head">
@@ -901,13 +941,38 @@
         </div>
       </div>
 
+      <h3 style="margin-top:3rem">One-time foundation costs · Cheap Plan</h3>
+      <p class="lede" style="margin-top:.75rem">AI-assisted from end to end. Code-gen accelerates the site build, Claude/ChatGPT draft the print + email copy, and image-gen handles mailer creative — cutting traditional production hours roughly in half.</p>
+      <div class="stat-grid">
+        <div class="stat stat--good">
+          <p class="stat__value">$12K</p>
+          <p class="stat__delta stat__delta--good">AI-assisted site build</p>
+          <p class="stat__label">Lean calculator + lead-capture forms + lightweight CRM-lite. No Forth integration, no escrow gateway, no soft-credit API — manual qualification handoff instead.</p>
+        </div>
+        <div class="stat stat--good">
+          <p class="stat__value">$2.5K</p>
+          <p class="stat__delta stat__delta--good">Print collateral design</p>
+          <p class="stat__label">Postcard, BRE envelope, prescreened mailer. AI-generated layout variations, designer review on final pass.</p>
+        </div>
+        <div class="stat stat--good">
+          <p class="stat__value">$1.5K</p>
+          <p class="stat__delta stat__delta--good">Email template + sequences</p>
+          <p class="stat__label">Drag-drop template system plus first round of 5–7 AI-drafted nurture and abandon sequences in Mailchimp/Brevo.</p>
+        </div>
+        <div class="stat stat--good">
+          <p class="stat__value">$2K</p>
+          <p class="stat__delta stat__delta--good">Security &amp; PM</p>
+          <p class="stat__label">Basic SSL/hardening, hosting setup, project management to ship in 30–45 days. No pen-test (deferred until scale).</p>
+        </div>
+      </div>
+
       <div class="callout callout--insight">
         <div class="callout__glyph" aria-hidden="true">✦</div>
         <div>
           <p class="callout__label">Recommended foundation spend</p>
         </div>
         <div class="callout__body">
-          <p>Target <strong>~$55K all-in for Stage 1</strong> — a focused mid-range portal build with Forth CRM integration, soft-credit pulls, and PURL infrastructure. Skip the enterprise tier ($150K+) until white-label productization in Year 2 requires it; the AI negotiation engine and multi-gateway billing aren't pre-revenue investments.</p>
+          <p>Two valid entry points depending on appetite. <strong>~$55K all-in for the full Stage 1</strong> — mid-range portal with Forth CRM, soft-credit pulls, and PURL infrastructure — if the customer is committed to the recommended three-stage plan. <strong>~$18K all-in for the Cheap Plan foundation</strong> if the customer wants to test the offline-to-online thesis with AI-assisted site, print, and email only. Skip the enterprise tier ($150K+) in both cases; the AI negotiation engine and multi-gateway billing aren't pre-revenue investments.</p>
         </div>
       </div>
     </div>
@@ -1068,6 +1133,7 @@
           <li><strong>Commit to Forth CRM as the operational backbone</strong> with Forth Pay and Forth Credit modules.<small>Replaces spreadsheets and avoids re-platforming once volume scales.</small></li>
           <li><strong>Lock the Stage 2 starting budget at $22.5K/month</strong> with a hard CPA-&lt;$100 gate before any Stage 3 escalation.<small>Discipline first; scale only after the funnel proves it.</small></li>
         </ol>
+        <p style="margin-top:1.5rem;font-family:var(--f-body);color:var(--ink-soft);font-size:.95rem">If the recommended commitments are too much at once, the <a href="#budget" style="color:var(--crimson);font-weight:600">Cheap Plan</a> collapses all three into a single decision: <strong>~$18K to build the AI-assisted site, print, and email package, then $6K/month to run it</strong>. Same offline-to-online thesis, slower ramp, $90K total for the first 12 months.</p>
       </div>
     </div>
   </section>
