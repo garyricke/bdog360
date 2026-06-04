@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en" class="bdog-locked">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="assets/favicon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <title>Bulldog 360 — Price Justification (Internal)</title>
+  <meta name="description" content="Internal walkthrough for Gary and Tyler: why the 12-month Bulldog 360 growth plan is fairly priced, broken down piece by piece against debt-settlement industry economics.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@700;800;900&family=Roboto:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="brand-guide.css">
+  <link rel="stylesheet" href="budget-proposal.css">
+  <link rel="stylesheet" href="gate.css">
+  <link rel="stylesheet" href="admin-menu.css">
+  <script defer src="gate.js"></script>
+  <script defer src="admin-menu.js"></script>
+</head>
+<body>
+
+  <!-- Page gate (hidden by gate.css once unlocked) -->
+  <div class="bdog-gate" role="dialog" aria-modal="true" aria-labelledby="bdogGateTitle">
+    <div class="bdog-gate__card">
+      <picture>
+        <source srcset="assets/bdog360-logo.avif" type="image/avif">
+        <img src="assets/bdog360-logo.png" alt="Bulldog 360" class="bdog-gate__logo">
+      </picture>
+      <span class="bdog-gate__pill">Access Restricted</span>
+      <h1 class="bdog-gate__title" id="bdogGateTitle">Bulldog 360 — Price Justification</h1>
+      <p class="bdog-gate__sub">Enter the access password to view this document.</p>
+      <form id="bdogGateForm" class="bdog-gate__form" novalidate>
+        <input id="bdogGateInput" class="bdog-gate__input" type="password" placeholder="Enter access password"
+               autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" required>
+        <button id="bdogGateBtn" type="submit" class="bdog-gate__btn">Unlock</button>
+      </form>
+      <p id="bdogGateErr" class="bdog-gate__err" hidden>Wrong password — try again.</p>
+      <p class="bdog-gate__foot">bdog360.com</p>
+    </div>
+  </div>
+
+  <nav class="toc" aria-label="Section navigation">
+    <div class="wrap toc__inner">
+      <div class="toc__brand">BULLDOG<span class="dot">·</span>360 <span style="opacity:.55;font-weight:600;letter-spacing:.06em;font-size:.78rem;margin-left:.6rem">Price Justification · Internal</span></div>
+      <a href="#primer">01 Primer</a>
+      <a href="#math">02 Math</a>
+      <a href="#stage1">03 Stage 1</a>
+      <a href="#stage2">04 Stage 2</a>
+      <a href="#stage3">05 Stage 3</a>
+      <a href="#compare">06 Compare</a>
+      <a href="#donothing">07 Do Nothing</a>
+      <a href="#bottom">08 Bottom Line</a>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero__pill"><span class="dot"></span>Internal Brief · For Gary &amp; Tyler · Not for client</div>
+
+      <h1>$319K over 12 months looks scary. Here's why it isn't.</h1>
+
+      <p class="hero__directive">The sticker shock is real. The math is calm.</p>
+
+      <p class="lede">You're both new to debt settlement. This page assumes that and walks the plan from first principles — what the customer is actually buying, how a debt-settlement business earns revenue, what it costs every other player in this market to acquire a customer, and why every line item in the proposal is sized the way it is. By the end you should be able to defend the number in a sales conversation without flinching.</p>
+
+      <div class="hero__numbers">
+        <div class="hero__num">
+          <span class="v">$319<em>K</em></span>
+          <span class="l">Total 12-month investment, all stages combined</span>
+        </div>
+        <div class="hero__num">
+          <span class="v">~$5<em>K</em></span>
+          <span class="l">Average revenue per enrolled debt-settlement customer</span>
+        </div>
+        <div class="hero__num">
+          <span class="v">$335<em>+</em></span>
+          <span class="l">What scaled competitors pay per acquired customer</span>
+        </div>
+        <div class="hero__num">
+          <span class="v">&lt;$100</span>
+          <span class="l">Bulldog 360's target CPA after the engine is live</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       01 · PRIMER
+       ============================================================ -->
+  <section class="section" id="primer">
+    <div class="wrap">
+      <p class="eyebrow">01 · Quick Primer · How Debt Settlement Makes Money</p>
+      <div class="split">
+        <div>
+          <h2>Three facts you need before any of the pricing makes sense.</h2>
+        </div>
+        <div>
+          <p><strong>1. The customer is a household with too much credit-card debt.</strong> The typical enrolled client has $10K–$50K of unsecured debt and is struggling to pay it down. They sign up because they want one monthly payment and a path out — not bankruptcy, not a 5-year minimum-payment grind.</p>
+          <p><strong>2. The business model is performance fees, not subscriptions.</strong> Debt-settlement firms charge a fee equal to roughly 15–25% of the <em>enrolled</em> debt amount. On a $25K enrollment that's $3,750–$6,250 of revenue per customer, paid as each individual creditor is settled (usually over 24–48 months). The fees are regulated — the FTC requires that fees only get charged after a settlement is actually reached.</p>
+          <p><strong>3. Every enrollment is high-LTV, but expensive to acquire.</strong> Because each enrolled customer is worth thousands of dollars in fees over the life of their program, the entire industry tolerates customer acquisition costs (CAC) that would look insane in most other businesses. National Debt Relief pays <strong>$335+</strong> per acquired enrollment. That's the baseline. Bulldog's whole strategic premise is undercutting that.</p>
+        </div>
+      </div>
+
+      <div class="callout callout--insight">
+        <div class="callout__glyph" aria-hidden="true">✦</div>
+        <div>
+          <p class="callout__label">The mental model</p>
+        </div>
+        <div class="callout__body">
+          <p>Don't think of the $319K as "the price of a website plus some ads." Think of it as <strong>the all-in cost of standing up a customer-acquisition factory</strong> in a category where each acquired customer is worth roughly $5,000 in lifetime revenue. The question isn't "is $319K a lot of money?" — it's "how many enrollments does $319K need to produce to pay for itself?" The answer, even pessimistically, is <em>fewer than three months of pipeline</em>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       02 · MATH
+       ============================================================ -->
+  <section class="section section--dark" id="math">
+    <div class="wrap">
+      <p class="eyebrow">02 · The Math Before The Line Items</p>
+      <h2>Payback in a single number.</h2>
+      <p class="lede">Run the unit economics on the plan as a whole before defending any individual cost. Every line below is grounded in numbers already published in the growth plan and in industry benchmarks (NDR public CAC, FTC fee-rule guidance, the $6.1B → $11.2B market projection).</p>
+
+      <div class="stat-grid">
+        <div class="stat">
+          <p class="stat__value">$319K</p>
+          <p class="stat__delta">12-month all-in plan</p>
+          <p class="stat__label">$55K Stage 1 build + ($22.5K × 6 months Stage 2) + ($43K × 3 months Stage 3).</p>
+        </div>
+        <div class="stat stat--indigo">
+          <p class="stat__value">~64</p>
+          <p class="stat__delta">Enrollments to break even</p>
+          <p class="stat__label">At $5K average revenue per enrolled customer, $319K ÷ $5K ≈ 64 closed enrollments pays for the entire year.</p>
+        </div>
+        <div class="stat stat--good">
+          <p class="stat__value">~5–6</p>
+          <p class="stat__delta stat__delta--good">Enrollments per month, year-1 floor</p>
+          <p class="stat__label">64 enrollments ÷ 12 months ≈ 5–6 per month — well below the 3–5/week pace the plan sizes the rep team around.</p>
+        </div>
+        <div class="stat stat--onyx">
+          <p class="stat__value">12.8<em style="font-style:normal">%</em></p>
+          <p class="stat__delta stat__delta--neutral">Marketing as % of $2.5M revenue</p>
+          <p class="stat__label">If the plan generates even a modest $2.5M of enrollment revenue, $319K is 12.8% of revenue — dead center of the 8–15% industry norm.</p>
+        </div>
+      </div>
+
+      <div class="callout callout--insight">
+        <div class="callout__glyph" aria-hidden="true">✦</div>
+        <div>
+          <p class="callout__label">What the math actually says</p>
+        </div>
+        <div class="callout__body">
+          <p>The plan only fails if Bulldog 360 cannot close <strong>64 enrollments in a year</strong>. A debt-settlement business that cannot close 64 enrollments in a year shouldn't be in business. The pricing isn't a bet that the customer succeeds wildly — it's the floor cost of having a real shot at all. Everything above 64 is profit on the marketing investment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       03 · STAGE 1
+       ============================================================ -->
+  <section class="section" id="stage1">
+    <div class="wrap">
+      <p class="eyebrow">03 · Stage 1 · The $55K Build</p>
+      <h2>What you're actually buying when you spend $55K once.</h2>
+      <p class="lede">This is the only one-time cost in the whole 12-month plan. It builds the asset that every later dollar of marketing flows through. Without it, none of Stage 2 or Stage 3 produces enrollments — the current bdog360.com is a brochure with no calculator, no CRM, no escrow, no retargeting pixels. Spending paid-media dollars on a static brochure is lighting money on fire.</p>
+
+      <h3 style="margin-top:2.5rem">Where the $55K goes</h3>
+      <div class="stat-grid">
+        <div class="stat">
+          <p class="stat__value">$20K–$30K</p>
+          <p class="stat__delta">Multi-step calculator + portal build</p>
+          <p class="stat__label">UI/UX, front-end, back-end. This is the actual conversion engine — qualifies debt &gt; $10K, creditor count, employment, bankruptcy status. Same pre-qual structure that Freedom and NDR use to keep their CAC down.</p>
+        </div>
+        <div class="stat stat--indigo">
+          <p class="stat__value">$5K–$15K</p>
+          <p class="stat__delta">Forth CRM integration</p>
+          <p class="stat__label">Forth is the industry-standard debt-settlement CRM. Includes Forth Credit (soft-pull credit verification, no FICO hit) and Forth Pay (FTC-compliant escrow). Without this the sales team works in spreadsheets — non-starter at any scale.</p>
+        </div>
+        <div class="stat stat--onyx">
+          <p class="stat__value">$3K–$8K</p>
+          <p class="stat__delta stat__delta--neutral">Payment / escrow gateway</p>
+          <p class="stat__label">ACH integration for the regulated escrow account every enrolled customer needs. Not optional — this is how the FTC says the money has to move.</p>
+        </div>
+        <div class="stat stat--good">
+          <p class="stat__value">$5K–$15K</p>
+          <p class="stat__delta stat__delta--good">Security &amp; compliance baseline</p>
+          <p class="stat__label">Encryption, GDPR/CCPA configuration, basic pen test. You're handling SSNs and debt data; one breach ends the business.</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:2.5rem">Why $55K is the <em>right</em> tier — not the cheap tier and not enterprise</h3>
+      <div class="split">
+        <div>
+          <p>The market range for portals like this is wide: <strong>$40K on the low end, $150K+ on the enterprise end</strong>. Picking the right tier matters more than picking the cheapest.</p>
+          <p>Going below $40K — say, a $15K WordPress freelancer build — saves cash today and torches the next 12 months. No Forth integration, no escrow, no PURLs, no soft-credit pull. Every Stage-2 dollar produces less than half the enrollments it should because the funnel leaks.</p>
+        </div>
+        <div>
+          <p>Going above $80K means paying for enterprise features Bulldog 360 doesn't need yet — multi-tenant white-label dashboards, AI negotiation engines, multi-gateway billing. Those become real in Year 2 once Stage 3 productization kicks in. Buying them on Day 1 is paying for the future before the present works.</p>
+          <p><strong>$55K lands on the floor of "mid-range done right":</strong> calculator, Forth, PURLs, escrow, security. Nothing extra, nothing missing.</p>
+        </div>
+      </div>
+
+      <div class="callout callout--insight">
+        <div class="callout__glyph" aria-hidden="true">✦</div>
+        <div>
+          <p class="callout__label">Stage 1 payback</p>
+        </div>
+        <div class="callout__body">
+          <p>$55K ÷ $5K per enrollment = <strong>11 enrollments to repay the build entirely</strong>. At the plan's target rep pace of 3–5 enrollments per week, the build is paid back inside the first month of Stage 2 — before any of the monthly marketing has even fully cycled.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       04 · STAGE 2
+       ============================================================ -->
+  <section class="section section--soft" id="stage2">
+    <div class="wrap">
+      <p class="eyebrow">04 · Stage 2 · $22.5K/Month, 6 Months</p>
+      <h2>$22.5K/month is a CAC budget, not an expense.</h2>
+      <p class="lede">The trap is reading $22.5K/month as "overhead." It isn't. Every dollar in the Stage 2 budget is sized against a specific channel that produces measurable enrollments. Walk the line items.</p>
+
+      <h3 style="margin-top:2.5rem">$22.5K/month, decomposed</h3>
+      <div class="bars">
+        <div class="bar">
+          <div class="bar__name">Paid media spend<small>display + retargeting + bottom-funnel search</small></div>
+          <div class="bar__track"><div class="bar__fill bar__fill--indigo" style="width:44%"></div></div>
+          <div class="bar__value">$10,000</div>
+        </div>
+        <div class="bar">
+          <div class="bar__name">Lead purchases<small>real-time forms + aged lists for dialer</small></div>
+          <div class="bar__track"><div class="bar__fill bar__fill--good" style="width:22%"></div></div>
+          <div class="bar__value">$5,000</div>
+        </div>
+        <div class="bar">
+          <div class="bar__name">Agency retainers<small>SEO + PPC + content + creative</small></div>
+          <div class="bar__track"><div class="bar__fill" style="width:22%"></div></div>
+          <div class="bar__value">$5,000</div>
+        </div>
+        <div class="bar">
+          <div class="bar__name">Technology &amp; SaaS<small>Forth CRM, soft-credit API, payments</small></div>
+          <div class="bar__track"><div class="bar__fill bar__fill--onyx" style="width:7%"></div></div>
+          <div class="bar__value">$1,500</div>
+        </div>
+        <div class="bar">
+          <div class="bar__name">Security &amp; audits<small>scanning, legal compliance review</small></div>
+          <div class="bar__track"><div class="bar__fill bar__fill--onyx" style="width:5%"></div></div>
+          <div class="bar__value">$1,000</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:2.5rem">What each line is doing for the business</h3>
+      <div class="pillars">
+        <div class="pillar">
+          <p class="pillar__num">$10K</p>
+          <h4 class="pillar__name">Paid media</h4>
+          <p class="pillar__sub">Programmatic display + retargeting + a tiny search line</p>
+          <p>At the $57 industry-stable CPA for display + retargeting, $10K/month buys ~175 acquired leads into the funnel. At the 8–12% lead-to-enrollment benchmark, that's <strong>14–21 enrollments/month from media alone</strong>. Paid-search is capped at $1.5K/mo because the category's search CPA inflation makes it a money pit at the top of funnel.</p>
+        </div>
+        <div class="pillar">
+          <p class="pillar__num">$5K</p>
+          <h4 class="pillar__name">Lead purchases</h4>
+          <p class="pillar__sub">Mix of real-time form leads and aged lists</p>
+          <p>Real-time leads at $10–$60 each, aged leads at $0.10–$1.00. The aged volume keeps the dialer reps busy when fresh inbound is thin; the real-time leads feed the calculator directly. This line is the team's productivity floor — without it, reps sit idle on slow weeks.</p>
+        </div>
+        <div class="pillar">
+          <p class="pillar__num">$5K</p>
+          <h4 class="pillar__name">Agency retainers</h4>
+          <p class="pillar__sub">SEO, PPC management, content, creative</p>
+          <p>A boutique-tier retainer (real agencies in this space charge $8K–$15K). Covers 4–8 compliance-checked articles/month (debt-relief content has tight FTC language requirements), keyword and bid management, and ad creative refreshes. Without an agency, the founder ends up doing it — capping their day at 4 hours of actual selling.</p>
+        </div>
+        <div class="pillar">
+          <p class="pillar__num">$1.5K</p>
+          <h4 class="pillar__name">Tech &amp; SaaS</h4>
+          <p class="pillar__sub">Forth CRM + soft-credit + payment fees</p>
+          <p>Forth licensing runs $1.2K–$3.6K/year before per-seat; soft-credit API queries are pennies but add up; payment processor fees are 2.9% + $0.30 per ACH. $1.5K/mo is genuinely floor pricing for a regulated stack.</p>
+        </div>
+        <div class="pillar">
+          <p class="pillar__num">$1K</p>
+          <h4 class="pillar__name">Security &amp; audits</h4>
+          <p class="pillar__sub">Scanning, legal compliance review</p>
+          <p>Continuous vulnerability scanning plus monthly legal review of mail copy and ad creative under FCRA + FTC rules. The reason this isn't optional: a single non-compliant prescreened mailer can get Bulldog cut off by the credit bureaus for years.</p>
+        </div>
+      </div>
+
+      <div class="callout callout--insight">
+        <div class="callout__glyph" aria-hidden="true">✦</div>
+        <div>
+          <p class="callout__label">The $22.5K/month gut-check</p>
+        </div>
+        <div class="callout__body">
+          <p>$22.5K/month is <em>less than</em> the fully-loaded monthly cost of a single mid-level marketing hire in a Chicago suburb (salary + taxes + benefits + tools). For the same money the customer gets a full media program, a CRM stack, a content engine, an active lead supply, and compliance coverage. The choice isn't "spend $22.5K/mo or save $22.5K/mo" — it's "rent a working acquisition system for $22.5K/mo, or hire one marketing manager and watch them try to build it themselves." The first option produces enrollments. The second produces meetings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       05 · STAGE 3
+       ============================================================ -->
+  <section class="section" id="stage3">
+    <div class="wrap">
+      <p class="eyebrow">05 · Stage 3 · $43K/Month — Only If Earned</p>
+      <h2>The $43K never gets spent unless the customer is already winning.</h2>
+      <p class="lede">Stage 3 is conditional, not committed. The plan locks a hard CPA gate: blended customer acquisition cost must come in under $100 for two consecutive months before any spend escalates above $22.5K. If the gate isn't met, Stage 3 simply doesn't happen — Bulldog stays at $22.5K/month and the team diagnoses the funnel instead of pouring fuel on it.</p>
+
+      <h3 style="margin-top:2.5rem">$43K/month, decomposed</h3>
+      <div class="bars">
+        <div class="bar">
+          <div class="bar__name">Paid media spend<small>scaled programmatic + YouTube retargeting</small></div>
+          <div class="bar__track"><div class="bar__fill bar__fill--indigo" style="width:35%"></div></div>
+          <div class="bar__value">$15,000</div>
+        </div>
+        <div class="bar">
+          <div class="bar__name">Agency retainers<small>+ digital PR + specialist content</small></div>
+          <div class="bar__track"><div class="bar__fill" style="width:26%"></div></div>
+          <div class="bar__value">$11,000</div>
+        </div>
+        <div class="bar">
+          <div class="bar__name">Lead purchases<small>+ live call transfers</small></div>
+          <div class="bar__track"><div class="bar__fill bar__fill--good" style="width:23%"></div></div>
+          <div class="bar__value">$10,000</div>
+        </div>
+        <div class="bar">
+          <div class="bar__name">Technology &amp; SaaS<small>expanded CRM seats + premium hosting</small></div>
+          <div class="bar__track"><div class="bar__fill bar__fill--onyx" style="width:9%"></div></div>
+          <div class="bar__value">$4,000</div>
+        </div>
+        <div class="bar">
+          <div class="bar__name">Security &amp; audits<small>pen-test + annual compliance audit</small></div>
+          <div class="bar__track"><div class="bar__fill bar__fill--onyx" style="width:7%"></div></div>
+          <div class="bar__value">$3,000</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:2.5rem">Why each line grows the way it does</h3>
+      <p style="font-family:var(--f-body);color:var(--ink-soft);max-width:780px;line-height:1.7;margin-top:1rem">The Stage 3 increases aren't proportional — each line scales by what it <em>needs</em> to scale by once volume goes up.</p>
+      <ul style="font-family:var(--f-body);color:var(--ink-soft);max-width:780px;line-height:1.7;margin-top:1rem;padding-left:1.2rem">
+        <li><strong>Paid media (+$5K):</strong> The funnel works; pour more fuel. Programmatic display and YouTube retargeting both have headroom before CPA inflates.</li>
+        <li><strong>Agency retainer (+$6K):</strong> Adds high-authority backlink acquisition ($500–$1,000 per niche edit) and specialist debt-finance writers ($450–$1,500 per article). These are the SEO investments that compound — they make Year-2 paid media cheaper.</li>
+        <li><strong>Lead purchases (+$5K):</strong> Adds live-call transfers ($60–$75 each, pre-qualified). These are essentially "warm leads delivered to a phone" — they only make sense once the rep team is large enough to take the calls in real time.</li>
+        <li><strong>Tech &amp; SaaS (+$2.5K):</strong> More Forth seats as the rep team grows, more soft-credit API queries because more applicants exist, premium hosting because the calculator is taking real traffic.</li>
+        <li><strong>Security &amp; audits (+$2K):</strong> Annual pen-test and full compliance audit. These are one-a-year deliverables averaged across the budget — same insurance, more covered surface.</li>
+      </ul>
+
+      <div class="callout callout--insight">
+        <div class="callout__glyph" aria-hidden="true">✦</div>
+        <div>
+          <p class="callout__label">The gate is the price-control mechanism</p>
+        </div>
+        <div class="callout__body">
+          <p>Stage 3 only triggers after the plan proves it can acquire a customer for less than $100. If a customer is being acquired for less than $100 and worth $5,000 in revenue, scaling the spend isn't risky — it's the obvious move. <strong>Worst case, Stage 3 never happens and the 12-month total is $190K, not $319K.</strong> The customer is opting into the higher number conditional on the lower one already paying off.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       06 · COMPARE
+       ============================================================ -->
+  <section class="section section--dark" id="compare">
+    <div class="wrap">
+      <p class="eyebrow">06 · The Comparable · What The Alternatives Cost</p>
+      <h2>Cheap is the most expensive option in this category.</h2>
+      <p class="lede">Whenever a customer says "too expensive," the answer is always "compared to what?" Three realistic alternatives for a debt-settlement startup, with the actual numbers.</p>
+
+      <div class="stat-grid">
+        <div class="stat">
+          <p class="stat__value">$335K+</p>
+          <p class="stat__delta">"Just copy NDR's playbook"</p>
+          <p class="stat__label">National Debt Relief's blended CAC is $335+. Acquiring 1,000 enrollments their way costs <strong>$335,000 in media alone</strong> — and that's after you've built the brand, the infrastructure, and the team to spend it well. Bulldog can't bid those rates and shouldn't try.</p>
+        </div>
+        <div class="stat stat--indigo">
+          <p class="stat__value">$400–600K</p>
+          <p class="stat__delta">"Just buy real-time leads"</p>
+          <p class="stat__label">Real-time form leads run $10–$60 each, convert to enrollment at 8–12%. To get 1,000 enrollments you need 8,000–12,000 leads × $50 avg = <strong>$400K–$600K in leads alone</strong>, with no infrastructure, no retargeting, no compounding moat at the end.</p>
+        </div>
+        <div class="stat stat--onyx">
+          <p class="stat__value">$0</p>
+          <p class="stat__delta stat__delta--neutral">"Just keep the current site"</p>
+          <p class="stat__label">Stay with the existing brochure site, spend nothing on media, hope for referrals. Real cost: zero new enrollments, no infrastructure built, competitors compound for 12 more months. Marketing CPA inflation is 13.5%/year — every month delayed is a more expensive Year 2.</p>
+        </div>
+        <div class="stat stat--good">
+          <p class="stat__value">$319K</p>
+          <p class="stat__delta stat__delta--good">Bulldog 360 plan</p>
+          <p class="stat__label">12-month investment that builds a sub-$100 CPA engine, produces real enrollments inside Q2, sets up white-label productization in Year 2. The expensive option only if you ignore the others.</p>
+        </div>
+      </div>
+
+      <div class="callout callout--insight">
+        <div class="callout__glyph" aria-hidden="true">✦</div>
+        <div>
+          <p class="callout__label">The reframe to use with the customer</p>
+        </div>
+        <div class="callout__body">
+          <p>Lead the conversation with <em>"What does it cost you to acquire a customer today, and how do you want that number to look in twelve months?"</em> Not <em>"Here's our $319K proposal."</em> Once the customer is anchored on CAC instead of total spend, the plan reads as the cheap option — because it is.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       07 · DO NOTHING
+       ============================================================ -->
+  <section class="section section--soft" id="donothing">
+    <div class="wrap">
+      <p class="eyebrow">07 · The Hidden Cost Of Doing Nothing</p>
+      <h2>Standing still is not a free option.</h2>
+      <p class="lede">The unspoken comparison in any "this is too expensive" conversation is the do-nothing case — keep the current site, keep current spend, keep current revenue. Three reasons that comparison is wrong.</p>
+
+      <div class="pillars">
+        <div class="pillar">
+          <p class="pillar__num">A</p>
+          <h4 class="pillar__name">CPA inflation is structural</h4>
+          <p class="pillar__sub">+13.5% per year, compounding</p>
+          <p>Paid-search CPA in this category has compounded ~13.5% annually since 2020 and the inflation is structural — more competitors, more bid pressure, no relief in sight. A campaign that costs $100/enrollment today costs $113 next year and $128 the year after. The longer the customer waits, the more expensive Year 1 becomes.</p>
+        </div>
+        <div class="pillar">
+          <p class="pillar__num">B</p>
+          <h4 class="pillar__name">The market is growing without them</h4>
+          <p class="pillar__sub">$6.1B → $11.2B by 2034</p>
+          <p>The debt-settlement market is on a 6.2% CAGR trajectory. Every month Bulldog isn't capturing enrollments, the demand is finding its way to NDR, Freedom, and Accredited instead. Market share lost during the wait period is share that competitors compound on top of for years.</p>
+        </div>
+        <div class="pillar">
+          <p class="pillar__num">C</p>
+          <h4 class="pillar__name">The empty seat fills</h4>
+          <p class="pillar__sub">The "hybrid" gap won't sit open forever</p>
+          <p>The entire strategic premise of the plan — the empty seat between B2B lead vendors and B2C providers — is empty <em>today</em>. Some smarter capitalized player notices the same gap in 18 months, builds the same hybrid stack, and Bulldog 360's window closes. The cost of waiting isn't $0; it's "the entire moat."</p>
+        </div>
+      </div>
+
+      <div class="callout callout--north-star">
+        <div class="callout__glyph" aria-hidden="true">★</div>
+        <div>
+          <p class="callout__label">The asymmetric bet</p>
+        </div>
+        <div class="callout__body">
+          <p>If the plan works: Bulldog 360 captures the empty seat, runs a sub-$100 CPA engine, builds a white-label SaaS pillar in Year 2, and the $319K is the cheapest customer acquisition the company will ever buy. If the plan underperforms but doesn't fail: Stage 3 never triggers, total spend stops at ~$190K, Bulldog still has a working calculator and CRM stack. If the plan fails outright: Bulldog has spent ~$190K to learn that this market is harder than it looks — same lesson NDR paid hundreds of millions to learn. <strong>The downside is bounded. The upside is the business.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       08 · BOTTOM LINE
+       ============================================================ -->
+  <section class="section" id="bottom">
+    <div class="wrap">
+      <div class="cue">
+        <p class="eyebrow" style="color:var(--crimson)">The four sentences to remember</p>
+        <h2>What to say when the customer says it's too expensive.</h2>
+        <p>If Gary or Tyler is on a call and the customer pushes back on the price, this is the script. Not memorized — internalized.</p>
+        <ol>
+          <li><strong>"Each enrolled customer is worth about $5,000 in revenue over the program's life."</strong><small>This anchors the conversation on per-customer value before per-month cost.</small></li>
+          <li><strong>"Your direct competitors pay $335+ to acquire that same customer. This plan is designed to get you below $100."</strong><small>The plan's job is not to spend $319K — it's to make every customer cheaper than your competitors'.</small></li>
+          <li><strong>"You only owe 64 enrollments across the entire year to fully repay the 12-month investment."</strong><small>That's about five enrollments per month. Bulldog's pipeline plan calls for three to five per <em>week</em>.</small></li>
+          <li><strong>"And the $43K/month Stage 3 number doesn't trigger unless your CPA is already under $100 — meaning you'd be opting into spending more only after the plan has already paid for itself."</strong><small>The biggest scary number on the page is conditional. The customer is in control of whether it ever activates.</small></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOT
+       ============================================================ -->
+  <footer class="foot">
+    <div class="wrap foot__grid">
+      <div>
+        <span class="foot__brand">Bulldog 360</span> · Price Justification · Internal Brief
+      </div>
+      <div class="foot__meta">
+        <span>For: Gary &amp; Tyler</span>
+        <span>Not for client</span>
+        <span>Drafted · June 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var links = document.querySelectorAll(".toc a[href^='#']");
+    var sections = Array.from(links).map(function (a) {
+      return document.querySelector(a.getAttribute("href"));
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          links.forEach(function (a) { a.classList.remove("is-active"); });
+          var id = entry.target.id;
+          var match = document.querySelector(".toc a[href='#" + id + "']");
+          if (match) match.classList.add("is-active");
+        }
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    sections.forEach(function (s) { if (s) io.observe(s); });
+  </script>
+
+</body>
+</html>

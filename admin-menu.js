@@ -19,6 +19,12 @@
       title: "Brand Guide",
       sub: "Identity system",
       icon: "palette"
+    },
+    {
+      href: "price-justification.html",
+      title: "Price Justification",
+      sub: "Internal · for Gary & Tyler",
+      icon: "clipboard"
     }
   ];
 
