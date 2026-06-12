@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en" class="bdog-locked">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="assets/favicon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <title>Bulldog 360 — Podcast Strategy</title>
+  <meta name="description" content="Podcast direction for Bulldog 360: five episode ideas, the audio-overview format, distribution, and a produced sample episode.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@700;800;900&family=Roboto:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="brand-guide.css">
+  <link rel="stylesheet" href="budget-proposal.css">
+  <link rel="stylesheet" href="gate.css">
+  <link rel="stylesheet" href="admin-menu.css">
+  <script defer src="gate.js"></script>
+  <script defer src="admin-menu.js"></script>
+
+  <style>
+    /* ---- podcast strategy (scoped) ---- */
+    .pod-hero { padding-block: var(--section-y) clamp(2rem,5vw,3.5rem); }
+    .pod-hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); letter-spacing: -.03em; margin: 0 0 .6rem; }
+    .pod-hero .lede { max-width: 60ch; }
+
+    .pod-section { padding-block: clamp(2.5rem, 5vw, 4rem); border-top: 1px solid var(--hair); }
+    .pod-section > .wrap > h2 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); letter-spacing: -.02em; margin: 0 0 .6rem; }
+    .pod-section .section-intro { max-width: 62ch; color: var(--ink-soft); margin: 0 0 2rem; }
+
+    .format { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1rem; }
+    .format__card { border: 1px solid var(--hair); border-radius: 14px; padding: 1.3rem 1.4rem; background: #fff; }
+    .format__card h3 { font-size: 1.05rem; margin: 0 0 .45rem; }
+    .format__card p { font-size: .92rem; color: var(--ink-soft); margin: 0; }
+
+    /* episode list */
+    .eps { display: grid; gap: 1rem; counter-reset: ep; }
+    .ep { display: grid; grid-template-columns: 56px 1fr; gap: 1.2rem; border: 1px solid var(--hair); border-radius: 14px; padding: 1.4rem 1.6rem; background: #fff; align-items: start; }
+    .ep__no { font-family: var(--f-display); font-weight: 900; font-size: 1.8rem; color: var(--crimson); line-height: 1; }
+    .ep__no::before { content: counter(ep, decimal-leading-zero); }
+    .ep h3 { font-size: 1.18rem; margin: 0 0 .15rem; letter-spacing: -.01em; }
+    .ep__sub { font-size: .82rem; color: var(--ink-faint,#71717f); text-transform: uppercase; letter-spacing: .07em; margin: 0 0 .7rem; }
+    .ep p { font-size: .93rem; color: var(--ink-soft); margin: 0 0 .7rem; }
+    .ep__meta { display: flex; flex-wrap: wrap; gap: .4rem .5rem; }
+    .ep__meta span { font-size: .74rem; padding: .26rem .6rem; border-radius: 99px; background: var(--pearl-2); color: var(--ink); }
+    .ep--featured { border-color: var(--crimson); box-shadow: 0 0 0 1px var(--crimson); }
+    .ep--featured .ep__no::after { content: "★"; display:block; font-size: .7rem; color: var(--crimson); margin-top: .2rem; }
+
+    .cadence { width: 100%; border-collapse: collapse; }
+    .cadence th, .cadence td { text-align: left; padding: .8rem 1rem; border-bottom: 1px solid var(--hair); font-size: .93rem; vertical-align: top; }
+    .cadence thead th { font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-soft); border-bottom: 2px solid var(--ink); }
+    .cadence td:first-child { font-weight: 600; white-space: nowrap; }
+
+    .callout { margin-top: 1.5rem; padding: 1.3rem 1.6rem; border-radius: 12px; background: var(--onyx); color: var(--pearl); }
+    .callout b { color: #fff; }
+    .callout p { margin: .3rem 0 0; color: rgba(248,249,250,.82); font-size: .95rem; }
+
+    /* sample player + transcript */
+    .sample { display: grid; grid-template-columns: 320px 1fr; gap: 2rem; align-items: start; }
+    .player {
+      border-radius: 18px; padding: 1.6rem; color: var(--pearl);
+      background: radial-gradient(120% 120% at 20% 0%, var(--indigo) 0%, var(--onyx) 60%);
+      box-shadow: var(--shadow-pop, 0 30px 70px -30px rgba(20,20,26,.55)); position: sticky; top: 1.5rem;
+    }
+    .player__art { display: flex; align-items: center; gap: .8rem; margin-bottom: 1.1rem; }
+    .player__mark {
+      width: 52px; height: 52px; border-radius: 13px; flex: none; display: grid; place-items: center;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); color: #fff;
+    }
+    .player__mark svg { width: 26px; height: 26px; }
+    .player__show { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(248,249,250,.7); }
+    .player__title { font-family: var(--f-display); font-weight: 800; font-size: 1.1rem; line-height: 1.2; margin-top: .15rem; }
+    .player audio { width: 100%; margin-top: .4rem; }
+    .player__note { font-size: .78rem; color: rgba(248,249,250,.62); margin: .9rem 0 0; line-height: 1.5; }
+
+    .transcript h3 { font-size: 1.05rem; margin: 0 0 1rem; }
+    .turn { display: grid; grid-template-columns: 92px 1fr; gap: .9rem; padding: .55rem 0; border-bottom: 1px solid var(--hair); }
+    .turn__who { font-family: var(--f-mono); font-size: .76rem; font-weight: 500; }
+    .turn__who.a { color: var(--crimson); }
+    .turn__who.b { color: var(--indigo); }
+    .turn__line { font-size: .93rem; color: var(--ink); margin: 0; line-height: 1.55; }
+    .turn__line em { color: var(--ink-faint,#71717f); font-style: italic; }
+
+    @media (max-width: 760px) {
+      .sample { grid-template-columns: 1fr; }
+      .player { position: static; }
+      .ep { grid-template-columns: 1fr; }
+      .ep__no { font-size: 1.4rem; }
+      .turn { grid-template-columns: 1fr; gap: .15rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page gate (hidden by gate.css once unlocked) -->
+  <div class="bdog-gate" role="dialog" aria-modal="true" aria-labelledby="bdogGateTitle">
+    <div class="bdog-gate__card">
+      <picture>
+        <source srcset="assets/bdog360-logo.avif" type="image/avif">
+        <img src="assets/bdog360-logo.png" alt="Bulldog 360" class="bdog-gate__logo">
+      </picture>
+      <span class="bdog-gate__pill">Access Restricted</span>
+      <h1 class="bdog-gate__title" id="bdogGateTitle">Bulldog 360 — Podcast Strategy</h1>
+      <p class="bdog-gate__sub">Enter the access password to view this document.</p>
+      <form id="bdogGateForm" class="bdog-gate__form" novalidate>
+        <input id="bdogGateInput" class="bdog-gate__input" type="password" placeholder="Enter access password"
+               autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" required>
+        <button id="bdogGateBtn" type="submit" class="bdog-gate__btn">Unlock</button>
+      </form>
+      <p id="bdogGateErr" class="bdog-gate__err" hidden>Wrong password — try again.</p>
+      <p class="bdog-gate__foot">bdog360.com</p>
+    </div>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <header class="pod-hero">
+    <div class="wrap">
+      <p class="eyebrow">Channel Plan · Audio</p>
+      <h1>A podcast that turns "I'm scared to look" into "let me run my numbers."</h1>
+      <p class="lede">Debt is a topic people research in private, late at night, in their own headphones — which is exactly where a podcast lives. <strong>Debt, Decoded</strong> is a short, plain-English show that builds trust at scale, feeds the short-form video machine with clips, and sends warm listeners to the savings calculator. Below: the format, five episodes to launch with, how it distributes, and a fully produced sample.</p>
+    </div>
+  </header>
+
+  <!-- ===== 01 · FORMAT ===== -->
+  <section class="pod-section">
+    <div class="wrap">
+      <p class="eyebrow">01 · The format</p>
+      <h2>Two voices, one topic, twelve minutes</h2>
+      <p class="section-intro">Each episode is a tight, conversational "audio overview" — two friendly co-hosts unpacking a single debt topic from a Bulldog 360 source brief. No celebrity guests to book, no studio day required: we write the brief, the hosts handle the back-and-forth, and we publish. It's the fastest credible way to stand up a real show.</p>
+      <div class="format">
+        <div class="format__card"><h3>Length</h3><p>8–14 minutes. Long enough to teach one thing well, short enough for a commute or a dog walk.</p></div>
+        <div class="format__card"><h3>Tone</h3><p>Two co-hosts, warm and plain-spoken. Curious-friend energy, never a lecture. One explains, one asks the questions a listener would.</p></div>
+        <div class="format__card"><h3>Source-driven</h3><p>Every episode is built from a vetted Bulldog 360 brief, so the facts, rights, and numbers stay accurate and on-message.</p></div>
+        <div class="format__card"><h3>Repurposable</h3><p>One recording becomes the episode, 3–5 short video clips, and quote cards — feeding the TikTok / Reels / Shorts plan.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 02 · EPISODES ===== -->
+  <section class="pod-section">
+    <div class="wrap">
+      <p class="eyebrow">02 · Five episodes to launch with</p>
+      <h2>The first season</h2>
+      <p class="section-intro">A launch arc that moves a listener from awareness → understanding → action. Start with the emotional hook everyone relates to, then earn trust with honest comparisons and rights, and close on the brand's own proof. Episode 1 is produced below.</p>
+
+      <div class="eps">
+        <article class="ep ep--featured">
+          <div class="ep__no" style="counter-increment:ep;"></div>
+          <div>
+            <h3>The 2 a.m. Math</h3>
+            <p class="ep__sub">Produced sample · the minimum-payment trap</p>
+            <p>The relatable cold open: lying awake adding up your balances. We show why paying the minimum on $8,000 takes 27 years and costs $11k+ in interest — and that there's a faster lane. Pairs directly with the "27-Year Sentence" short video.</p>
+            <div class="ep__meta"><span>Awareness</span><span>Hook: the trap</span><span>CTA: free estimate</span></div>
+          </div>
+        </article>
+
+        <article class="ep">
+          <div class="ep__no" style="counter-increment:ep;"></div>
+          <div>
+            <h3>Settlement vs. Consolidation vs. Bankruptcy</h3>
+            <p class="ep__sub">The honest comparison</p>
+            <p>The decision episode high-intent listeners search for. A fair, no-spin breakdown of the three paths — what each does to your balance, your timeline, and your credit — and who each one actually fits.</p>
+            <div class="ep__meta"><span>Consideration</span><span>High-intent / SEO</span><span>Decision guide</span></div>
+          </div>
+        </article>
+
+        <article class="ep">
+          <div class="ep__no" style="counter-increment:ep;"></div>
+          <div>
+            <h3>What a Collector Is Actually Allowed to Do</h3>
+            <p class="ep__sub">Your rights, in plain English</p>
+            <p>Empowering and shareable: the FDCPA basics, the threats that are flat-out illegal, and a simple script for handling a collections call without panic. Turns fear into footing.</p>
+            <div class="ep__meta"><span>Trust</span><span>Empowerment</span><span>Highly shareable</span></div>
+          </div>
+        </article>
+
+        <article class="ep">
+          <div class="ep__no" style="counter-increment:ep;"></div>
+          <div>
+            <h3>From $40k to Zero: A Fox Valley Story</h3>
+            <p class="ep__sub">A client journey (anonymized)</p>
+            <p>The emotional centerpiece — a composite, privacy-safe story of a local household climbing out of debt: the drawer of unopened mail, the first call, the day the balance hit zero. Local, human, hopeful.</p>
+            <div class="ep__meta"><span>Relief story</span><span>Local · Batavia</span><span>Emotional proof</span></div>
+          </div>
+        </article>
+
+        <article class="ep">
+          <div class="ep__no" style="counter-increment:ep;"></div>
+          <div>
+            <h3>The 60-Second Number</h3>
+            <p class="ep__sub">How we calculate what you could save</p>
+            <p>Radical transparency: a behind-the-scenes walk through how the savings estimate works, what it does and doesn't promise, and why it won't touch your credit. Built to send listeners straight to the calculator.</p>
+            <div class="ep__meta"><span>Action</span><span>Transparency</span><span>Drives the calculator</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 03 · CADENCE & DISTRIBUTION ===== -->
+  <section class="pod-section">
+    <div class="wrap">
+      <p class="eyebrow">03 · Cadence &amp; distribution</p>
+      <h2>Publish every two weeks, everywhere at once</h2>
+      <p class="section-intro">A biweekly cadence is sustainable and keeps a back catalog building. One recording is distributed as audio, embedded on the site, and sliced into short video — so the podcast and the video channel feed each other.</p>
+      <table class="cadence">
+        <thead><tr><th>Channel</th><th>What goes there</th><th>Job</th></tr></thead>
+        <tbody>
+          <tr><td>Spotify / Apple / YouTube</td><td>Full episode, biweekly</td><td>Reach &amp; credibility; searchable back catalog.</td></tr>
+          <tr><td>The website</td><td>Embedded player + show notes with the calculator link</td><td>Turn listeners into estimate completions.</td></tr>
+          <tr><td>TikTok / Reels / Shorts</td><td>3–5 clips cut from each episode</td><td>Top-of-funnel reach that points back to the full show and the site.</td></tr>
+          <tr><td>Email</td><td>"New episode" note to the list</td><td>Re-engage existing leads with low-pressure value.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <b>The same closing move, every episode.</b>
+        <p>Hook → teach one thing honestly → one clear ask: "Run your free 60-second estimate — no credit hit." Show notes link straight to the calculator with a per-episode tag so we can see which topics actually drive leads.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 04 · SAMPLE EPISODE ===== -->
+  <section class="pod-section">
+    <div class="wrap">
+      <p class="eyebrow">04 · Produced sample</p>
+      <h2>Episode 01 — “The 2 a.m. Math”</h2>
+      <p class="section-intro">A real, listenable cut of Episode 1, generated as a two-host audio overview from the episode brief. This is the actual format and quality bar for the show — press play.</p>
+
+      <div class="sample">
+        <div class="player">
+          <div class="player__art">
+            <span class="player__mark">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0"/><path d="M12 17v4M9 21h6"/></svg>
+            </span>
+            <div>
+              <div class="player__show">Debt, Decoded</div>
+              <div class="player__title">Ep. 01 · The 2 a.m. Math</div>
+            </div>
+          </div>
+          <audio controls preload="metadata" src="assets/audio/debt-decoded-ep01.mp3">
+            Your browser doesn’t support audio playback.
+          </audio>
+          <p class="player__note">Sample audio overview · two AI co-hosts · generated from the Episode 1 brief. Voices and music are placeholders for direction; final show would lock a consistent host pairing and intro sting.</p>
+        </div>
+
+        <div class="transcript">
+          <h3>Transcript</h3>
+          <div class="turn"><span class="turn__who a">Host A</span><p class="turn__line">Welcome back to Debt, Decoded. So picture it — it’s 2 a.m., you can’t sleep, and you’re doing that thing where you add up all your credit card balances in your head.</p></div>
+          <div class="turn"><span class="turn__who b">Host B</span><p class="turn__line"><em>[laughs]</em> Oh, the worst math in the world. And here’s the part that keeps people up: the minimum payment. It feels responsible, right? You’re paying on time.</p></div>
+          <div class="turn"><span class="turn__who a">Host A</span><p class="turn__line">Totally. But the minimum is kind of… a trap?</p></div>
+          <div class="turn"><span class="turn__who b">Host B</span><p class="turn__line">It really is. Let’s make it concrete. Say you’ve got $8,000 on a card at 24% APR.</p></div>
+          <div class="turn"><span class="turn__who a">Host A</span><p class="turn__line">Which is a super common rate right now.</p></div>
+          <div class="turn"><span class="turn__who b">Host B</span><p class="turn__line">Right. You pay only the minimum, every single month. Want to guess how long until it’s paid off?</p></div>
+          <div class="turn"><span class="turn__who a">Host A</span><p class="turn__line">I mean… a few years? Maybe five?</p></div>
+          <div class="turn"><span class="turn__who b">Host B</span><p class="turn__line">Twenty-seven years.</p></div>
+          <div class="turn"><span class="turn__who a">Host A</span><p class="turn__line">Twenty-seven?! <em>[sighs]</em> I’m sorry, what?</p></div>
+          <div class="turn"><span class="turn__who b">Host B</span><p class="turn__line">Twenty-seven years. And you’d pay over $11,000 in interest, on top of the original eight.</p></div>
+          <div class="turn"><span class="turn__who a">Host A</span><p class="turn__line">That is wild. So the minimum payment is basically designed to keep you paying forever.</p></div>
+          <div class="turn"><span class="turn__who b">Host B</span><p class="turn__line">That’s the business model. The minimum keeps the account current, but it barely touches the principal. Most of it is just interest.</p></div>
+          <div class="turn"><span class="turn__who a">Host A</span><p class="turn__line">Okay, so what actually breaks the cycle?</p></div>
+          <div class="turn"><span class="turn__who b">Host B</span><p class="turn__line">A few options, and they are not all equal. Consolidation, settlement, bankruptcy. We’ll do the honest comparison next episode. But the short version: you want a plan that attacks the principal, not one that just moves the debt around.</p></div>
+          <div class="turn"><span class="turn__who a">Host A</span><p class="turn__line">And there’s a faster lane than 27 years.</p></div>
+          <div class="turn"><span class="turn__who b">Host B</span><p class="turn__line">Way faster. Programs that negotiate the balance down can wrap up in 24 to 48 months instead.</p></div>
+          <div class="turn"><span class="turn__who a">Host A</span><p class="turn__line">So if you’re lying awake doing that 2 a.m. math, the move isn’t to white-knuckle the minimum.</p></div>
+          <div class="turn"><span class="turn__who b">Host B</span><p class="turn__line">The move is to run your actual numbers. There’s a free 60-second estimate — no credit hit — that shows what you could save. Start there.</p></div>
+          <div class="turn"><span class="turn__who a">Host A</span><p class="turn__line">Debt, decoded. We’ll see you next time.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

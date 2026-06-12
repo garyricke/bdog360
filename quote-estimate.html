@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en" class="bdog-locked">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="assets/favicon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <title>Bulldog 360 — Quote Estimate</title>
+  <meta name="description" content="Design-services quote estimate for the Bulldog 360 website, email, and print design.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@700;800;900&family=Roboto:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="brand-guide.css">
+  <link rel="stylesheet" href="budget-proposal.css">
+  <link rel="stylesheet" href="gate.css">
+  <link rel="stylesheet" href="admin-menu.css">
+  <script defer src="gate.js"></script>
+  <script defer src="admin-menu.js"></script>
+
+  <style>
+    /* ---- Quote estimate (scoped) ---- */
+    .quote { padding-block: var(--section-y); }
+    .quote__head {
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      align-items: flex-start; gap: 1.5rem; margin-bottom: 2.5rem;
+      padding-bottom: 1.75rem; border-bottom: 1px solid var(--hair);
+    }
+    .quote__brand { display: flex; align-items: center; gap: .85rem; }
+    .quote__brand img { width: 46px; height: 46px; object-fit: contain; }
+    .quote__brand b { font-family: var(--f-display); font-weight: 900; letter-spacing: -.01em; font-size: 1.15rem; }
+    .quote__brand small { display: block; color: var(--ink-soft); font-size: .8rem; font-weight: 500; }
+    .quote__meta { text-align: right; font-size: .9rem; color: var(--ink-soft); line-height: 1.7; }
+    .quote__meta b { color: var(--ink); font-family: var(--f-mono); font-weight: 500; }
+
+    .quote__parties { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2.5rem; }
+    .quote__party span { display: block; text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; color: var(--ink-soft); margin-bottom: .35rem; font-weight: 600; }
+    .quote__party strong { font-size: 1.05rem; }
+    .quote__party p { margin: .15rem 0 0; color: var(--ink-soft); font-size: .92rem; }
+
+    .quote-table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+    .quote-table thead th {
+      text-align: left; font-size: .74rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--ink-soft); font-weight: 600; padding: 0 0 .85rem; border-bottom: 2px solid var(--ink);
+    }
+    .quote-table thead th:last-child { text-align: right; }
+    .quote-table tbody td { padding: 1.25rem 0; border-bottom: 1px solid var(--hair); vertical-align: top; }
+    .quote-table tbody td:last-child { text-align: right; font-family: var(--f-mono); font-weight: 500; white-space: nowrap; }
+    .quote-table .item-name { font-weight: 600; font-size: 1.05rem; display: block; margin-bottom: .3rem; }
+    .quote-table .item-desc { color: var(--ink-soft); font-size: .9rem; line-height: 1.6; }
+
+    .quote-total {
+      display: flex; justify-content: flex-end; align-items: baseline; gap: 1.5rem;
+      padding: 1.5rem 0 0; margin-top: .25rem;
+    }
+    .quote-total span { text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; color: var(--ink-soft); font-weight: 600; }
+    .quote-total b { font-family: var(--f-mono); font-weight: 700; font-size: 2.1rem; letter-spacing: -.02em; }
+
+    .quote__terms {
+      margin-top: 2.75rem; padding: 1.5rem 1.75rem; border-radius: 12px;
+      background: var(--pearl-2); color: var(--ink-soft); font-size: .88rem; line-height: 1.7;
+    }
+    .quote__terms b { color: var(--ink); }
+    .quote__terms ul { margin: .6rem 0 0; padding-left: 1.1rem; }
+    .quote__terms li { margin: .3rem 0; }
+
+    @media (max-width: 640px) {
+      .quote__head, .quote__meta { text-align: left; }
+      .quote__meta { text-align: left; }
+      .quote__parties { grid-template-columns: 1fr; }
+      .quote-table thead { display: none; }
+      .quote-table tbody td { display: block; padding: .4rem 0; border: 0; }
+      .quote-table tbody tr { display: block; padding: 1rem 0; border-bottom: 1px solid var(--hair); }
+      .quote-table tbody td:last-child { text-align: left; font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page gate (hidden by gate.css once unlocked) -->
+  <div class="bdog-gate" role="dialog" aria-modal="true" aria-labelledby="bdogGateTitle">
+    <div class="bdog-gate__card">
+      <picture>
+        <source srcset="assets/bdog360-logo.avif" type="image/avif">
+        <img src="assets/bdog360-logo.png" alt="Bulldog 360" class="bdog-gate__logo">
+      </picture>
+      <span class="bdog-gate__pill">Access Restricted</span>
+      <h1 class="bdog-gate__title" id="bdogGateTitle">Bulldog 360 — Quote Estimate</h1>
+      <p class="bdog-gate__sub">Enter the access password to view this document.</p>
+      <form id="bdogGateForm" class="bdog-gate__form" novalidate>
+        <input id="bdogGateInput" class="bdog-gate__input" type="password" placeholder="Enter access password"
+               autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" required>
+        <button id="bdogGateBtn" type="submit" class="bdog-gate__btn">Unlock</button>
+      </form>
+      <p id="bdogGateErr" class="bdog-gate__err" hidden>Wrong password — try again.</p>
+      <p class="bdog-gate__foot">bdog360.com</p>
+    </div>
+  </div>
+
+  <main class="quote">
+    <div class="wrap">
+
+      <p class="eyebrow">Design Services · Estimate</p>
+      <h1 style="font-size:clamp(2.1rem,4.5vw,3rem);letter-spacing:-.03em;margin:0 0 .5rem;">Website, Email &amp; Print Design</h1>
+      <p class="lede" style="margin-bottom:2.5rem;">A fixed-fee estimate for the design of three deliverables — the consumer website, the outreach email, and the direct-mail postcard.</p>
+
+      <!-- header: studio + meta -->
+      <div class="quote__head">
+        <div class="quote__brand">
+          <img src="assets/bdog360-mark.png" alt="">
+          <div>
+            <b>Orbis Design</b>
+            <small>Brand &amp; deliverable studio</small>
+          </div>
+        </div>
+        <div class="quote__meta">
+          Estimate <b>EST-2026-001</b><br>
+          Date <b>June 10, 2026</b><br>
+          Valid through <b>July 10, 2026</b>
+        </div>
+      </div>
+
+      <!-- parties -->
+      <div class="quote__parties">
+        <div class="quote__party">
+          <span>Prepared by</span>
+          <strong>Orbis Design</strong>
+          <p>gary.ricke@orbisdesign.com</p>
+        </div>
+        <div class="quote__party">
+          <span>Prepared for</span>
+          <strong>Bulldog 360</strong>
+          <p>Full Service Targeted Marketing</p>
+        </div>
+      </div>
+
+      <!-- line items -->
+      <table class="quote-table">
+        <thead>
+          <tr>
+            <th scope="col">Deliverable</th>
+            <th scope="col">Fee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <span class="item-name">Website design</span>
+              <span class="item-desc">Full visual design of the consumer landing site — hero, savings calculator, how-it-works, trust and FAQ sections. Responsive layouts for desktop and mobile, delivered as production-ready design.</span>
+            </td>
+            <td>$6,000</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="item-name">Email design</span>
+              <span class="item-desc">Branded outreach email template — responsive, on-brand layout matching the site, ready for the email platform.</span>
+            </td>
+            <td>$1,500</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="item-name">Print design</span>
+              <span class="item-desc">6×9 direct-mail postcard, both sides — print-ready artwork with bleeds and crop marks, supplied to spec for the mail house.</span>
+            </td>
+            <td>$1,500</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="quote-total">
+        <span>Total estimate</span>
+        <b>$9,000</b>
+      </div>
+
+      <!-- terms -->
+      <div class="quote__terms">
+        <b>What's included &amp; good to know</b>
+        <ul>
+          <li>Fixed-fee design only. Development, hosting, copywriting, printing, and media/postage are not included.</li>
+          <li>Each deliverable includes two rounds of revisions; further rounds billed at the studio's standard hourly rate.</li>
+          <li>Final files are released on receipt of final payment.</li>
+          <li>This estimate is valid for 30 days from the date shown and is not an invoice.</li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

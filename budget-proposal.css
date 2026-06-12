@@ -351,6 +351,10 @@
   gap: 1.5rem;
   margin: 2.5rem 0;
 }
+.budget-compare--ladder { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 980px) {
+  .budget-compare--ladder { grid-template-columns: 1fr; }
+}
 @media (max-width: 720px) {
   .budget-compare { grid-template-columns: 1fr; }
 }
@@ -449,6 +453,90 @@
   font-weight: 700;
   color: var(--ink);
   white-space: nowrap;
+}
+.budget-card__metric {
+  font-family: var(--f-ui);
+  font-size: 0.8rem;
+  line-height: 1.45;
+  margin: 0.9rem 0 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(248, 249, 250, 0.18);
+  opacity: 0.82;
+}
+.budget-card__metric strong {
+  display: inline-block;
+  margin-top: 0.15rem;
+  font-family: var(--f-mono);
+  font-weight: 700;
+  opacity: 1;
+}
+.budget-card--rec .budget-card__metric { border-top-color: rgba(248, 249, 250, 0.2); }
+
+/* ============================================================
+   Budget climb strip — what additional spend buys
+   ============================================================ */
+.budget-climb {
+  margin: 1.75rem 0 0;
+  padding: 1.6rem 1.8rem;
+  background: var(--pearl);
+  border: 1px solid var(--hair);
+  border-radius: 14px;
+}
+.budget-climb__title {
+  font-family: var(--f-ui);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  margin: 0 0 1.2rem;
+}
+.budget-climb__steps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+}
+@media (max-width: 720px) {
+  .budget-climb__steps { grid-template-columns: 1fr; }
+}
+.budget-climb__step {
+  padding-left: 1rem;
+  border-left: 3px solid var(--crimson);
+}
+.budget-climb__delta {
+  display: block;
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1;
+}
+.budget-climb__arrow {
+  display: block;
+  font-family: var(--f-ui);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0.35rem 0 0.6rem;
+}
+.budget-climb__step p {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  margin: 0;
+  line-height: 1.55;
+}
+.budget-climb__step strong,
+.budget-climb__note strong { color: var(--ink); font-weight: 700; }
+.budget-climb__note {
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin: 1.3rem 0 0;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--hair);
 }
 
 /* ============================================================

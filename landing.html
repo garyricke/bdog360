@@ -1,0 +1,688 @@
+<!doctype html>
+<!--
+  Bulldog 360 — SAMPLE consumer debt-relief landing page.
+  Client-facing demonstration deliverable. All metrics are illustrative,
+  and response endpoints (tel:, PURLs, the form) are non-functional samples.
+  Gated with the shared gate.css/gate.js convention used across deliverables.
+-->
+<html lang="en" class="bdog-locked">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="assets/favicon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <title>Bulldog 360 — Cut Your Debt Payments by Up to 50%</title>
+  <meta name="description" content="See how much you could save in under 60 seconds. Bulldog 360 helps you resolve unsecured debt with one affordable monthly payment — no upfront fees. Check your eligibility today.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@700;800;900&family=Roboto:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="landing.css">
+  <link rel="stylesheet" href="gate.css">
+  <link rel="stylesheet" href="admin-menu.css">
+  <script defer src="gate.js"></script>
+  <script defer src="landing.js"></script>
+  <script defer src="admin-menu.js"></script>
+</head>
+<body>
+
+  <!-- Page gate (hidden by gate.css once unlocked) -->
+  <div class="bdog-gate" role="dialog" aria-modal="true" aria-labelledby="bdogGateTitle">
+    <div class="bdog-gate__card">
+      <span class="brand brand--light" aria-label="Bulldog 360">
+        <img class="brand__mark" src="assets/bdog360-mark.png" alt="">
+        <span class="brand__wm">
+          <span class="brand__name">BULLDOG<span class="x">360</span></span>
+          <span class="brand__tag">Full Service Targeted Marketing</span>
+        </span>
+      </span>
+      <span class="bdog-gate__pill">Access Restricted</span>
+      <h1 class="bdog-gate__title" id="bdogGateTitle">Bulldog 360 — Landing Page Sample</h1>
+      <p class="bdog-gate__sub">Enter the access password to preview this deliverable.</p>
+      <form id="bdogGateForm" class="bdog-gate__form" novalidate>
+        <input id="bdogGateInput" class="bdog-gate__input" type="password" placeholder="Enter access password"
+               autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" required>
+        <button id="bdogGateBtn" type="submit" class="bdog-gate__btn">Unlock</button>
+      </form>
+      <p id="bdogGateErr" class="bdog-gate__err" hidden>Wrong password — try again.</p>
+      <p class="bdog-gate__foot">bdog360.com</p>
+    </div>
+  </div>
+
+  <!-- ============================================================ HEADER -->
+  <header class="site-header" id="top">
+    <div class="wrap site-header__inner">
+      <a class="brand brand--light" href="#top" aria-label="Bulldog 360 home">
+        <img class="brand__mark" src="assets/bdog360-mark.png" alt="">
+        <span class="brand__wm">
+          <span class="brand__name">BULLDOG<span class="x">360</span></span>
+          <span class="brand__tag">Full Service Targeted Marketing</span>
+        </span>
+      </a>
+      <div class="site-header__right">
+        <a class="site-header__link" href="#podcast">Podcast</a>
+        <a class="site-header__phone" href="tel:+18883602255">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span class="lbl"></span> (888)&nbsp;360&#8209;2255
+        </a>
+        <a class="btn btn--primary" href="#calculator">Check Your Eligibility</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================ HERO -->
+  <section class="hero">
+    <!-- Ambient hero loop: couple feeling relief ("The Exhale"). Muted, autoplay, looping; still poster as fallback. -->
+    <div class="hero__bg" aria-hidden="true">
+      <video class="hero__media" autoplay muted loop playsinline preload="auto"
+             poster="assets/photos/couple-relief.jpg">
+        <source src="assets/video/hero-exhale.mp4" type="video/mp4">
+      </video>
+      <div class="hero__scrim"></div>
+    </div>
+    <div class="wrap hero__inner">
+      <div class="hero__copy" data-reveal>
+        <p class="eyebrow eyebrow--light">Debt Relief, Backed by Data</p>
+        <h1 class="hero__title">Cut your debt payments by <span class="arc accent">up to 50%</span>.</h1>
+        <p class="hero__sub">One affordable monthly payment. A dedicated negotiator on your side. A realistic path to being debt-free in 24–48 months.</p>
+        <div class="hero__cta-row">
+          <a class="btn btn--primary btn--lg" href="#calculator">See How Much You Could Save</a>
+          <a class="btn btn--ghost btn--lg" href="#how">How It Works</a>
+        </div>
+        <div class="hero__trust">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> No upfront fees</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Won't affect your credit score to check</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 100% confidential</span>
+        </div>
+      </div>
+
+      <!-- ===== Interactive savings calculator ===== -->
+      <div class="calc" id="calculator" data-reveal>
+        <div class="calc__head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/><line x1="8" y1="18" x2="12" y2="18"/></svg>
+          <div>
+            <h3>Free Savings Estimate</h3>
+            <p>60 seconds · no credit impact</p>
+          </div>
+        </div>
+        <div class="calc__body">
+          <p class="calc__steps">Step <b id="calcStepNum">1</b> of 3</p>
+
+          <!-- Step 1: debt amount -->
+          <div class="calc__step is-active" data-step="1">
+            <label for="calcRange">How much unsecured debt do you carry?</label>
+            <div class="calc__amount"><span class="cur">$</span><span id="calcAmount">22,000</span></div>
+            <input class="calc__range" id="calcRange" type="range" min="5000" max="100000" step="1000" value="22000" aria-label="Total unsecured debt">
+            <div class="calc__range-meta"><span>$5k</span><span>$100k+</span></div>
+            <p class="calc__finewarn">Credit cards, personal loans, and medical bills typically qualify. Secured debt (mortgage, auto) does not.</p>
+            <div class="calc__nav">
+              <button class="btn btn--dark btn--block" type="button" data-next>Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 2: creditors + type -->
+          <div class="calc__step" data-step="2">
+            <div class="calc__field">
+              <label for="calcCreditors">About how many creditors?</label>
+              <select id="calcCreditors">
+                <option value="1">1–2 accounts</option>
+                <option value="3" selected>3–5 accounts</option>
+                <option value="6">6–9 accounts</option>
+                <option value="10">10+ accounts</option>
+              </select>
+            </div>
+            <label>What best describes your situation?</label>
+            <div class="calc__chips" id="calcSituation" role="group" aria-label="Situation">
+              <button type="button" class="calc__chip is-on" data-val="current">Current, but stretched</button>
+              <button type="button" class="calc__chip" data-val="behind">Falling behind</button>
+              <button type="button" class="calc__chip" data-val="collections">In collections</button>
+            </div>
+            <div class="calc__nav">
+              <button class="calc__back" type="button" data-back>← Back</button>
+              <button class="btn btn--dark btn--block" type="button" data-next>See My Estimate</button>
+            </div>
+          </div>
+
+          <!-- Step 3: result -->
+          <div class="calc__step" data-step="3">
+            <div class="calc__result">
+              <p class="calc__result-label">Estimated new monthly payment</p>
+              <p class="calc__big" id="calcMonthly">$385</p>
+              <p class="calc__result-sub">down from about <strong id="calcCurrent">$660</strong>/mo in minimum payments</p>
+              <div class="calc__breakdown">
+                <div class="calc__metric"><div class="v" id="calcSaved">$9,240</div><div class="k">Estimated total savings</div></div>
+                <div class="calc__metric"><div class="v" id="calcTerm">36 mo</div><div class="k">Estimated program length</div></div>
+              </div>
+              <a class="btn btn--primary btn--block btn--lg" href="#apply">Claim This Estimate →</a>
+              <p class="calc__finewarn">Illustrative estimate only, based on typical program outcomes. Your actual results depend on your enrolled balances, creditors, and completed settlements. Not a guarantee or an offer of credit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ AS FEATURED IN -->
+  <div class="logos">
+    <div class="wrap logos__inner">
+      <span class="logos__label">As referenced by</span>
+      <span class="logos__name">Forbes&nbsp;Advisor</span>
+      <span class="logos__name">CBS&nbsp;News</span>
+      <span class="logos__name">Bankrate</span>
+      <span class="logos__name">LendEDU</span>
+      <span class="logos__name">Money</span>
+    </div>
+  </div>
+
+  <!-- ============================================================ STAT BAND -->
+  <section class="section stats">
+    <div class="wrap">
+      <div class="stats__grid">
+        <div data-reveal>
+          <div class="stat__v">$1.2<span class="accent">B</span></div>
+          <div class="stat__k">In debt resolved for clients</div>
+        </div>
+        <div data-reveal>
+          <div class="stat__v">Up to <span class="accent">50%</span></div>
+          <div class="stat__k">Typical reduction in enrolled balances</div>
+        </div>
+        <div data-reveal>
+          <div class="stat__v">24–48<span class="accent">mo</span></div>
+          <div class="stat__k">Typical path to debt-free</div>
+        </div>
+        <div data-reveal>
+          <div class="stat__v">A+</div>
+          <div class="stat__k">Better Business Bureau rating</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ HOW IT WORKS -->
+  <section class="section" id="how">
+    <div class="wrap">
+      <div class="section__head center" data-reveal>
+        <p class="eyebrow">The 360° Loop</p>
+        <h2 class="section__title">A clear path from stuck to settled</h2>
+        <p class="section__lede">No loans. No judgment. Just a structured program that works your debt down to a payoff.</p>
+      </div>
+      <div class="steps">
+        <article class="step" data-reveal>
+          <span class="step__n"></span>
+          <div class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h3>Free consultation</h3>
+          <p>A certified specialist reviews your debt and confirms what qualifies — in one quick call.</p>
+        </article>
+        <article class="step" data-reveal>
+          <span class="step__n"></span>
+          <div class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg></div>
+          <h3>Build your plan</h3>
+          <p>We design one affordable monthly payment based on what you can realistically commit.</p>
+        </article>
+        <article class="step" data-reveal>
+          <span class="step__n"></span>
+          <div class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+          <h3>Fund your account</h3>
+          <p>Your deposits build in an FDIC-insured account you own and control — never paid upfront.</p>
+        </article>
+        <article class="step" data-reveal>
+          <span class="step__n"></span>
+          <div class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h3>We settle. You're free.</h3>
+          <p>Our negotiators settle balances for less than you owe. You pay our fee only on results.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ BENEFITS + SOCIAL PROOF -->
+  <section class="section section--pearl2">
+    <div class="wrap benefits">
+      <div data-reveal>
+        <p class="eyebrow">Why people choose Bulldog 360</p>
+        <h2 class="section__title">Relief you can feel by next month</h2>
+        <ul class="benefit-list">
+          <li>
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span><b>One payment, not many.</b> Replace a stack of minimum payments with a single, lower monthly deposit.</span>
+          </li>
+          <li>
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span><b>Pay nothing until we perform.</b> Fees apply only after a debt is settled — fully compliant with FTC rules.</span>
+          </li>
+          <li>
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span><b>A negotiator in your corner.</b> Real specialists handle the calls, the paperwork, and the creditors — so you don't have to.</span>
+          </li>
+          <li>
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span><b>You stay in control.</b> Your funds sit in an account you own. Cancel anytime, no penalty.</span>
+          </li>
+        </ul>
+      </div>
+      <figure class="benefit-figure" data-reveal>
+        <img src="assets/photos/couple-relief.jpg" alt="A relieved couple reviewing their finances together at their kitchen table" loading="lazy">
+        <figcaption>
+          <div class="stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg>
+          </div>
+          <p class="quote">“I went from $31,000 across six cards to one payment I could actually breathe under. Settled in just over two years.”</p>
+          <cite>Marcus R. — Aurora, IL · Verified client</cite>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================================================ REVIEWS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head center" data-reveal>
+        <p class="eyebrow">Trusted, and reviewed</p>
+        <h2 class="section__title">Real ratings from real platforms</h2>
+      </div>
+      <div class="reviews">
+        <article class="review" data-reveal>
+          <div class="review__top">
+            <span class="review__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> BBB · A+</span>
+            <span class="stars" aria-label="5 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg></span>
+          </div>
+          <p>“They explained exactly how the program worked before I committed to anything. No pressure, no surprise fees.”</p>
+          <cite>Dana K. <span>· enrolled $19k</span></cite>
+        </article>
+        <article class="review" data-reveal>
+          <div class="review__top">
+            <span class="review__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15 9 22 9 17 14 19 22 12 17 5 22 7 14 2 9 9 9 12 2"/></svg> Trustpilot · 4.8</span>
+            <span class="stars" aria-label="5 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg></span>
+          </div>
+          <p>“My negotiator settled my biggest card for less than half. I finally see the end of this.”</p>
+          <cite>Reggie M. <span>· enrolled $27k</span></cite>
+        </article>
+        <article class="review" data-reveal>
+          <div class="review__top">
+            <span class="review__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg> Google · 4.7</span>
+            <span class="stars" aria-label="5 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 6 21.2l1.4-6.8L2.3 9.7l6.9-.7z"/></svg></span>
+          </div>
+          <p>“Straight answers from the first call. The savings estimate they gave me was honest, not a sales pitch.”</p>
+          <cite>Priya S. <span>· enrolled $42k</span></cite>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ REELS / SHORT VIDEO -->
+  <section class="reels" id="reels" aria-labelledby="reelsTitle">
+    <div class="wrap">
+      <div class="reels__head" data-reveal>
+        <p class="eyebrow eyebrow--light">Real stories · 60 seconds</p>
+        <h2 id="reelsTitle">See it in 60 seconds</h2>
+        <p class="reels__sub">The same clips we run on TikTok, Reels, and Shorts. Tap any video to play.</p>
+      </div>
+
+      <div class="reels__track" role="list">
+        <article class="reel" role="listitem" tabindex="0"
+                 data-frame="assets/photos/frame-27years.webp" data-tag="60-second save" data-cap="$8,000 on minimum payments = 27 years." data-dur="0:18">
+          <div class="reel__frame">
+            <img class="reel__img" src="assets/photos/frame-27years.webp" alt="Phone showing a 27-year payoff reveal">
+            <button class="reel__play" type="button" aria-label="Play video" tabindex="-1">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+            </button>
+            <span class="reel__tag">60-second save</span>
+            <span class="reel__dur">0:18</span>
+          </div>
+          <p class="reel__cap">$8k minimum payments = 27 years.</p>
+        </article>
+
+        <article class="reel" role="listitem" tabindex="0"
+                 data-frame="assets/photos/frame-collector.webp" data-tag="Know your rights" data-cap="2 things in this collector text are illegal." data-dur="0:20">
+          <div class="reel__frame">
+            <img class="reel__img" src="assets/photos/frame-collector.webp" alt="Negotiator reacting to a threatening collector text">
+            <button class="reel__play" type="button" aria-label="Play video" tabindex="-1">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+            </button>
+            <span class="reel__tag">Know your rights</span>
+            <span class="reel__dur">0:20</span>
+          </div>
+          <p class="reel__cap">What collectors won’t tell you.</p>
+        </article>
+
+        <article class="reel" role="listitem" tabindex="0"
+                 data-frame="assets/photos/frame-drawer.webp" data-tag="Relief story" data-cap="She stopped opening her mail. Then she made one call." data-dur="0:23">
+          <div class="reel__frame">
+            <img class="reel__img" src="assets/photos/frame-drawer.webp" alt="A drawer overflowing with unopened past-due bills">
+            <button class="reel__play" type="button" aria-label="Play video" tabindex="-1">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+            </button>
+            <span class="reel__tag">Relief story</span>
+            <span class="reel__dur">0:23</span>
+          </div>
+          <p class="reel__cap">“She stopped opening her mail.”</p>
+        </article>
+
+        <article class="reel" role="listitem" tabindex="0"
+                 data-frame="assets/photos/frame-listicle.webp" data-tag="Insider tips" data-cap="5 things I’d never do with credit card debt." data-dur="0:20">
+          <div class="reel__frame">
+            <img class="reel__img" src="assets/photos/frame-listicle.webp" alt="Creator listing things never to do with debt">
+            <button class="reel__play" type="button" aria-label="Play video" tabindex="-1">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+            </button>
+            <span class="reel__tag">Insider tips</span>
+            <span class="reel__dur">0:20</span>
+          </div>
+          <p class="reel__cap">5 things I’d never do with debt.</p>
+        </article>
+
+        <article class="reel" role="listitem" tabindex="0"
+                 data-frame="assets/photos/frame-comment.webp" data-tag="Your move" data-cap="Comment a number 1–5 and get your next move." data-dur="0:18">
+          <div class="reel__frame">
+            <img class="reel__img" src="assets/photos/frame-comment.webp" alt="Creator with a pick-a-number 1 to 5 menu">
+            <button class="reel__play" type="button" aria-label="Play video" tabindex="-1">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+            </button>
+            <span class="reel__tag">Your move</span>
+            <span class="reel__dur">0:18</span>
+          </div>
+          <p class="reel__cap">Comment a number, get your move.</p>
+        </article>
+
+        <article class="reel" role="listitem" tabindex="0"
+                 data-frame="assets/photos/frame-batavia.webp" data-tag="Local" data-cap="Made for Fox Valley families — Batavia, Geneva, St. Charles." data-dur="0:17">
+          <div class="reel__frame">
+            <img class="reel__img" src="assets/photos/frame-batavia.webp" alt="Golden-hour aerial of the Fox River downtown">
+            <button class="reel__play" type="button" aria-label="Play video" tabindex="-1">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+            </button>
+            <span class="reel__tag">Local</span>
+            <span class="reel__dur">0:17</span>
+          </div>
+          <p class="reel__cap">Made for the Fox Valley.</p>
+        </article>
+      </div>
+
+      <div class="reels__cta" data-reveal>
+        <a class="btn btn--primary btn--lg" href="#calculator">Get my free estimate</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fullscreen vertical "player" for the reels -->
+  <div class="reelbox" id="reelbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Video player">
+    <button class="reelbox__close" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+    </button>
+    <button class="reelbox__nav reelbox__nav--prev" type="button" aria-label="Previous">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="reelbox__stage">
+      <div class="reelbox__progress"><i></i></div>
+      <img class="reelbox__img" alt="">
+      <button class="reelbox__toggle" type="button" aria-label="Pause">
+        <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h3v14H8zM13 5h3v14h-3z" fill="currentColor"/></svg>
+        <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+      </button>
+      <div class="reelbox__meta">
+        <span class="reelbox__tag"></span>
+        <p class="reelbox__cap"></p>
+        <a class="btn btn--primary" href="#calculator" data-reelbox-cta>Get my free estimate</a>
+      </div>
+    </div>
+    <button class="reelbox__nav reelbox__nav--next" type="button" aria-label="Next">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  <!-- ============================================================ PODCAST -->
+  <section class="podcast" id="podcast" aria-labelledby="podTitle">
+    <div class="wrap">
+      <div class="podcast__head" data-reveal>
+        <p class="eyebrow">Now streaming · Debt, Decoded</p>
+        <h2 id="podTitle">A podcast for the 2&nbsp;a.m. money worries</h2>
+        <p class="podcast__sub">Short, plain-English episodes that decode how debt actually works — and the moves that get you out. New episodes every two weeks.</p>
+      </div>
+
+      <article class="podcard" data-reveal>
+        <div class="podcard__art">
+          <img src="assets/photos/ep27-hero.webp" alt="">
+          <span class="podcard__badge">Latest episode</span>
+        </div>
+        <div class="podcard__body">
+          <p class="podcard__show">Episode 01</p>
+          <h3 class="podcard__title">The 27-Year Minimum-Payment Trap</h3>
+          <p class="podcard__desc">It’s 2&nbsp;a.m. and you’re doing the worst math in the world. We decode why paying the minimum keeps you stuck for decades — and the one move that gets you out.</p>
+          <div class="podcard__controls">
+            <button class="podcard__play" id="podPlay" type="button" aria-label="Play episode">
+              <span class="ic" aria-hidden="true">
+                <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+                <svg class="ic-pause" viewBox="0 0 24 24" hidden><path d="M8 5h3v14H8zM13 5h3v14h-3z" fill="currentColor"/></svg>
+              </span>
+              <span class="lbl">Play episode</span>
+            </button>
+            <span class="podcard__dur">12:35</span>
+            <a class="podcard__link" href="episode-27-year-trap.html">Full episode &amp; chapters →</a>
+          </div>
+          <div class="podcard__bar"><i id="podFill"></i></div>
+          <audio id="podAudio" preload="none" src="assets/audio/The_27_Year_Minimum_Payment_Trap.m4a"></audio>
+        </div>
+      </article>
+
+      <p class="podlist__label" data-reveal>More from Season 1</p>
+      <div class="podlist" data-reveal>
+        <article class="podmini">
+          <div class="podmini__bg" aria-hidden="true"><img src="assets/photos/ep27-three-paths.webp" alt="" loading="lazy"></div>
+          <div class="podmini__body">
+            <div class="podmini__top">
+              <span class="podmini__no">Ep. 02</span>
+              <span class="podmini__dur">13:08</span>
+            </div>
+            <h4 class="podmini__title">Settlement vs. Consolidation vs. Bankruptcy</h4>
+            <p class="podmini__desc">The honest, no-spin comparison — what each path does to your balance, timeline, and credit.</p>
+            <span class="podmini__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>Play</span>
+          </div>
+        </article>
+
+        <article class="podmini">
+          <div class="podmini__bg" aria-hidden="true"><img src="assets/photos/frame-collector.webp" alt="" loading="lazy"></div>
+          <div class="podmini__body">
+            <div class="podmini__top">
+              <span class="podmini__no">Ep. 03</span>
+              <span class="podmini__dur">11:24</span>
+            </div>
+            <h4 class="podmini__title">What a Collector Is Actually Allowed to Do</h4>
+            <p class="podmini__desc">Your rights in plain English — the threats that are illegal, and how to handle a call without panic.</p>
+            <span class="podmini__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>Play</span>
+          </div>
+        </article>
+
+        <article class="podmini">
+          <div class="podmini__bg" aria-hidden="true"><img src="assets/photos/frame-drawer.webp" alt="" loading="lazy"></div>
+          <div class="podmini__body">
+            <div class="podmini__top">
+              <span class="podmini__no">Ep. 04</span>
+              <span class="podmini__dur">14:02</span>
+            </div>
+            <h4 class="podmini__title">From $40k to Zero: A Fox Valley Story</h4>
+            <p class="podmini__desc">An anonymized local journey out of debt — the unopened mail, the first call, the day it hit zero.</p>
+            <span class="podmini__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>Play</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ BATAVIA LOCAL BAND -->
+  <section class="local">
+    <div class="local__grid">
+      <div class="local__media">
+        <img src="assets/photos/batavia-riverwalk.jpg" alt="The Fox River Riverwalk in downtown Batavia, Illinois at golden hour" loading="lazy">
+      </div>
+      <div class="local__copy" data-reveal>
+        <span class="local__pin">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Proudly based in Batavia, Illinois
+        </span>
+        <h2>A neighbor in the Fox Valley — not a call center three states away.</h2>
+        <p>Bulldog 360 was built on the Fox River in Batavia, IL. We know the families we serve because we live alongside them — and we put that same local accountability behind every program we run, statewide.</p>
+        <div class="local__chips">
+          <span>Batavia · Aurora · Geneva · St. Charles</span>
+          <span>Licensed &amp; bonded</span>
+          <span>Real people, real phone numbers</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ ELIGIBILITY FORM -->
+  <section class="section lead" id="apply">
+    <div class="wrap lead__grid">
+      <div data-reveal>
+        <p class="eyebrow eyebrow--light">Check your eligibility</p>
+        <h2 class="lead__title">See if you qualify in under a minute.</h2>
+        <p class="lead__copy">Answer a few quick questions and a certified specialist will reach out with your personalized savings estimate. No obligation, and checking won't affect your credit score.</p>
+        <ul class="lead__assure">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Your information is encrypted and confidential</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> No upfront fees, ever</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Most consultations take 10 minutes</li>
+        </ul>
+      </div>
+
+      <div class="form-card" data-reveal>
+        <form id="leadForm" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="lfFirst">First name</label>
+              <input id="lfFirst" name="first" type="text" placeholder="Jordan" required>
+            </div>
+            <div class="field">
+              <label for="lfLast">Last name</label>
+              <input id="lfLast" name="last" type="text" placeholder="Avery" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="lfDebt">Total unsecured debt</label>
+              <select id="lfDebt" name="debt" required>
+                <option value="" disabled selected>Select…</option>
+                <option>$5,000 – $9,999</option>
+                <option>$10,000 – $19,999</option>
+                <option>$20,000 – $34,999</option>
+                <option>$35,000 – $49,999</option>
+                <option>$50,000+</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="lfState">State</label>
+              <select id="lfState" name="state" required>
+                <option value="" disabled selected>Select…</option>
+                <option>Illinois</option><option>California</option><option>Texas</option>
+                <option>Florida</option><option>New York</option><option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="lfPhone">Phone</label>
+            <input id="lfPhone" name="phone" type="tel" placeholder="(555) 123-4567" required>
+          </div>
+          <div class="field">
+            <label for="lfEmail">Email</label>
+            <input id="lfEmail" name="email" type="email" placeholder="you@email.com" required>
+          </div>
+          <button class="btn btn--primary btn--block btn--lg" type="submit">Get My Free Estimate →</button>
+          <p class="form-card__fine">By submitting, you agree to be contacted by Bulldog 360 at the number provided, including by autodialer and prerecorded messages. Consent is not a condition of any purchase. Message &amp; data rates may apply. <a href="#">Privacy Policy</a>.</p>
+        </form>
+        <div class="form-success" id="leadSuccess" role="status">
+          <div class="form-success__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h3>You're all set.</h3>
+          <p>A certified specialist will call you shortly with your personalized savings estimate. <br><em style="opacity:.7">(Sample form — no information was submitted.)</em></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ FAQ -->
+  <section class="section section--pearl2">
+    <div class="wrap">
+      <div class="section__head center" data-reveal>
+        <p class="eyebrow">Good questions</p>
+        <h2 class="section__title">What you're probably wondering</h2>
+      </div>
+      <div class="faq" data-reveal>
+        <details open>
+          <summary>Will this hurt my credit?</summary>
+          <p>Checking your estimate has no impact on your credit score. Enrolling in a debt-resolution program can affect your credit during the program, but many clients see their score recover as balances are resolved and utilization drops.</p>
+        </details>
+        <details>
+          <summary>How much does it cost?</summary>
+          <p>You pay nothing upfront. Our performance-based fee is charged only after a debt is successfully settled, in full compliance with the FTC's Telemarketing Sales Rule. Your monthly deposits accumulate in a dedicated account that you own and control.</p>
+        </details>
+        <details>
+          <summary>What kinds of debt qualify?</summary>
+          <p>Unsecured debts — credit cards, personal loans, medical bills, and most collections — typically qualify. Secured debts such as mortgages and auto loans, plus federal student loans, generally do not.</p>
+        </details>
+        <details>
+          <summary>How long does the program take?</summary>
+          <p>Most clients complete their program in 24 to 48 months, depending on enrolled balances and the monthly amount they can comfortably set aside. Your specialist will map out a realistic timeline before you commit to anything.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ FINAL CTA -->
+  <section class="final">
+    <img class="final__bg" src="assets/photos/family-porch.jpg" alt="" aria-hidden="true" loading="lazy">
+    <div class="wrap final__inner" data-reveal>
+      <h2>Stop juggling payments. Start settling debt.</h2>
+      <p>See your personalized estimate in under a minute — free, confidential, and with no impact on your credit.</p>
+      <a class="btn btn--primary btn--lg" href="#calculator">See How Much You Could Save</a>
+    </div>
+  </section>
+
+  <!-- ============================================================ FOOTER -->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot__top">
+        <div class="foot__brand">
+          <span class="brand brand--light" aria-label="Bulldog 360">
+            <img class="brand__mark" src="assets/bdog360-mark.png" alt="">
+            <span class="brand__wm">
+              <span class="brand__name">BULLDOG<span class="x">360</span></span>
+              <span class="brand__tag">Full Service Targeted Marketing</span>
+            </span>
+          </span>
+          <p style="margin-top:1rem;">Full-service, data-driven debt relief. We bridge precision direct mail with digital tracking to help consumers resolve unsecured debt — and stay there.</p>
+        </div>
+        <div>
+          <h4>Program</h4>
+          <ul>
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#calculator">Savings calculator</a></li>
+            <li><a href="#apply">Check eligibility</a></li>
+            <li><a href="#">Client login</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Bulldog 360</a></li>
+            <li><a href="#">Reviews</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="tel:+18883602255">(888) 360-2255</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot__legal">
+        <div class="foot__disclo">
+          <p>Bulldog 360 is a debt-resolution provider, not a lender, creditor, or credit-repair organization, and does not provide tax, legal, or bankruptcy advice. Read and understand all program materials before enrollment.</p>
+          <p>Debt-resolution programs are not suitable for everyone and may adversely affect your creditworthiness, result in collection activity, and increase the amounts owed due to accrual of fees and interest. Programs typically run 24–48 months. Not all clients complete the program; estimates of savings are based on prior client results and are not a guarantee of any specific outcome. Read and understand all program materials prior to enrollment. Services not available in all states.</p>
+          <p>© 2026 Bulldog 360. All rights reserved. &nbsp;·&nbsp; <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Service</a> &nbsp;·&nbsp; <a href="#">Accessibility</a></p>
+          <p style="opacity:.6">Sample landing page produced by Orbis Design for Bulldog 360. All figures, badges, and testimonials shown are illustrative placeholders for demonstration only.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

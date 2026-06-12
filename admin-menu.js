@@ -25,6 +25,48 @@
       title: "Price Justification",
       sub: "Internal · for Gary & Tyler",
       icon: "clipboard"
+    },
+    {
+      href: "landing.html",
+      title: "Landing Page",
+      sub: "Consumer debt-relief sample",
+      icon: "window"
+    },
+    {
+      href: "email-sample.html",
+      title: "Email Sample",
+      sub: "Consumer outreach",
+      icon: "chat"
+    },
+    {
+      href: "postcard-sample.html",
+      title: "Postcard Sample",
+      sub: "6×9 direct mail",
+      icon: "clipboard"
+    },
+    {
+      href: "quote-estimate.html",
+      title: "Quote Estimate",
+      sub: "Website · email · print design",
+      icon: "receipt"
+    },
+    {
+      href: "videos.html",
+      title: "Video Strategy",
+      sub: "Short-form content plan",
+      icon: "video"
+    },
+    {
+      href: "podcast.html",
+      title: "Podcast Strategy",
+      sub: "Episodes + sample audio",
+      icon: "mic"
+    },
+    {
+      href: "episode-27-year-trap.html",
+      title: "Ep. 01 — Interactive",
+      sub: "The 27-Year Trap · player + extras",
+      icon: "headphones"
     }
   ];
 
@@ -79,6 +121,29 @@
       '<svg viewBox="0 0 24 24" aria-hidden="true">' +
       '<circle cx="12" cy="9" r="6"/>' +
       '<path d="M9 14l-2 7 5-3 5 3-2-7"/>' +
+      "</svg>",
+    receipt:
+      '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+      '<path d="M5 3v18l2.5-1.5L10 21l2-1.5L14 21l2.5-1.5L19 21V3l-2.5 1.5L14 3l-2 1.5L10 3 7.5 4.5 5 3z"/>' +
+      '<path d="M9 8h6"/>' +
+      '<path d="M9 12h6"/>' +
+      "</svg>",
+    video:
+      '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+      '<rect x="3" y="6" width="13" height="12" rx="2"/>' +
+      '<path d="M16 10l5-3v10l-5-3z"/>' +
+      "</svg>",
+    mic:
+      '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+      '<rect x="9" y="3" width="6" height="11" rx="3"/>' +
+      '<path d="M6 11a6 6 0 0 0 12 0"/>' +
+      '<path d="M12 17v4M9 21h6"/>' +
+      "</svg>",
+    headphones:
+      '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+      '<path d="M4 14v-2a8 8 0 0 1 16 0v2"/>' +
+      '<rect x="3" y="14" width="4" height="6" rx="1.5"/>' +
+      '<rect x="17" y="14" width="4" height="6" rx="1.5"/>' +
       "</svg>"
   };
 

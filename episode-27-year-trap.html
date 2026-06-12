@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en" class="bdog-locked">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="assets/favicon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <title>Bulldog 360 — Debt, Decoded Ep. 01: The 27-Year Trap</title>
+  <meta name="description" content="Interactive episode page for Debt, Decoded Ep. 01 — the 27-year minimum-payment trap. Chapter-aware audio player, glossary, the three paths, flashcards, and a quiz.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@700;800;900&family=Roboto:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="brand-guide.css">
+  <link rel="stylesheet" href="gate.css">
+  <link rel="stylesheet" href="admin-menu.css">
+  <script defer src="gate.js"></script>
+  <script defer src="admin-menu.js"></script>
+
+  <style>
+    .ep-shell { max-width: 1060px; margin: 0 auto; padding-inline: clamp(1.25rem, 4vw, 3rem); }
+    .ep-wrap { background: var(--pearl); color: var(--ink); padding-bottom: 5rem; }
+    .ep-wrap h2 { font-size: clamp(1.5rem, 3.2vw, 2.1rem); letter-spacing: -.02em; margin: 0 0 .5rem; }
+    .ep-eyebrow { font-family: var(--f-ui); font-weight: 700; font-size: .74rem; letter-spacing: .18em; text-transform: uppercase; color: var(--crimson); margin: 0 0 .8rem; }
+    .ep-sec { padding-block: clamp(2.2rem, 5vw, 3.4rem); }
+    .ep-sec__intro { max-width: 64ch; color: var(--ink-soft); margin: 0 0 1.6rem; font-size: 1.02rem; }
+
+    /* hero */
+    .ep-hero { background: #14141a; color: var(--pearl); position: relative; overflow: hidden; }
+    .ep-hero__bg { position:absolute; inset:0; z-index:0; }
+    .ep-hero__bg img { width:100%; height:100%; object-fit:cover; object-position: 70% center; opacity:.55; }
+    .ep-hero::before { content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+      background:
+        linear-gradient(90deg, rgba(13,17,23,.94) 0%, rgba(13,17,23,.82) 38%, rgba(13,17,23,.35) 70%, rgba(13,17,23,.55) 100%),
+        radial-gradient(70% 90% at 85% 10%, rgba(230,57,70,.26), transparent 60%); }
+    .ep-hero__inner { position: relative; z-index:2; padding-block: clamp(3.5rem, 8vw, 6rem); }
+    .ep-hero__show { display:inline-flex; align-items:center; gap:.6rem; font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color: rgba(248,249,250,.7); font-weight:700; margin-bottom:1.1rem; }
+    .ep-hero__show .d { width:6px; height:6px; border-radius:50%; background: var(--crimson); }
+    .ep-hero h1 { font-size: clamp(2.1rem, 5.2vw, 3.4rem); line-height: 1.05; letter-spacing:-.03em; color:#fff; margin:0 0 1rem; max-width: 16ch; }
+    .ep-hero h1 em { font-style: normal; color: var(--crimson); }
+    .ep-hero__sub { color: rgba(248,249,250,.82); font-size: 1.1rem; max-width: 52ch; line-height:1.6; }
+    .ep-hero__meta { display:flex; flex-wrap:wrap; gap: 1.2rem 2.2rem; margin-top: 1.8rem; padding-top: 1.4rem; border-top:1px solid rgba(248,249,250,.16); }
+    .ep-hero__meta .k { font-size:.64rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(248,249,250,.6); display:block; margin-bottom:.25rem; }
+    .ep-hero__meta .v { font-family: var(--f-mono); font-weight:500; }
+
+    /* audio player */
+    .ep-audio { background:#fff; border:1px solid var(--hair); border-radius:18px; padding: 1.6rem 1.6rem 1.3rem; box-shadow: var(--shadow-card, 0 12px 34px -18px rgba(20,20,26,.28)); margin-top:-2.6rem; position:relative; z-index:3; }
+    .ep-audio__head { display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-bottom:.5rem; }
+    .ep-audio__eye { display:inline-flex; align-items:center; gap:.55rem; font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color: var(--crimson); font-weight:700; }
+    .ep-bars { display:inline-flex; align-items:flex-end; gap:2px; height:14px; }
+    .ep-bars span { width:3px; background: var(--crimson); border-radius:2px; height:40%; animation: epbars 1s ease-in-out infinite; }
+    .ep-bars span:nth-child(2){ animation-delay:.2s } .ep-bars span:nth-child(3){ animation-delay:.4s } .ep-bars span:nth-child(4){ animation-delay:.6s }
+    .ep-audio.playing .ep-bars span { animation-play-state: running; }
+    .ep-audio:not(.playing) .ep-bars span { animation-play-state: paused; }
+    @keyframes epbars { 0%,100%{height:35%} 50%{height:100%} }
+    .ep-audio__dur { font-size:.8rem; color: var(--ink-faint,#71717f); font-family:var(--f-mono); }
+    .ep-audio__title { font-family:var(--f-display); font-weight:800; font-size:1.15rem; margin:.1rem 0 1rem; }
+    .ep-audio__controls { display:flex; align-items:center; gap:.7rem; }
+    .ep-skip, .ep-play, .ep-speed { border:0; cursor:pointer; display:grid; place-items:center; }
+    .ep-skip { width:38px; height:38px; border-radius:50%; background: var(--pearl-2); color: var(--ink); position:relative; }
+    .ep-skip svg { width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+    .ep-skip .n { position:absolute; font-size:.5rem; font-weight:700; font-family:var(--f-mono); }
+    .ep-play { width:52px; height:52px; border-radius:50%; background: var(--crimson); color:#fff; flex:none; }
+    .ep-play .tri { width:0;height:0;border-left:15px solid #fff;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:3px; }
+    .ep-play .pause { display:none; gap:4px; }
+    .ep-play .pause span{ width:4px;height:17px;background:#fff;border-radius:1px; display:block; }
+    .ep-audio.playing .ep-play .tri { display:none; }
+    .ep-audio.playing .ep-play .pause { display:flex; }
+    .ep-track { flex:1; height:7px; background: var(--pearl-2); border-radius:99px; position:relative; cursor:pointer; }
+    .ep-fill { position:absolute; left:0; top:0; bottom:0; width:0; background: var(--crimson); border-radius:99px; }
+    .ep-thumb { position:absolute; top:50%; left:0; width:14px; height:14px; border-radius:50%; background:#fff; border:2px solid var(--crimson); transform:translate(-50%,-50%); }
+    .ep-marker { position:absolute; top:50%; width:8px; height:8px; transform:translate(-50%,-50%); background: var(--indigo); border:1.5px solid #fff; border-radius:50%; cursor:pointer; z-index:2; }
+    .ep-marker .tip { position:absolute; bottom:160%; left:50%; transform:translateX(-50%); background: var(--onyx); color:#fff; font-size:.72rem; white-space:nowrap; padding:.3rem .55rem; border-radius:6px; opacity:0; pointer-events:none; transition:opacity .15s; max-width:240px; white-space:normal; width:max-content; }
+    .ep-marker:hover .tip { opacity:1; }
+    .ep-marker .tip .mt { font-family:var(--f-mono); color: var(--crimson); margin-right:.4rem; }
+    .ep-marker.current { background: var(--crimson); }
+    .ep-times { font-size:.78rem; font-family:var(--f-mono); color: var(--ink-faint,#71717f); white-space:nowrap; }
+    .ep-speed { width:auto; padding:.35rem .55rem; border-radius:8px; background:var(--pearl-2); font-family:var(--f-mono); font-size:.78rem; font-weight:600; }
+    .ep-speed.active { background: var(--indigo); color:#fff; }
+    @media (max-width:620px){ .ep-times{display:none} .ep-audio__controls{flex-wrap:wrap} .ep-track{order:5; flex-basis:100%} }
+
+    /* chapters */
+    .ep-chapters { margin-top: 1rem; border-top:1px solid var(--hair); padding-top: 1rem; }
+    .ep-chapters__toggle { display:flex; align-items:center; justify-content:space-between; width:100%; cursor:pointer; background:none; border:0; padding:.2rem 0; gap:1rem; }
+    .ep-chapters__toggle .lab { font-weight:700; font-family:var(--f-ui); font-size:.92rem; }
+    .ep-chapters__toggle .lab .c { color: var(--ink-faint,#71717f); font-weight:500; }
+    .ep-chapters__now { font-size:.84rem; color: var(--crimson); font-weight:600; margin-left:auto; margin-right:.8rem; text-align:right; }
+    .ep-chapters__chev { transition: transform .2s; color: var(--ink-faint,#71717f); }
+    .ep-chapters.open .ep-chapters__chev { transform: rotate(180deg); }
+    .ep-chapters__list { display:none; grid-template-columns: 1fr 1fr; gap:.4rem; margin-top:.9rem; }
+    .ep-chapters.open .ep-chapters__list { display:grid; }
+    @media (max-width:640px){ .ep-chapters__list{ grid-template-columns:1fr } .ep-chapters__now{display:none} }
+    .ep-chap { display:flex; gap:.7rem; align-items:baseline; text-align:left; padding:.55rem .7rem; border-radius:9px; background:var(--pearl-2); border:0; cursor:pointer; transition:background .15s; }
+    .ep-chap:hover { background: var(--indigo-soft, #eaf0f8); }
+    .ep-chap.current { background: var(--indigo); color:#fff; }
+    .ep-chap .t { font-family:var(--f-mono); font-size:.74rem; color: var(--crimson); flex:none; }
+    .ep-chap.current .t { color:#fff; }
+    .ep-chap .ti { font-size:.86rem; line-height:1.35; }
+
+    /* stat band */
+    .ep-stats { display:grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap:1px; background: var(--hair); border:1px solid var(--hair); border-radius:14px; overflow:hidden; }
+    .ep-stat { background:#fff; padding:1.3rem 1.2rem; text-align:center; }
+    .ep-stat b { display:block; font-family:var(--f-display); font-weight:900; font-size:1.8rem; color: var(--crimson); letter-spacing:-.02em; }
+    .ep-stat span { font-size:.78rem; color: var(--ink-soft); line-height:1.4; }
+
+    /* prose + glossary triggers */
+    .ep-prose p { font-size:1.04rem; line-height:1.7; max-width: 66ch; margin:0 0 1.1rem; }
+    .ep-term { border:0; background:linear-gradient(transparent 60%, var(--indigo-soft,#eaf0f8) 0); color: var(--indigo); font-weight:600; cursor:pointer; padding:0 .05em; border-bottom:1.5px dotted var(--indigo); }
+    .ep-term::after { content:" ⓘ"; font-size:.72em; vertical-align:super; opacity:.7; }
+    .ep-term:hover { color: var(--crimson); border-color: var(--crimson); }
+
+    .ep-figure { margin: 1.6rem 0; border-radius:14px; overflow:hidden; border:1px solid var(--hair); }
+    .ep-figure img { width:100%; display:block; }
+    .ep-figure figcaption { font-size:.82rem; color: var(--ink-soft); padding:.7rem 1rem; background: var(--pearl-2); }
+    .ep-figure--float { float:right; width: 230px; margin:.3rem 0 1.2rem 1.6rem; }
+    @media (max-width:640px){ .ep-figure--float{ float:none; width:auto; margin:1.2rem 0 } }
+
+    /* callout */
+    .ep-pull { border-left:4px solid var(--crimson); background:#fff; padding:1.2rem 1.5rem; border-radius:0 12px 12px 0; margin:1.6rem 0; box-shadow: var(--shadow-card,0 12px 34px -18px rgba(20,20,26,.2)); }
+    .ep-pull p { font-family:var(--f-display); font-weight:700; font-size:1.15rem; line-height:1.35; margin:0; }
+
+    /* tabs */
+    .ep-paths-banner { position:relative; border-radius:14px; overflow:hidden; margin-bottom:1.4rem; }
+    .ep-paths-banner img { width:100%; display:block; filter:saturate(.95); }
+    .ep-paths-banner .ov { position:absolute; inset:0; background:linear-gradient(90deg, rgba(20,20,26,.7), transparent 70%); display:flex; align-items:center; padding: 0 clamp(1.2rem,4vw,2.4rem); }
+    .ep-paths-banner .ov b { color:#fff; font-family:var(--f-display); font-weight:800; font-size:clamp(1.1rem,3vw,1.6rem); max-width:18ch; line-height:1.2; }
+    .ep-tabbtns { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.1rem; }
+    .ep-tab-btn { border:1px solid var(--hair); background:#fff; border-radius:99px; padding:.55rem 1.1rem; font-weight:600; font-size:.9rem; cursor:pointer; display:flex; align-items:center; gap:.5rem; }
+    .ep-tab-btn .n { font-family:var(--f-mono); font-size:.72rem; color: var(--crimson); }
+    .ep-tab-btn.active { background: var(--onyx); color:#fff; border-color: var(--onyx); }
+    .ep-tab-btn.active .n { color: var(--crimson); }
+    .ep-tab-panel { display:none; border:1px solid var(--hair); border-radius:14px; padding:1.5rem 1.6rem; background:#fff; }
+    .ep-tab-panel.active { display:block; animation: epfade .25s ease; }
+    @keyframes epfade { from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none} }
+    .ep-tab-panel h3 { font-size:1.2rem; margin:0 0 .2rem; }
+    .ep-tab-panel .tag { font-size:.74rem; text-transform:uppercase; letter-spacing:.08em; color: var(--ink-faint,#71717f); }
+    .ep-tab-panel p { color: var(--ink-soft); margin:.7rem 0 1rem; max-width:64ch; }
+    .ep-pc { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    @media (max-width:600px){ .ep-pc{grid-template-columns:1fr} }
+    .ep-pc h4 { font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; margin:0 0 .5rem; }
+    .ep-pc ul { list-style:none; margin:0; padding:0; }
+    .ep-pc li { font-size:.9rem; padding:.25rem 0 .25rem 1.4rem; position:relative; color: var(--ink); }
+    .ep-pc .pro li::before { content:"+"; position:absolute; left:.2rem; color: var(--green,#1f9d6b); font-weight:700; }
+    .ep-pc .con li::before { content:"–"; position:absolute; left:.2rem; color: var(--crimson); font-weight:700; }
+    .ep-verdict { margin-top:1rem; padding-top:1rem; border-top:1px dashed var(--hair); font-size:.92rem; }
+    .ep-verdict b { color: var(--ink); }
+
+    /* cue cards */
+    .ep-cues { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
+    .ep-cue { perspective:1200px; height:170px; cursor:pointer; }
+    .ep-cue__in { position:relative; width:100%; height:100%; transition: transform .5s; transform-style:preserve-3d; }
+    .ep-cue.flipped .ep-cue__in { transform: rotateY(180deg); }
+    .ep-cue__f, .ep-cue__b { position:absolute; inset:0; backface-visibility:hidden; border-radius:14px; padding:1.3rem; display:flex; flex-direction:column; justify-content:center; }
+    .ep-cue__f { background:#fff; border:1px solid var(--hair); }
+    .ep-cue__f .q { font-family:var(--f-display); font-weight:800; font-size:1.05rem; }
+    .ep-cue__f .hint { font-size:.74rem; color: var(--ink-faint,#71717f); margin-top:.6rem; }
+    .ep-cue__b { background: var(--onyx); color:#fff; transform: rotateY(180deg); }
+    .ep-cue__b .a { font-size:.98rem; line-height:1.4; }
+    .ep-cue__b .a strong { color: var(--crimson); }
+
+    /* quiz */
+    .ep-quiz { background:#fff; border:1px solid var(--hair); border-radius:16px; padding:1.6rem 1.7rem; }
+    .ep-quiz__top { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.2rem; flex-wrap:wrap; gap:.5rem; }
+    .ep-quiz__score { font-family:var(--f-mono); font-weight:700; background:var(--pearl-2); padding:.3rem .7rem; border-radius:99px; font-size:.85rem; }
+    .ep-quiz-q { padding:1.1rem 0; border-top:1px solid var(--hair); }
+    .ep-quiz-q .qq { font-weight:700; font-family:var(--f-ui); margin:0 0 .8rem; }
+    .ep-quiz-q .qq .n { color: var(--crimson); font-family:var(--f-mono); margin-right:.4rem; }
+    .ep-quiz-opts { display:grid; gap:.5rem; }
+    .ep-quiz-opt { text-align:left; border:1px solid var(--hair); background:#fff; border-radius:10px; padding:.7rem .9rem; cursor:pointer; font-size:.94rem; transition:.15s; }
+    .ep-quiz-opt:hover { border-color: var(--indigo); background: var(--indigo-soft,#eaf0f8); }
+    .ep-quiz-opt.correct { border-color: var(--green,#1f9d6b); background: #e9f7f0; font-weight:600; }
+    .ep-quiz-opt.wrong { border-color: var(--crimson); background:#fde9eb; }
+    .ep-quiz-fb { display:none; margin-top:.7rem; font-size:.88rem; color: var(--ink-soft); }
+    .ep-quiz-fb.show { display:block; }
+
+    /* accordion */
+    .ep-acc details { border:1px solid var(--hair); border-radius:12px; margin-bottom:.7rem; background:#fff; overflow:hidden; }
+    .ep-acc summary { list-style:none; cursor:pointer; padding:1rem 1.2rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; font-weight:600; font-family:var(--f-ui); }
+    .ep-acc summary::-webkit-details-marker { display:none; }
+    .ep-acc summary .plus { width:24px;height:24px;border-radius:50%;background:var(--pearl-2);display:grid;place-items:center;flex:none;transition:.2s; font-weight:700; color:var(--indigo); }
+    .ep-acc details[open] summary .plus { transform:rotate(45deg); background:var(--indigo); color:#fff; }
+    .ep-acc .body { padding:0 1.2rem 1.1rem; color: var(--ink-soft); font-size:.95rem; line-height:1.65; }
+
+    /* modals */
+    .ep-modal { position:fixed; inset:0; z-index:300; display:none; align-items:center; justify-content:center; padding:1.2rem; background:rgba(13,17,23,.6); -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); }
+    .ep-modal.visible { display:flex; }
+    .ep-modal__panel { background:#fff; border-radius:16px; max-width:440px; width:100%; padding:1.7rem 1.8rem; position:relative; box-shadow:0 30px 70px rgba(0,0,0,.4); }
+    .ep-modal__panel .lbl { font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color: var(--crimson); font-weight:700; }
+    .ep-modal__panel h3 { font-size:1.3rem; margin:.3rem 0 .7rem; }
+    .ep-modal__panel p { color: var(--ink-soft); font-size:.96rem; line-height:1.6; margin:0; }
+    .ep-modal__close { position:absolute; top:.9rem; right:.9rem; width:32px;height:32px;border:0;border-radius:50%;background:var(--pearl-2);cursor:pointer;font-size:1.1rem;line-height:1; }
+
+    /* CTA */
+    .ep-cta { background: radial-gradient(120% 130% at 50% 0%, rgba(230,57,70,.25), transparent 55%), var(--onyx); color:#fff; border-radius:18px; padding: clamp(2rem,5vw,3rem); text-align:center; }
+    .ep-cta h2 { color:#fff; }
+    .ep-cta p { color: rgba(248,249,250,.82); max-width:48ch; margin: .6rem auto 1.4rem; }
+
+    .ep-transcript .body { columns: 1; }
+    .ep-transcript p { font-size:.95rem; line-height:1.65; color: var(--ink-soft); margin:0 0 .8rem; max-width:70ch; }
+    .ep-transcript p b { color: var(--crimson); font-family:var(--f-mono); font-size:.78rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Page gate -->
+  <div class="bdog-gate" role="dialog" aria-modal="true" aria-labelledby="bdogGateTitle">
+    <div class="bdog-gate__card">
+      <picture>
+        <source srcset="assets/bdog360-logo.avif" type="image/avif">
+        <img src="assets/bdog360-logo.png" alt="Bulldog 360" class="bdog-gate__logo">
+      </picture>
+      <span class="bdog-gate__pill">Access Restricted</span>
+      <h1 class="bdog-gate__title" id="bdogGateTitle">Bulldog 360 — Debt, Decoded Ep. 01</h1>
+      <p class="bdog-gate__sub">Enter the access password to view this document.</p>
+      <form id="bdogGateForm" class="bdog-gate__form" novalidate>
+        <input id="bdogGateInput" class="bdog-gate__input" type="password" placeholder="Enter access password"
+               autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" required>
+        <button id="bdogGateBtn" type="submit" class="bdog-gate__btn">Unlock</button>
+      </form>
+      <p id="bdogGateErr" class="bdog-gate__err" hidden>Wrong password — try again.</p>
+      <p class="bdog-gate__foot">bdog360.com</p>
+    </div>
+  </div>
+
+  <main class="ep-wrap">
+
+    <!-- HERO -->
+    <header class="ep-hero">
+      <div class="ep-hero__bg" aria-hidden="true"><img src="assets/photos/ep27-hero.webp" alt=""></div>
+      <div class="ep-shell ep-hero__inner">
+        <span class="ep-hero__show"><span class="d"></span>Debt, Decoded · Episode 01</span>
+        <h1>The <em>27-Year</em> Minimum-Payment Trap</h1>
+        <p class="ep-hero__sub">It's 2 a.m. and you're doing the worst math in the world. This episode decodes why paying the minimum keeps you stuck for decades — and the one move that actually gets you out.</p>
+        <div class="ep-hero__meta">
+          <div><span class="k">Runtime</span><span class="v" id="ep-meta-dur">12:35</span></div>
+          <div><span class="k">Topic</span><span class="v">Credit-card debt 101</span></div>
+          <div><span class="k">Takeaway</span><span class="v">Run your real numbers</span></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="ep-shell">
+
+      <!-- AUDIO PLAYER -->
+      <section class="ep-audio" id="ep-audio-root">
+        <audio id="ep-audio-el" preload="metadata" src="assets/audio/The_27_Year_Minimum_Payment_Trap.m4a"></audio>
+        <div class="ep-audio__head">
+          <span class="ep-audio__eye"><span class="ep-bars" aria-hidden="true"><span></span><span></span><span></span><span></span></span> Listen to the episode</span>
+          <span class="ep-audio__dur">Ep. 01 · <span id="ep-total">12:35</span></span>
+        </div>
+        <h3 class="ep-audio__title">The 27-Year Minimum-Payment Trap</h3>
+        <div class="ep-audio__controls">
+          <button class="ep-skip" data-skip="-15" type="button" aria-label="Back 15 seconds">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5a7 7 0 1 0 6.93 8"/><polyline points="12 2 12 5 15 5"/></svg><span class="n">15</span>
+          </button>
+          <button class="ep-play" id="ep-play" type="button" aria-label="Play">
+            <span class="tri" aria-hidden="true"></span><span class="pause" aria-hidden="true"><span></span><span></span></span>
+          </button>
+          <button class="ep-skip" data-skip="15" type="button" aria-label="Forward 15 seconds">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5a7 7 0 1 1-6.93 8"/><polyline points="12 2 12 5 9 5"/></svg><span class="n">15</span>
+          </button>
+          <div class="ep-track" id="ep-track" role="slider" aria-label="Seek" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div class="ep-fill" id="ep-fill"></div>
+            <div class="ep-thumb" id="ep-thumb"></div>
+          </div>
+          <span class="ep-times"><span id="ep-now">0:00</span> / <span id="ep-left">12:35</span></span>
+          <button class="ep-speed" id="ep-speed" type="button" aria-label="Playback speed">1×</button>
+        </div>
+        <div class="ep-chapters" id="ep-chapters">
+          <button class="ep-chapters__toggle" id="ep-chapters-toggle" type="button" aria-expanded="false">
+            <span class="lab">Chapters <span class="c" id="ep-chap-count">· 14 moments</span></span>
+            <span class="ep-chapters__now" id="ep-now-chap">2 a.m. — the worst math</span>
+            <span class="ep-chapters__chev" aria-hidden="true">▾</span>
+          </button>
+          <div class="ep-chapters__list" id="ep-chapters-list" role="list"></div>
+        </div>
+      </section>
+
+      <!-- STATS -->
+      <section class="ep-sec">
+        <div class="ep-stats">
+          <div class="ep-stat"><b>$8,000</b><span>example balance, one card</span></div>
+          <div class="ep-stat"><b>24%</b><span>APR — typical today</span></div>
+          <div class="ep-stat"><b>27 yrs</b><span>to clear it at the minimum</span></div>
+          <div class="ep-stat"><b>$11k+</b><span>in pure interest</span></div>
+          <div class="ep-stat"><b>$20</b><span>of a $180 payment hits principal</span></div>
+          <div class="ep-stat"><b>24–48 mo</b><span>the faster lane</span></div>
+        </div>
+      </section>
+
+      <!-- THE TRAP / prose with glossary -->
+      <section class="ep-sec ep-prose">
+        <p class="ep-eyebrow">The mechanics</p>
+        <h2>Why the minimum payment is a trap</h2>
+        <figure class="ep-figure ep-figure--float">
+          <img src="assets/photos/frame-27years.webp" alt="Phone showing a 27-year payoff reveal">
+          <figcaption>$8,000 at 24%, minimum only → 27 years.</figcaption>
+        </figure>
+        <p>You get the statement and it asks for about <strong>$35</strong>. You pay it, on time, and your account stays current. It <em>feels</em> responsible. But that little box isn't a path out of debt — it's a
+          <button class="ep-term" data-open="m-min">minimum payment</button> engineered as a mathematical anchor. The industry quietly moved it from ~5% of the balance down to 1–2% of
+          <button class="ep-term" data-open="m-principal">principal</button> plus interest, which keeps the account active while barely denting what you owe.</p>
+        <p>The reason it never shrinks is how interest is charged. Your <button class="ep-term" data-open="m-apr">APR</button> is divided by 365 and applied <em>every single day</em> — a
+          <button class="ep-term" data-open="m-dpr">daily periodic rate</button> ticking up while you sleep. On $8,000 at 24%, that's roughly $160 of interest in a 30-day month. So when you send a $180 minimum, about <strong>$160 covers interest</strong> and only <strong>$20</strong> touches the principal.</p>
+        <div class="ep-pull"><p>"Paying the minimum is like emptying a swimming pool with a teaspoon — while someone leaves the hose running."</p></div>
+        <figure class="ep-figure">
+          <img src="assets/photos/ep27-pool-teaspoon.webp" alt="A person bailing a pool with a teaspoon while a hose refills it">
+          <figcaption>The hose never stops: daily interest refills the balance faster than the minimum drains it.</figcaption>
+        </figure>
+        <p>When you see the mechanism, the story flips. It's not "I'm bad with money" — it's "the rules were drafted so I can't win." The way out is a plan that attacks the <button class="ep-term" data-open="m-principal">principal</button> directly, with a finish line measured in months, not decades. That applies to <button class="ep-term" data-open="m-unsecured">unsecured debt</button> — credit cards, personal loans, medical bills.</p>
+      </section>
+
+      <!-- THREE PATHS — TABS -->
+      <section class="ep-sec">
+        <p class="ep-eyebrow">The options</p>
+        <h2>Three paths out</h2>
+        <p class="ep-sec__intro">For someone carrying $10k–$50k in unsecured debt, there are three honest routes — and they are not equal. (The next episode does the full pros-and-cons deep dive.)</p>
+        <div class="ep-paths-banner">
+          <img src="assets/photos/ep27-three-paths.webp" alt="Three roads forking at golden hour">
+          <div class="ov"><b>One of these attacks the principal. Two don't fully.</b></div>
+        </div>
+        <div class="ep-tabbtns" role="tablist">
+          <button class="ep-tab-btn active" data-tab="path-1"><span class="n">01</span> Consolidation</button>
+          <button class="ep-tab-btn" data-tab="path-2"><span class="n">02</span> Bankruptcy</button>
+          <button class="ep-tab-btn" data-tab="path-3"><span class="n">03</span> Settlement</button>
+        </div>
+        <div class="ep-tab-panel active" id="path-1">
+          <span class="tag">Path 01</span>
+          <h3>Consolidation</h3>
+          <p>Roll every balance into one new loan — ideally at a lower rate, with a single monthly payment. Tidier on paper, but the full principal is still yours to repay.</p>
+          <div class="ep-pc">
+            <div class="pro"><h4>Upside</h4><ul><li>One payment, possibly a lower rate</li><li>Simpler to track</li></ul></div>
+            <div class="con"><h4>The catch</h4><ul><li>You still owe every penny of principal</li><li>Freed-up cards often get run back up — now you owe the loan <em>and</em> new card debt</li></ul></div>
+          </div>
+          <p class="ep-verdict"><b>Verdict:</b> Only works with strict discipline. Moves the debt around; doesn't shrink it.</p>
+        </div>
+        <div class="ep-tab-panel" id="path-2">
+          <span class="tag">Path 02</span>
+          <h3>Bankruptcy</h3>
+          <p>The legal reset granted by the courts. Powerful, but the nuclear option — with the longest, deepest consequences.</p>
+          <div class="ep-pc">
+            <div class="pro"><h4>Upside</h4><ul><li>Can discharge debt entirely</li><li>A genuine fresh start</li></ul></div>
+            <div class="con"><h4>The catch</h4><ul><li>Stays on your public record for years</li><li>Hits housing, renting, sometimes employment</li></ul></div>
+          </div>
+          <p class="ep-verdict"><b>Verdict:</b> Generally a last resort, not a first move.</p>
+        </div>
+        <div class="ep-tab-panel" id="path-3">
+          <span class="tag">Path 03 · Bulldog 360's core service</span>
+          <h3>Debt settlement</h3>
+          <p>Actively negotiate with creditors to resolve the debt for <strong>less than the full balance</strong>, folded into one affordable monthly payment that actually reduces the principal.</p>
+          <div class="ep-pc">
+            <div class="pro"><h4>Upside</h4><ul><li>Attacks the principal directly</li><li>Resolves enrolled debt in ~24–48 months</li><li>One affordable monthly payment</li></ul></div>
+            <div class="con"><h4>Be honest</h4><ul><li>Negative impact on credit score while you resolve it</li><li>Forgiven debt can have tax considerations</li></ul></div>
+          </div>
+          <p class="ep-verdict"><b>Verdict:</b> A temporary credit hit to be done in 2–4 years vs. 27 years trapped — for many people, an easy trade.</p>
+        </div>
+      </section>
+
+      <!-- CUE CARDS -->
+      <section class="ep-sec">
+        <p class="ep-eyebrow">Flashcards</p>
+        <h2>The numbers worth remembering</h2>
+        <p class="ep-sec__intro">Tap a card to flip it.</p>
+        <div class="ep-cues">
+          <div class="ep-cue"><div class="ep-cue__in">
+            <div class="ep-cue__f"><div class="q">Pay only the minimum on $8,000 at 24%. How long to clear it?</div><div class="hint">Tap to reveal</div></div>
+            <div class="ep-cue__b"><div class="a"><strong>27 years</strong> — and you'd pay $19,000+ total.</div></div>
+          </div></div>
+          <div class="ep-cue"><div class="ep-cue__in">
+            <div class="ep-cue__f"><div class="q">Of a typical $180 minimum, how much touches the principal?</div><div class="hint">Tap to reveal</div></div>
+            <div class="ep-cue__b"><div class="a">About <strong>$20</strong>. The other ~$160 is interest.</div></div>
+          </div></div>
+          <div class="ep-cue"><div class="ep-cue__in">
+            <div class="ep-cue__f"><div class="q">How often is credit-card interest actually calculated?</div><div class="hint">Tap to reveal</div></div>
+            <div class="ep-cue__b"><div class="a"><strong>Every day</strong> — APR ÷ 365, applied nightly.</div></div>
+          </div></div>
+          <div class="ep-cue"><div class="ep-cue__in">
+            <div class="ep-cue__f"><div class="q">What's the one rule for escaping debt?</div><div class="hint">Tap to reveal</div></div>
+            <div class="ep-cue__b"><div class="a">Attack the <strong>principal</strong> — finish line in months, not decades.</div></div>
+          </div></div>
+          <div class="ep-cue"><div class="ep-cue__in">
+            <div class="ep-cue__f"><div class="q">How long does a settlement program typically take?</div><div class="hint">Tap to reveal</div></div>
+            <div class="ep-cue__b"><div class="a"><strong>24–48 months</strong> for enrolled unsecured debt.</div></div>
+          </div></div>
+          <div class="ep-cue"><div class="ep-cue__in">
+            <div class="ep-cue__f"><div class="q">Does checking your savings estimate hurt your credit?</div><div class="hint">Tap to reveal</div></div>
+            <div class="ep-cue__b"><div class="a"><strong>No.</strong> It's free, confidential, and won't affect your score.</div></div>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- QUIZ -->
+      <section class="ep-sec">
+        <p class="ep-eyebrow">Test yourself</p>
+        <h2>The 2 a.m. quiz</h2>
+        <div class="ep-quiz" id="ep-quiz">
+          <div class="ep-quiz__top">
+            <span>Four quick questions from the episode.</span>
+            <span class="ep-quiz__score">Score: <span id="ep-quiz-score">0 / 4</span></span>
+          </div>
+          <div class="ep-quiz-q" data-yes="Right — designed to keep you paying." data-no="It's engineered to keep the account active for longer.">
+            <p class="qq"><span class="n">Q1</span>Historically, minimum payments were about 5% of the balance. Where did the industry move them?</p>
+            <div class="ep-quiz-opts">
+              <button class="ep-quiz-opt" type="button">Up to 10%</button>
+              <button class="ep-quiz-opt" type="button" data-correct="1">Down to 1–2% of principal plus interest</button>
+              <button class="ep-quiz-opt" type="button">A flat $100 a month</button>
+            </div>
+            <p class="ep-quiz-fb"></p>
+          </div>
+          <div class="ep-quiz-q" data-yes="Correct — 27 years." data-no="It's 27 years — about three decades.">
+            <p class="qq"><span class="n">Q2</span>Pay only the minimum on $8,000 at 24% APR. How long to clear it?</p>
+            <div class="ep-quiz-opts">
+              <button class="ep-quiz-opt" type="button">About 5 years</button>
+              <button class="ep-quiz-opt" type="button">About 12 years</button>
+              <button class="ep-quiz-opt" type="button" data-correct="1">About 27 years</button>
+            </div>
+            <p class="ep-quiz-fb"></p>
+          </div>
+          <div class="ep-quiz-q" data-yes="Exactly — interest eats almost all of it." data-no="Only about $20 of a $180 payment hits the principal.">
+            <p class="qq"><span class="n">Q3</span>Of a $180 minimum payment, roughly how much reduces the principal?</p>
+            <div class="ep-quiz-opts">
+              <button class="ep-quiz-opt" type="button">About $120</button>
+              <button class="ep-quiz-opt" type="button">About $90</button>
+              <button class="ep-quiz-opt" type="button" data-correct="1">About $20</button>
+            </div>
+            <p class="ep-quiz-fb"></p>
+          </div>
+          <div class="ep-quiz-q" data-yes="Right — it attacks the principal." data-no="Settlement is the path that reduces the principal itself.">
+            <p class="qq"><span class="n">Q4</span>Which path actually reduces the original amount you owe?</p>
+            <div class="ep-quiz-opts">
+              <button class="ep-quiz-opt" type="button">Consolidation</button>
+              <button class="ep-quiz-opt" type="button">Bankruptcy</button>
+              <button class="ep-quiz-opt" type="button" data-correct="1">Settlement</button>
+            </div>
+            <p class="ep-quiz-fb"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACCORDION FAQ -->
+      <section class="ep-sec ep-acc">
+        <p class="ep-eyebrow">Go deeper</p>
+        <h2>Questions the episode raises</h2>
+        <details><summary>If I pay on time, how is that a "trap"? <span class="plus">+</span></summary><div class="body">Paying on time keeps your account current — but the minimum is sized so almost all of it goes to interest. The balance barely moves, so the same high interest is charged again next month. You stay current and stuck at the same time.</div></details>
+        <details><summary>Why does the balance barely drop each month? <span class="plus">+</span></summary><div class="body">Interest is calculated daily (APR ÷ 365). On $8,000 at 24%, roughly $160 of interest builds in a month. A $180 minimum leaves only ~$20 for principal, so the next month's interest is almost as high. It's a self-perpetuating loop.</div></details>
+        <details><summary>Does debt settlement hurt my credit? <span class="plus">+</span></summary><div class="body">Yes — because you're resolving the debt for less than the full balance, it has a negative impact on your credit score, and forgiven debt can carry tax considerations. The trade is a temporary hit while you finish in 24–48 months instead of decades. The next episode weighs this in detail.</div></details>
+        <details><summary>What counts as "unsecured" debt? <span class="plus">+</span></summary><div class="body">Debt not tied to a specific asset — credit cards, personal loans, and medical bills. Secured debt like a mortgage or auto loan (backed by the house or car) works differently and isn't part of these paths.</div></details>
+        <details><summary>Is checking my savings estimate a commitment? <span class="plus">+</span></summary><div class="body">No. It's free, confidential, takes about 60 seconds, and does not affect your credit score. It's just data to see your own timeline — a low-risk first step, not a binding commitment.</div></details>
+      </section>
+
+      <!-- CTA -->
+      <section class="ep-sec">
+        <div class="ep-cta">
+          <h2>Your first move out of the 2 a.m. trap</h2>
+          <p>Run your free 60-second savings estimate. It's confidential, and it won't affect your credit to check — just clarity on your own numbers.</p>
+          <a class="btn btn--primary btn--lg" href="landing.html#calculator">Run my free 60-second estimate</a>
+        </div>
+      </section>
+
+      <!-- TRANSCRIPT -->
+      <section class="ep-sec ep-acc ep-transcript">
+        <details>
+          <summary>Full transcript <span class="plus">+</span></summary>
+          <div class="body">
+            <p><b>A</b> It's two in the morning. The house is completely quiet, the lights are off, and you're just staring at the harsh blue glow of your phone screen.</p>
+            <p><b>B</b> Yeah, we've all been there.</p>
+            <p><b>A</b> You've got the calculator app open, and you are doing what has to be the worst math in the world — mentally adding up all your credit card balances, just trying to figure out how to stretch your paycheck enough to cover everything.</p>
+            <p><b>B</b> It's deeply isolating. You work hard, you're smart, but in the middle of the night you're quietly searching for options. It's like a terrible game of Tetris where the blocks never stop falling.</p>
+            <p><b>A</b> If that late-night scenario hits a little too close to home, the first thing to say is: you are not alone, and you should feel zero shame about being in that position.</p>
+            <p><b>B</b> Because when you look at the mechanics of consumer debt, the villain isn't you or a lack of discipline. It's the underlying mathematical structure of the debt itself.</p>
+            <p><b>A</b> Today we're decoding those hidden mechanics — using data from Bulldog 360, a data-driven debt-relief firm with local roots in the Fox Valley of Illinois — to unmask the trap of the minimum payment.</p>
+            <p><b>B</b> Quick baseline: everything today, especially the specific math and timelines, is an illustrative example for educational purposes — not a guarantee, and not individualized financial, legal, or tax advice.</p>
+            <p><b>A</b> So why do we get stuck? The psychological comfort of the minimum payment.</p>
+            <p><b>B</b> The false comfort. Your statement says you owe $35 this month, you pay it, your account stays current, the creditors are quiet. It feels responsible.</p>
+            <p><b>A</b> So if I'm doing exactly what the statement asked, how is that a trap?</p>
+            <p><b>B</b> Because the system relies on that assumption. Minimum payments used to be around 5% of the balance. The industry lowered it to 1 or 2% of principal plus interest — engineered to keep the account active while barely denting what you owe. You're renting the money indefinitely.</p>
+            <p><b>A</b> Let's make it concrete. Say you have $8,000 on a single card at 24% APR. If you never charge another thing and just pay the minimum — how long to clear it?</p>
+            <p><b>B</b> Roughly 27 years.</p>
+            <p><b>A</b> Twenty-seven years. You could be paying off a car repair when a child born today is pushing 30.</p>
+            <p><b>B</b> And over those 27 years you pay back the $8,000 plus more than $11,000 in pure interest — over $19,000 total for an $8,000 emergency.</p>
+            <p><b>A</b> It's like emptying a pool with a teaspoon while the hose runs.</p>
+            <p><b>B</b> Exactly — because interest is calculated daily. They take the 24% and divide by 365, adding a fraction every night. On $8,000 that's about $160 of interest a month. Your minimum might be $180 — so $160 covers interest and only $20 touches the principal.</p>
+            <p><b>A</b> So the game is rigged to keep the principal high.</p>
+            <p><b>B</b> 100%. And realizing that is empowering — it's not "I'm bad with money," it's "the rules were drafted so I can't win."</p>
+            <p><b>A</b> So how do we attack the principal? For unsecured debt — cards, personal loans, medical bills — there are three paths.</p>
+            <p><b>B</b> Consolidation: roll balances into one new loan. Lower rate, one payment — but the full principal is still there, and people often run the cards back up.</p>
+            <p><b>B</b> Bankruptcy: the legal reset. Powerful, but the nuclear option — longest, deepest credit consequences. A last resort.</p>
+            <p><b>B</b> And debt settlement — Bulldog 360's core service — negotiating with creditors to resolve the debt for less than the full balance, in one affordable monthly payment that reduces the principal.</p>
+            <p><b>A</b> How long does settlement take?</p>
+            <p><b>B</b> Usually 24 to 48 months. But being transparent: it does negatively impact your credit score, and forgiven debt can have tax considerations. You weigh a temporary hit against 27 years trapped.</p>
+            <p><b>A</b> The first move out of the 2 a.m. anxiety is just getting clarity. Go to the Bulldog 360 website and run your free 60-second savings estimate. It's free, confidential, and checking it does not affect your credit score.</p>
+            <p><b>B</b> When you attack the principal, you aren't just buying back your money — you're buying back your future freedom.</p>
+          </div>
+        </details>
+      </section>
+
+    </div><!-- /ep-shell -->
+  </main>
+
+  <!-- GLOSSARY MODALS -->
+  <div class="ep-modal" data-modal="m-apr"><div class="ep-modal__panel"><button class="ep-modal__close" aria-label="Close">×</button><span class="lbl">Glossary</span><h3>APR</h3><p>Annual Percentage Rate — the yearly cost of borrowing money on the card. A 24% APR is divided by 365 and a slice is charged every day, so interest compounds nightly on whatever you owe.</p></div></div>
+  <div class="ep-modal" data-modal="m-principal"><div class="ep-modal__panel"><button class="ep-modal__close" aria-label="Close">×</button><span class="lbl">Glossary</span><h3>Principal</h3><p>The actual amount you borrowed or spent — the $8,000 itself — separate from interest. Escaping debt means shrinking the principal, not just paying the interest that grows on top of it.</p></div></div>
+  <div class="ep-modal" data-modal="m-min"><div class="ep-modal__panel"><button class="ep-modal__close" aria-label="Close">×</button><span class="lbl">Glossary</span><h3>Minimum payment</h3><p>The smallest amount the card issuer will accept to keep the account current — now typically 1–2% of the principal plus accrued interest. It's sized to keep you paying for as long as possible, not to get you out of debt.</p></div></div>
+  <div class="ep-modal" data-modal="m-dpr"><div class="ep-modal__panel"><button class="ep-modal__close" aria-label="Close">×</button><span class="lbl">Glossary</span><h3>Daily periodic rate</h3><p>Your APR divided by 365. Card interest isn't charged once a month — this daily rate is applied to your balance every single day, which is why the balance keeps growing while you sleep.</p></div></div>
+  <div class="ep-modal" data-modal="m-unsecured"><div class="ep-modal__panel"><button class="ep-modal__close" aria-label="Close">×</button><span class="lbl">Glossary</span><h3>Unsecured debt</h3><p>Debt not backed by a specific asset — credit cards, personal loans, and medical bills. (Secured debt like a mortgage or auto loan is tied to the house or car and works differently.) The three paths in this episode apply to unsecured debt.</p></div></div>
+
+  <script>
+  (function () {
+    var root = document;
+
+    /* ---- glossary modals ---- */
+    function openModal(id){ var m = root.querySelector('[data-modal="'+id+'"]'); if(m){ m.classList.add('visible'); document.body.style.overflow='hidden'; } }
+    function closeModal(m){ m.classList.remove('visible'); document.body.style.overflow=''; }
+    root.querySelectorAll('[data-open]').forEach(function(b){ b.addEventListener('click', function(e){ e.preventDefault(); openModal(b.getAttribute('data-open')); }); });
+    root.querySelectorAll('.ep-modal').forEach(function(m){
+      m.querySelector('.ep-modal__close').addEventListener('click', function(){ closeModal(m); });
+      m.addEventListener('click', function(e){ if(e.target===m) closeModal(m); });
+    });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ root.querySelectorAll('.ep-modal.visible').forEach(closeModal); } });
+
+    /* ---- tabs ---- */
+    root.querySelectorAll('.ep-tab-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var t = btn.getAttribute('data-tab');
+        root.querySelectorAll('.ep-tab-btn').forEach(function(b){ b.classList.toggle('active', b===btn); });
+        root.querySelectorAll('.ep-tab-panel').forEach(function(p){ p.classList.toggle('active', p.id===t); });
+      });
+    });
+
+    /* ---- cue cards ---- */
+    root.querySelectorAll('.ep-cue').forEach(function(c){ c.addEventListener('click', function(){ c.classList.toggle('flipped'); }); });
+
+    /* ---- quiz ---- */
+    var qs = root.querySelectorAll('.ep-quiz-q');
+    var total = qs.length, score = 0;
+    var scoreEl = root.querySelector('#ep-quiz-score');
+    qs.forEach(function(q){
+      var answered = false;
+      q.querySelectorAll('.ep-quiz-opt').forEach(function(opt){
+        opt.addEventListener('click', function(){
+          if (answered) return; answered = true;
+          var correct = opt.getAttribute('data-correct') === '1';
+          opt.classList.add(correct ? 'correct' : 'wrong');
+          if (!correct) { var c = q.querySelector('.ep-quiz-opt[data-correct="1"]'); if (c) c.classList.add('correct'); }
+          var fb = q.querySelector('.ep-quiz-fb');
+          fb.textContent = correct ? '✓ ' + q.getAttribute('data-yes') : '✕ ' + q.getAttribute('data-no');
+          fb.classList.add('show');
+          if (correct) score++;
+          if (scoreEl) scoreEl.textContent = score + ' / ' + total;
+        });
+      });
+    });
+
+    /* ---- audio player + chapters ---- */
+    var audio = root.querySelector('#ep-audio-el');
+    var audioRoot = root.querySelector('#ep-audio-root');
+    var playBtn = root.querySelector('#ep-play');
+    var track = root.querySelector('#ep-track');
+    var fill = root.querySelector('#ep-fill');
+    var thumb = root.querySelector('#ep-thumb');
+    var nowEl = root.querySelector('#ep-now');
+    var leftEl = root.querySelector('#ep-left');
+    var totalEl = root.querySelector('#ep-total');
+    var metaDur = root.querySelector('#ep-meta-dur');
+    var speedBtn = root.querySelector('#ep-speed');
+    var chapWrap = root.querySelector('#ep-chapters');
+    var chapToggle = root.querySelector('#ep-chapters-toggle');
+    var chapList = root.querySelector('#ep-chapters-list');
+    var nowChap = root.querySelector('#ep-now-chap');
+    var chapCount = root.querySelector('#ep-chap-count');
+    var speeds = [1, 1.25, 1.5, 2], speedIdx = 0;
+
+    // Chapter times are estimated from the transcript (no word-level timestamps).
+    var chapters = [
+      { t: 0,   title: '2 a.m. — the worst math in the world' },
+      { t: 50,  title: "You're not alone — the villain isn't you" },
+      { t: 105, title: "Today's mission (and the fine print)" },
+      { t: 165, title: 'The false comfort of the minimum' },
+      { t: 220, title: 'Engineered: from 5% down to 1–2%' },
+      { t: 290, title: 'The $8,000 question → 27 years' },
+      { t: 380, title: '$11,000 in pure interest' },
+      { t: 430, title: 'The hose that never stops (daily interest)' },
+      { t: 515, title: 'Why the game is rigged — and why that helps' },
+      { t: 560, title: 'Path 1 — Consolidation' },
+      { t: 615, title: 'Path 2 — Bankruptcy' },
+      { t: 645, title: 'Path 3 — Settlement (24–48 months)' },
+      { t: 700, title: 'Your first move: the 60-second estimate' },
+      { t: 728, title: 'The real cost: your future freedom' }
+    ];
+    var curIdx = -1;
+
+    function fmt(s){ if(!isFinite(s)||s<0) s=0; var m=Math.floor(s/60), r=Math.floor(s%60); return m+':'+(r<10?'0'+r:r); }
+
+    function refresh(){
+      if (!isFinite(audio.duration)) return;
+      var pct = (audio.currentTime / audio.duration) * 100;
+      fill.style.width = pct + '%';
+      thumb.style.left = pct + '%';
+      nowEl.textContent = fmt(audio.currentTime);
+      leftEl.textContent = fmt(audio.duration - audio.currentTime);
+      track.setAttribute('aria-valuenow', Math.round(pct));
+      updateChap();
+    }
+    function updateChap(){
+      var idx = 0;
+      for (var i=0;i<chapters.length;i++){ if(audio.currentTime >= chapters[i].t) idx=i; else break; }
+      if (idx === curIdx) return; curIdx = idx;
+      if (nowChap) nowChap.textContent = chapters[idx].title;
+      chapList.querySelectorAll('.ep-chap').forEach(function(el,i){ el.classList.toggle('current', i===idx); });
+      track.querySelectorAll('.ep-marker').forEach(function(el,i){ el.classList.toggle('current', i===idx); });
+    }
+    function render(){
+      if (!isFinite(audio.duration) || audio.duration <= 0) return;
+      if (chapCount) chapCount.textContent = '· ' + chapters.length + ' moments';
+      track.querySelectorAll('.ep-marker').forEach(function(n){ n.remove(); });
+      chapters.forEach(function(ch){
+        if (ch.t === 0) return;
+        var pct = (ch.t / audio.duration) * 100; if (pct >= 100) return;
+        var m = document.createElement('div');
+        m.className = 'ep-marker'; m.style.left = pct + '%';
+        m.innerHTML = '<div class="tip"><span class="mt">' + fmt(ch.t) + '</span>' + ch.title + '</div>';
+        m.addEventListener('click', function(e){ e.stopPropagation(); audio.currentTime = ch.t; refresh(); });
+        m.addEventListener('mousedown', function(e){ e.stopPropagation(); });
+        track.appendChild(m);
+      });
+      chapList.innerHTML = '';
+      chapters.forEach(function(ch){
+        var b = document.createElement('button');
+        b.className = 'ep-chap'; b.type = 'button';
+        b.innerHTML = '<span class="t">' + fmt(ch.t) + '</span><span class="ti">' + ch.title + '</span>';
+        b.addEventListener('click', function(){ audio.currentTime = ch.t; if (audio.paused) audio.play(); refresh(); });
+        chapList.appendChild(b);
+      });
+      updateChap();
+    }
+
+    if (chapToggle) chapToggle.addEventListener('click', function(){
+      var open = chapWrap.classList.toggle('open');
+      chapToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    if (audio) {
+      audio.addEventListener('loadedmetadata', function(){
+        if (totalEl) totalEl.textContent = fmt(audio.duration);
+        if (metaDur) metaDur.textContent = fmt(audio.duration);
+        if (leftEl) leftEl.textContent = fmt(audio.duration);
+        render();
+      });
+      audio.addEventListener('timeupdate', refresh);
+      audio.addEventListener('play',  function(){ audioRoot.classList.add('playing'); playBtn.setAttribute('aria-label','Pause'); });
+      audio.addEventListener('pause', function(){ audioRoot.classList.remove('playing'); playBtn.setAttribute('aria-label','Play'); });
+      audio.addEventListener('ended', function(){ audioRoot.classList.remove('playing'); });
+      playBtn.addEventListener('click', function(){ if (audio.paused) audio.play(); else audio.pause(); });
+      root.querySelectorAll('.ep-skip').forEach(function(b){
+        b.addEventListener('click', function(){
+          var d = parseFloat(b.getAttribute('data-skip')) || 0;
+          audio.currentTime = Math.max(0, Math.min(audio.duration || 0, audio.currentTime + d));
+        });
+      });
+      speedBtn.addEventListener('click', function(){
+        speedIdx = (speedIdx + 1) % speeds.length;
+        audio.playbackRate = speeds[speedIdx];
+        speedBtn.textContent = speeds[speedIdx] + '×';
+        speedBtn.classList.toggle('active', speeds[speedIdx] !== 1);
+      });
+      var dragging = false;
+      function seek(e){
+        var rect = track.getBoundingClientRect();
+        var x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+        var pct = Math.max(0, Math.min(1, x / rect.width));
+        if (isFinite(audio.duration)) { audio.currentTime = pct * audio.duration; refresh(); }
+      }
+      track.addEventListener('mousedown', function(e){ dragging = true; seek(e); });
+      document.addEventListener('mousemove', function(e){ if (dragging) seek(e); });
+      document.addEventListener('mouseup', function(){ dragging = false; });
+      track.addEventListener('touchstart', function(e){ dragging = true; seek(e); }, { passive: true });
+      track.addEventListener('touchmove', function(e){ if (dragging) seek(e); }, { passive: true });
+      track.addEventListener('touchend', function(){ dragging = false; });
+      track.addEventListener('keydown', function(e){
+        if (!isFinite(audio.duration)) return;
+        if (e.key === 'ArrowLeft')  { audio.currentTime = Math.max(0, audio.currentTime - 5); e.preventDefault(); }
+        if (e.key === 'ArrowRight') { audio.currentTime = Math.min(audio.duration, audio.currentTime + 5); e.preventDefault(); }
+      });
+    }
+  })();
+  </script>
+
+</body>
+</html>

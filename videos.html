@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en" class="bdog-locked">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="assets/favicon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <title>Bulldog 360 — Short-Form Video Strategy</title>
+  <meta name="description" content="Direction for Bulldog 360 short-form video: the content pillars to make, how many to produce, and how the channel funnels viewers to the website.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@700;800;900&family=Roboto:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="brand-guide.css">
+  <link rel="stylesheet" href="budget-proposal.css">
+  <link rel="stylesheet" href="gate.css">
+  <link rel="stylesheet" href="admin-menu.css">
+  <script defer src="gate.js"></script>
+  <script defer src="admin-menu.js"></script>
+
+  <style>
+    /* ---- Video strategy (scoped) ---- */
+    .vid-hero { padding-block: var(--section-y) clamp(2rem,5vw,3.5rem); }
+    .vid-hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); letter-spacing: -.03em; margin: 0 0 .6rem; }
+    .vid-hero .lede { max-width: 60ch; }
+
+    .vid-section { padding-block: clamp(2.5rem, 5vw, 4rem); border-top: 1px solid var(--hair); }
+    .vid-section > .wrap > h2 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); letter-spacing: -.02em; margin: 0 0 .6rem; }
+    .vid-section .section-intro { max-width: 62ch; color: var(--ink-soft); margin: 0 0 2rem; }
+
+    /* sample reels strip */
+    .vid-samples { display: flex; gap: 1rem; overflow-x: auto; padding-bottom: .75rem; }
+    .vid-sample { flex: 0 0 auto; width: 190px; }
+    .vid-sample video { width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 14px; background:#000; box-shadow: var(--shadow-card, 0 12px 30px rgba(0,0,0,.18)); cursor: pointer; }
+    .vid-sample p { font-size: .85rem; color: var(--ink-soft); margin: .55rem 0 0; }
+    .vid-sample b { display:block; color: var(--ink); font-size: .92rem; }
+
+    /* pillar cards */
+    .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 1rem; }
+    .pillar { border: 1px solid var(--hair); border-radius: 14px; padding: 1.4rem 1.5rem; background: #fff; }
+    .pillar__no { font-family: var(--f-mono); font-size: .78rem; color: var(--crimson); font-weight: 700; letter-spacing: .08em; }
+    .pillar h3 { font-size: 1.12rem; margin: .35rem 0 .5rem; }
+    .pillar p { color: var(--ink-soft); font-size: .92rem; margin: 0 0 .8rem; }
+    .pillar__meta { font-size: .8rem; color: var(--ink-faint, #71717f); border-top: 1px dashed var(--hair); padding-top: .7rem; }
+    .pillar__meta b { color: var(--ink); }
+    .pillar--rec { border-color: var(--crimson); box-shadow: 0 0 0 1px var(--crimson); }
+    .pillar--rec .pillar__no::after { content: " · produced"; color: var(--ink-faint); font-weight: 500; }
+
+    /* cadence table */
+    .cadence { width: 100%; border-collapse: collapse; }
+    .cadence th, .cadence td { text-align: left; padding: .85rem 1rem; border-bottom: 1px solid var(--hair); font-size: .94rem; vertical-align: top; }
+    .cadence thead th { font-size: .74rem; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-soft); border-bottom: 2px solid var(--ink); }
+    .cadence td:first-child { font-weight: 600; white-space: nowrap; }
+    .cadence .num { font-family: var(--f-mono); }
+
+    /* funnel steps */
+    .funnel { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px,1fr)); gap: 1rem; counter-reset: fstep; }
+    .fstep { border-radius: 14px; padding: 1.4rem 1.5rem; background: var(--indigo-soft, #eaf0f8); position: relative; }
+    .fstep::before { counter-increment: fstep; content: counter(fstep); font-family: var(--f-display); font-weight: 900; font-size: 1.6rem; color: var(--indigo); display:block; margin-bottom: .4rem; }
+    .fstep h4 { font-size: 1rem; margin: 0 0 .4rem; }
+    .fstep p { font-size: .88rem; color: var(--ink-soft); margin: 0; }
+
+    .callout { margin-top: 1.5rem; padding: 1.3rem 1.6rem; border-radius: 12px; background: var(--onyx); color: var(--pearl); }
+    .callout b { color: #fff; }
+    .callout p { margin: .3rem 0 0; color: rgba(248,249,250,.8); font-size: .95rem; }
+
+    .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 1rem; }
+    .kpi { border: 1px solid var(--hair); border-radius: 12px; padding: 1.1rem 1.2rem; }
+    .kpi b { font-family: var(--f-mono); font-size: 1.05rem; display:block; margin-bottom: .2rem; }
+    .kpi span { font-size: .85rem; color: var(--ink-soft); }
+
+    /* ---- scripts ---- */
+    .rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px,1fr)); gap: .8rem; margin: 0 0 2.75rem; }
+    .rule { background: var(--indigo-soft, #eaf0f8); border-radius: 12px; padding: 1rem 1.1rem; }
+    .rule b { font-family: var(--f-mono); color: var(--indigo); display: block; font-size: .82rem; margin-bottom: .3rem; }
+    .rule span { font-size: .85rem; color: var(--ink-soft); line-height: 1.5; }
+
+    .script { border: 1px solid var(--hair); border-radius: 16px; padding: 1.6rem 1.7rem; margin-bottom: 1.4rem; background: #fff; display: grid; grid-template-columns: 188px 1fr; column-gap: 1.6rem; }
+    .script__frame { grid-row: 1 / 99; align-self: start; width: 188px; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px; background: #000; box-shadow: 0 10px 26px rgba(20,20,26,.22); border: 1px solid var(--hair); }
+    @media (max-width: 700px) {
+      .script { grid-template-columns: 1fr; }
+      .script__frame { grid-row: auto; width: 150px; margin-bottom: .6rem; }
+    }
+    .script__top { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin-bottom: .5rem; }
+    .script__tag { font-size: .66rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; padding: .3rem .65rem; border-radius: 99px; background: var(--onyx); color: var(--pearl); }
+    .script__pillar { font-size: .78rem; color: var(--ink-faint, #71717f); }
+    .script__len { font-size: .78rem; color: var(--ink-faint, #71717f); margin-left: auto; font-family: var(--f-mono); }
+    .script h3 { font-size: 1.28rem; margin: .1rem 0 .85rem; letter-spacing: -.01em; }
+    .script__hook { border-left: 3px solid var(--crimson); padding: .15rem 0 .15rem 1rem; margin: .2rem 0 1.1rem; }
+    .script__hook span { display: block; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--crimson); font-weight: 700; margin-bottom: .3rem; }
+    .script__hook p { margin: 0; font-family: var(--f-display); font-weight: 800; font-size: 1.18rem; line-height: 1.28; letter-spacing: -.01em; color: var(--ink); }
+
+    .beats { width: 100%; border-collapse: collapse; margin: .3rem 0 1rem; }
+    .beats th { text-align: left; font-size: .66rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); padding: .4rem .55rem; border-bottom: 2px solid var(--ink); }
+    .beats td { padding: .6rem .55rem; border-bottom: 1px solid var(--hair); font-size: .9rem; vertical-align: top; line-height: 1.5; }
+    .beats td:first-child { font-family: var(--f-mono); white-space: nowrap; color: var(--crimson); width: 3rem; }
+    .beats .see { color: var(--ink); width: 46%; }
+    .beats .hear { color: var(--ink-soft); }
+
+    .script__why { background: var(--pearl-2); border-radius: 10px; padding: .75rem 1rem; font-size: .86rem; color: var(--ink-soft); margin: .2rem 0 .9rem; line-height: 1.6; }
+    .script__why b { color: var(--ink); }
+    .script__foot { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; font-size: .85rem; color: var(--ink-soft); }
+    .script__foot b { color: var(--ink); }
+
+    .hookbank { margin: .6rem 0 0; padding-left: 1.2rem; columns: 2; column-gap: 2.2rem; }
+    .hookbank li { margin: .45rem 0; font-size: .92rem; break-inside: avoid; color: var(--ink); }
+    .hookbank li::marker { color: var(--crimson); }
+
+    @media (max-width: 640px) {
+      .hookbank { columns: 1; }
+      .beats thead { display: none; }
+      .beats, .beats tbody, .beats tr, .beats td { display: block; width: auto; }
+      .beats tr { padding: .6rem 0; border-bottom: 1px solid var(--hair); }
+      .beats td { border: 0; padding: .15rem 0; }
+      .beats td:first-child { color: var(--crimson); font-weight: 600; }
+      .beats .see { width: auto; font-weight: 600; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page gate (hidden by gate.css once unlocked) -->
+  <div class="bdog-gate" role="dialog" aria-modal="true" aria-labelledby="bdogGateTitle">
+    <div class="bdog-gate__card">
+      <picture>
+        <source srcset="assets/bdog360-logo.avif" type="image/avif">
+        <img src="assets/bdog360-logo.png" alt="Bulldog 360" class="bdog-gate__logo">
+      </picture>
+      <span class="bdog-gate__pill">Access Restricted</span>
+      <h1 class="bdog-gate__title" id="bdogGateTitle">Bulldog 360 — Video Strategy</h1>
+      <p class="bdog-gate__sub">Enter the access password to view this document.</p>
+      <form id="bdogGateForm" class="bdog-gate__form" novalidate>
+        <input id="bdogGateInput" class="bdog-gate__input" type="password" placeholder="Enter access password"
+               autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" required>
+        <button id="bdogGateBtn" type="submit" class="bdog-gate__btn">Unlock</button>
+      </form>
+      <p id="bdogGateErr" class="bdog-gate__err" hidden>Wrong password — try again.</p>
+      <p class="bdog-gate__foot">bdog360.com</p>
+    </div>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <header class="vid-hero">
+    <div class="wrap">
+      <p class="eyebrow">Channel Plan · TikTok · Reels · Shorts</p>
+      <h1>Short-form video, pointed straight at the calculator.</h1>
+      <p class="lede">Short vertical video is the cheapest way to put Bulldog 360 in front of people who are quietly stressed about debt — and the carousel on the website is the same library, doing double duty as on-site social proof. This page lays out <strong>what to make</strong>, <strong>how much to make</strong>, and <strong>how every clip funnels a stranger to the savings estimate</strong>.</p>
+
+      <div class="vid-samples" style="margin-top:2rem;">
+        <div class="vid-sample">
+          <video src="assets/video/reel-relief.mp4" poster="assets/photos/reel-relief-poster.jpg" muted loop playsinline preload="none" onclick="this.paused?this.play():this.pause();"></video>
+          <p><b>Relief story</b>“They cut my payment in half.”</p>
+        </div>
+        <div class="vid-sample">
+          <video src="assets/video/reel-calculator.mp4" poster="assets/photos/reel-calculator-poster.jpg" muted loop playsinline preload="none" onclick="this.paused?this.play():this.pause();"></video>
+          <p><b>60-second save</b>Calculator demo → website.</p>
+        </div>
+        <div class="vid-sample">
+          <video src="assets/video/reel-mythbust.mp4" poster="assets/photos/reel-mythbust-poster.jpg" muted loop playsinline preload="none" onclick="this.paused?this.play():this.pause();"></video>
+          <p><b>Myth-bust</b>“What collectors won’t tell you.”</p>
+        </div>
+      </div>
+      <p style="font-size:.82rem;color:var(--ink-soft);margin-top:.6rem;">Three sample clips, already live in the website carousel. Tap to preview.</p>
+    </div>
+  </header>
+
+  <!-- ===== 01 · PILLARS ===== -->
+  <section class="vid-section">
+    <div class="wrap">
+      <p class="eyebrow">01 · What to make</p>
+      <h2>Five content pillars</h2>
+      <p class="section-intro">Every video should be assignable to one of five buckets. This keeps the feed varied, makes batch-filming easy, and ensures the channel always balances <em>emotion</em> (stops the scroll), <em>education</em> (earns the follow), and <em>action</em> (drives the click). The three marked “produced” are the samples already shipped.</p>
+
+      <div class="pillars">
+        <article class="pillar pillar--rec">
+          <span class="pillar__no">Pillar 01</span>
+          <h3>Relief Stories</h3>
+          <p>Short, human “before → after” moments — the weight lifting when a payment gets cut. The emotional hook that makes a stressed viewer stop and feel seen.</p>
+          <p class="pillar__meta"><b>Goal:</b> stop the scroll, build trust · <b>Format:</b> UGC / testimonial</p>
+        </article>
+
+        <article class="pillar pillar--rec">
+          <span class="pillar__no">Pillar 02</span>
+          <h3>60-Second Save</h3>
+          <p>A quick screen-led walk through the savings estimate: “Here’s what $30k could look like.” The most direct path from curiosity to the website calculator.</p>
+          <p class="pillar__meta"><b>Goal:</b> drive clicks to the site · <b>Format:</b> demo / hook</p>
+        </article>
+
+        <article class="pillar pillar--rec">
+          <span class="pillar__no">Pillar 03</span>
+          <h3>Myth-Busting &amp; Tips</h3>
+          <p>“What debt collectors won’t tell you,” “Settlement vs. consolidation in 30 seconds.” Saveable, shareable education that earns authority and follows.</p>
+          <p class="pillar__meta"><b>Goal:</b> reach + follows · <b>Format:</b> talking-head / list</p>
+        </article>
+
+        <article class="pillar">
+          <span class="pillar__no">Pillar 04</span>
+          <h3>Local · Fox Valley</h3>
+          <p>“Helping Batavia &amp; Fox Valley families get out from under debt.” Geo-anchored trust that paid targeting can amplify to a 25-mile radius.</p>
+          <p class="pillar__meta"><b>Goal:</b> local trust + targeting · <b>Format:</b> b-roll / voiceover</p>
+        </article>
+
+        <article class="pillar">
+          <span class="pillar__no">Pillar 05</span>
+          <h3>Meet the Negotiator</h3>
+          <p>Real faces from the team answering one real question per clip. Humanizes the brand and pre-sells the “a real person is on your side” promise.</p>
+          <p class="pillar__meta"><b>Goal:</b> humanize + convert · <b>Format:</b> face-to-camera Q&amp;A</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 02 · HOW MANY ===== -->
+  <section class="vid-section">
+    <div class="wrap">
+      <p class="eyebrow">02 · How many</p>
+      <h2>Twelve to sixteen a month — filmed in two days</h2>
+      <p class="section-intro">Consistency beats polish on these platforms. The target is <strong>3–4 posts per week</strong>, produced in <strong>two monthly batch-film days</strong> so the team isn’t scrambling for daily content. One filmed asset is cut and reframed for TikTok, Reels, and Shorts — so ~12–16 produced videos become ~36–48 posts across channels.</p>
+
+      <table class="cadence">
+        <thead>
+          <tr><th>Phase</th><th>Cadence</th><th>Produced / mo</th><th>Posts / mo (×3 platforms)</th><th>Focus</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ramp — Mo. 1–2</td>
+            <td>3× / week</td>
+            <td class="num">~12</td>
+            <td class="num">~36</td>
+            <td>Find the hooks that land; establish the pillars.</td>
+          </tr>
+          <tr>
+            <td>Build — Mo. 3–5</td>
+            <td>4× / week</td>
+            <td class="num">~16</td>
+            <td class="num">~48</td>
+            <td>Double down on top performers; start light paid boosting.</td>
+          </tr>
+          <tr>
+            <td>Scale — Mo. 6+</td>
+            <td>4–5× / week</td>
+            <td class="num">16–20</td>
+            <td class="num">48–60</td>
+            <td>Paid amplification of proven organic winners; retarget viewers.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <b>The 80/20 split.</b>
+        <p>Roughly 80% of clips should be emotion + education (Pillars 1, 3, 4, 5) to earn reach and trust; ~20% direct demo/CTA (Pillar 2). A feed that only sells gets throttled by the algorithm and ignored by viewers — the value content is what buys the right to ask for the click.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 03 · FUNNEL ===== -->
+  <section class="vid-section">
+    <div class="wrap">
+      <p class="eyebrow">03 · How it drives to the website</p>
+      <h2>Every clip is the top of the funnel</h2>
+      <p class="section-intro">A video that gets views but no clicks is a vanity asset. Each post is built around one job: move a stranger from “that’s me” to a completed savings estimate on the site. The structure that does it:</p>
+
+      <div class="funnel">
+        <div class="fstep">
+          <h4>Hook (0–3s)</h4>
+          <p>Name the pain in the first sentence — “If your minimum payments keep going up, watch this.” Win the scroll before anything else.</p>
+        </div>
+        <div class="fstep">
+          <h4>Value (3–40s)</h4>
+          <p>Deliver the story, tip, or quick demo. Show the relief or the number. Make them feel understood and a little hopeful.</p>
+        </div>
+        <div class="fstep">
+          <h4>Call to action</h4>
+          <p>One clear ask, every time: “Check your free estimate — link in bio.” Reinforce with an on-screen caption and a pinned comment.</p>
+        </div>
+        <div class="fstep">
+          <h4>Land on the calculator</h4>
+          <p>The link goes straight to the website’s savings calculator (the offer), not the homepage. Tracked with UTMs so we know which clip earned the lead.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <b>Closing the loop.</b>
+        <p>Link-in-bio → <code>/#calculator</code> with per-pillar UTM tags · pin the link in comments · turn the website carousel into retargeting fuel · run paid spend only behind clips that already proved a strong organic hook rate. The website and the channel feed each other: clips drive new visitors in, and the on-site carousel keeps them watching once they arrive.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 04 · SCRIPTS ===== -->
+  <section class="vid-section">
+    <div class="wrap">
+      <p class="eyebrow">04 · The scripts</p>
+      <h2>What actually stops the scroll</h2>
+      <p class="section-intro">A polished face talking calmly to camera is exactly what people swipe past — that’s the trap the first samples fell into. Short-form rewards <em>tension, specificity, and a reason to stay</em>. The job of frame one isn’t to look nice; it’s to make scrolling feel like a mistake. Below: the rules we write to, then six scripts built on them — each a different native format, none of them an ad that looks like an ad.</p>
+
+      <div class="rules">
+        <div class="rule"><b>0–1s</b><span>Open mid-action on a hook — a number, a claim, or a screenshot. No logo, no “hey guys.”</span></div>
+        <div class="rule"><b>Open a loop</b><span>Pose a question the viewer needs answered. They stay to close it.</span></div>
+        <div class="rule"><b>Be specific</b><span>“$8,000 at 24%” beats “a lot of debt.” Real numbers feel true.</span></div>
+        <div class="rule"><b>Pick a villain</b><span>The minimum payment, the collector, the consolidation loan — not the viewer.</span></div>
+        <div class="rule"><b>One ask</b><span>Every clip ends on the same destination: the free estimate. Captions always on.</span></div>
+      </div>
+
+      <!-- Script 1 -->
+      <article class="script">
+        <img class="script__frame" src="assets/photos/frame-27years.webp" alt="Reel frame: phone showing a 27-year payoff reveal, caption ‘Don’t pay the minimum’" loading="lazy">
+        <div class="script__top">
+          <span class="script__tag">Screen-record + face-cam</span>
+          <span class="script__pillar">Pillar 02 · 60-Second Save</span>
+          <span class="script__len">~18s</span>
+        </div>
+        <h3>“The 27-Year Sentence”</h3>
+        <div class="script__hook">
+          <span>Hook</span>
+          <p>“Your credit card company is praying you never type this number in.”</p>
+        </div>
+        <table class="beats">
+          <thead><tr><th>Time</th><th>On screen (you see)</th><th>Audio (you hear)</th></tr></thead>
+          <tbody>
+            <tr><td>0:00</td><td class="see">Thumb hovering over a credit card. Caption: <em>“Don’t make your minimum payment until you watch this.”</em></td><td class="hear">VO: “Your card company is hoping you never type this in.”</td></tr>
+            <tr><td>0:03</td><td class="see">Phone screen: balance <strong>$8,000</strong>, APR <strong>24%</strong>. Finger taps a payoff calculator.</td><td class="hear">“Eight grand. You pay the minimum every month, on time. Watch what happens.”</td></tr>
+            <tr><td>0:07</td><td class="see">Number spins: <strong>“27 years”</strong> and <strong>“$11,400 in interest”</strong> slam onto screen.</td><td class="hear">(beat of silence) “Twenty-seven years. And eleven grand — on top of the eight.”</td></tr>
+            <tr><td>0:11</td><td class="see">Cut to face, deadpan.</td><td class="hear">“You’d be paying for this card until 2053. That’s not a payment plan. That’s a sentence.”</td></tr>
+            <tr><td>0:15</td><td class="see">Caption: <em>“There’s a faster way out — and it’s not another loan.”</em></td><td class="hear">“Settlement can close that in 24–48 months instead.”</td></tr>
+            <tr><td>0:17</td><td class="see">End card: free estimate + “comment your balance 👇”</td><td class="hear">“Free 60-second estimate in my bio. Comment your balance and I’ll tell you your number.”</td></tr>
+          </tbody>
+        </table>
+        <p class="script__why"><b>Why it works:</b> a curiosity gap (“this number”) + a villain + a shockingly specific result. The 27-year reveal is the payoff that earns the watch-through, and the comment prompt turns it into an algorithm engine.</p>
+        <p class="script__foot"><span><b>Sound:</b> tense ticking / a trending “oh no” audio.</span><span><b>CTA:</b> link in bio → /#calculator · comment-bait.</span></p>
+      </article>
+
+      <!-- Script 2 -->
+      <article class="script">
+        <img class="script__frame" src="assets/photos/frame-collector.webp" alt="Reel frame: negotiator pointing at a threatening collector text, caption ‘2 things in this text are illegal’" loading="lazy">
+        <div class="script__top">
+          <span class="script__tag">Green-screen react</span>
+          <span class="script__pillar">Pillar 05 · Meet the Negotiator</span>
+          <span class="script__len">~20s</span>
+        </div>
+        <h3>“I read collector texts so you don’t panic”</h3>
+        <div class="script__hook">
+          <span>Hook</span>
+          <p>“A collector sent my client this at 9 p.m. Two things in it are illegal.”</p>
+        </div>
+        <table class="beats">
+          <thead><tr><th>Time</th><th>On screen (you see)</th><th>Audio (you hear)</th></tr></thead>
+          <tbody>
+            <tr><td>0:00</td><td class="see">Negotiator, green-screened over a recreated text: <em>“Pay $4,200 TODAY or we file charges. —Recovery Dept.”</em></td><td class="hear">“A collector sent my client this last night. Let’s break down the lies.”</td></tr>
+            <tr><td>0:04</td><td class="see">Word <strong>“charges”</strong> highlights red.</td><td class="hear">“Lie one: you cannot be arrested for credit card debt. That’s not a thing.”</td></tr>
+            <tr><td>0:09</td><td class="see">Word <strong>“TODAY”</strong> highlights.</td><td class="hear">“Lie two: ‘today’ is pressure. Under federal law you have rights — and time.”</td></tr>
+            <tr><td>0:13</td><td class="see">The <strong>$4,200</strong> gets circled.</td><td class="hear">“And that number? Negotiable. We’ve closed balances like this for under half.”</td></tr>
+            <tr><td>0:17</td><td class="see">Lean in, calm.</td><td class="hear">“If you’re getting texts like this — you’re not in trouble. You’re a target. There’s a difference.”</td></tr>
+            <tr><td>0:19</td><td class="see">End card: “Free estimate in bio · send a 👋”</td><td class="hear">“Want us in your corner? Start with the free estimate in my bio.”</td></tr>
+          </tbody>
+        </table>
+        <p class="script__why"><b>Why it works:</b> outrage + insider authority + “us vs. them.” People stay to feel protected, and the recreated screenshot is a native pattern-interrupt that reads as real.</p>
+        <p class="script__foot"><span><b>Sound:</b> no music — raw, authoritative talking-head.</span><span><b>CTA:</b> DM trigger (👋) + link in bio.</span></p>
+      </article>
+
+      <!-- Script 3 -->
+      <article class="script">
+        <img class="script__frame" src="assets/photos/frame-drawer.webp" alt="Reel frame: a kitchen drawer overflowing with unopened past-due bills, caption ‘She stopped opening her mail’" loading="lazy">
+        <div class="script__top">
+          <span class="script__tag">Storytime · cinematic b-roll</span>
+          <span class="script__pillar">Pillar 01 · Relief Stories</span>
+          <span class="script__len">~23s</span>
+        </div>
+        <h3>“The Drawer”</h3>
+        <div class="script__hook">
+          <span>Hook</span>
+          <p>“For eight months, she didn’t open her mail.”</p>
+        </div>
+        <table class="beats">
+          <thead><tr><th>Time</th><th>On screen (you see)</th><th>Audio (you hear)</th></tr></thead>
+          <tbody>
+            <tr><td>0:00</td><td class="see">Tight shot: a hand stuffs unopened envelopes into a kitchen drawer. Caption: <em>“She hadn’t opened her mail since March.”</em></td><td class="hear">VO, soft: “For eight months, she didn’t open her mail.”</td></tr>
+            <tr><td>0:04</td><td class="see">Drawer won’t fully close. B-roll: woman at the table, tired.</td><td class="hear">“Not because she didn’t care. Because every envelope felt like a verdict.”</td></tr>
+            <tr><td>0:09</td><td class="see">Caption stacks the facts: <strong>$41,000 · 5 cards · 1 income.</strong></td><td class="hear">“Forty-one thousand dollars. Five cards. One income after the layoff.”</td></tr>
+            <tr><td>0:13</td><td class="see">Light lifts in the room. She’s on a phone call, exhaling.</td><td class="hear">“Then she made one call. No new loan. No bankruptcy.”</td></tr>
+            <tr><td>0:17</td><td class="see">Same drawer — now empty except one letter stamped <strong>PAID.</strong></td><td class="hear">“Eleven months later, that drawer is empty.”</td></tr>
+            <tr><td>0:20</td><td class="see">She opens an envelope at the table, calm.</td><td class="hear">“Her payment dropped by half. And she opens her mail now.”</td></tr>
+            <tr><td>0:22</td><td class="see">End card: “If you’ve got a drawer like that — bio.”</td><td class="hear">“If you’ve got a drawer like that, start with the free estimate in my bio.”</td></tr>
+          </tbody>
+        </table>
+        <p class="script__why"><b>Why it works:</b> one concrete, human image (the drawer) carries a shame → relief arc. The open loop — <em>what happened?</em> — pulls the viewer to the end, where the empty drawer pays it off.</p>
+        <p class="script__foot"><span><b>Sound:</b> gentle piano build / trending emotional audio.</span><span><b>CTA:</b> link in bio → /#calculator.</span></p>
+      </article>
+
+      <!-- Script 4 -->
+      <article class="script">
+        <img class="script__frame" src="assets/photos/frame-listicle.webp" alt="Reel frame: confident creator with caption ‘5 things I’d never do with debt’" loading="lazy">
+        <div class="script__top">
+          <span class="script__tag">Listicle · fast cuts</span>
+          <span class="script__pillar">Pillar 03 · Myth-Busting &amp; Tips</span>
+          <span class="script__len">~20s</span>
+        </div>
+        <h3>“Things I’d never do as a debt negotiator”</h3>
+        <div class="script__hook">
+          <span>Hook</span>
+          <p>“5 things I’d never do with credit card debt — and I do this for a living.”</p>
+        </div>
+        <table class="beats">
+          <thead><tr><th>Time</th><th>On screen (you see)</th><th>Audio (you hear)</th></tr></thead>
+          <tbody>
+            <tr><td>0:00</td><td class="see">Face, quick zoom-in. Caption: <em>“I negotiate debt for a living. I’d never:”</em></td><td class="hear">“Five things I’d never do with credit card debt — and this is literally my job.”</td></tr>
+            <tr><td>0:03</td><td class="see"><strong>1.</strong> Pay only the minimum.</td><td class="hear">“One — pay just the minimum. That’s a 20-year plan disguised as a monthly bill.”</td></tr>
+            <tr><td>0:06</td><td class="see"><strong>2.</strong> ‘Consolidation’ loan.</td><td class="hear">“Two — take a consolidation loan to feel productive. New loan, same hole.”</td></tr>
+            <tr><td>0:09</td><td class="see"><strong>3.</strong> Ignore the first call.</td><td class="hear">“Three — ignore the first collector call. Silence isn’t a strategy.”</td></tr>
+            <tr><td>0:12</td><td class="see"><strong>4.</strong> Drain the 401(k).</td><td class="hear">“Four — drain my retirement to pay unsecured debt. Never.”</td></tr>
+            <tr><td>0:15</td><td class="see"><strong>5.</strong> Trust ‘just pay us faster.’</td><td class="hear">“And five — believe the company that says the answer is just paying them faster.”</td></tr>
+            <tr><td>0:18</td><td class="see">Caption: <em>“Save this. Send it to a friend.”</em> + bio prompt.</td><td class="hear">“Save it, send it to whoever needs it — real math’s in my bio.”</td></tr>
+          </tbody>
+        </table>
+        <p class="script__why"><b>Why it works:</b> insider authority + a saveable list + mild controversy on #5. Saves and shares are weighted heavily by the algorithm, so “save this” is a deliberate ask, not a throwaway.</p>
+        <p class="script__foot"><span><b>Sound:</b> upbeat trending audio with hard cuts on each number.</span><span><b>CTA:</b> save/share + link in bio.</span></p>
+      </article>
+
+      <!-- Script 5 -->
+      <article class="script">
+        <img class="script__frame" src="assets/photos/frame-comment.webp" alt="Reel frame: creator pointing at an on-screen ‘Pick a number 1–5’ menu with comment bubbles" loading="lazy">
+        <div class="script__top">
+          <span class="script__tag">Interactive · comment-bait</span>
+          <span class="script__pillar">Pillar 02/03 · Series format</span>
+          <span class="script__len">~18s</span>
+        </div>
+        <h3>“Comment a number, I’ll tell you your move”</h3>
+        <div class="script__hook">
+          <span>Hook</span>
+          <p>“Pick a number 1 to 5 and I’ll tell you exactly what to do with your debt.”</p>
+        </div>
+        <table class="beats">
+          <thead><tr><th>Time</th><th>On screen (you see)</th><th>Audio (you hear)</th></tr></thead>
+          <tbody>
+            <tr><td>0:00</td><td class="see">Face, high energy. Caption: <em>“Pick 1–5 👇”</em></td><td class="hear">“Pick a number, one to five. I’m telling you your next move.”</td></tr>
+            <tr><td>0:03</td><td class="see">Menu overlays: <strong>1</strong> behind · <strong>2</strong> stressed · <strong>3</strong> collectors calling · <strong>4</strong> considering bankruptcy · <strong>5</strong> fine, curious.</td><td class="hear">“One behind, two just stressed, three collectors calling, four thinking bankruptcy, five doing okay but curious.”</td></tr>
+            <tr><td>0:08</td><td class="see">“3” highlights.</td><td class="hear">“If you said three — stop answering unknown numbers, write down who’s calling. That’s ours to handle.”</td></tr>
+            <tr><td>0:12</td><td class="see">“4” highlights.</td><td class="hear">“If you said four — wait. Settlement resolves a lot of this without the ten-year bankruptcy scar.”</td></tr>
+            <tr><td>0:15</td><td class="see">Caption: <em>“Whatever you picked, step one is the same.”</em></td><td class="hear">“Whatever you picked, it starts the same way.”</td></tr>
+            <tr><td>0:17</td><td class="see">End card: “Comment your number 👇 · estimate in bio.”</td><td class="hear">“Comment your number — I reply to these — and run the free estimate in my bio.”</td></tr>
+          </tbody>
+        </table>
+        <p class="script__why"><b>Why it works:</b> it engineers comments, the single strongest reach signal. Replying to every comment doubles the engagement and seeds an endless series (“Part 2: you said 1…”).</p>
+        <p class="script__foot"><span><b>Sound:</b> trending audio, fast captions.</span><span><b>CTA:</b> comment number + link in bio.</span></p>
+      </article>
+
+      <!-- Script 6 -->
+      <article class="script">
+        <img class="script__frame" src="assets/photos/frame-batavia.webp" alt="Reel frame: golden-hour aerial of the Fox River downtown, caption ‘Batavia · Geneva · St. Charles’" loading="lazy">
+        <div class="script__top">
+          <span class="script__tag">Hyper-local · b-roll</span>
+          <span class="script__pillar">Pillar 04 · Local · Fox Valley</span>
+          <span class="script__len">~17s</span>
+        </div>
+        <h3>“Batavia, this one’s for you”</h3>
+        <div class="script__hook">
+          <span>Hook</span>
+          <p>“If you live in the Fox Valley and you’re carrying credit card debt — give me 15 seconds.”</p>
+        </div>
+        <table class="beats">
+          <thead><tr><th>Time</th><th>On screen (you see)</th><th>Audio (you hear)</th></tr></thead>
+          <tbody>
+            <tr><td>0:00</td><td class="see">Drone over the Fox River + downtown Batavia. Caption: <em>“Batavia · Geneva · St. Charles”</em></td><td class="hear">“If you live in the Fox Valley and you’re carrying credit card debt — fifteen seconds.”</td></tr>
+            <tr><td>0:04</td><td class="see">B-roll: Riverwalk, a real neighborhood. Stat overlay.</td><td class="hear">“Households around here are carrying more card debt than ever. You’re not alone, and you’re not stuck.”</td></tr>
+            <tr><td>0:09</td><td class="see">Caption: <strong>“One payment. Often half.”</strong></td><td class="hear">“We negotiate with your creditors so you make one payment — often half of what you pay now.”</td></tr>
+            <tr><td>0:13</td><td class="see">Caption: <em>“No loan. No bankruptcy. Just a plan.”</em></td><td class="hear">“No loan. No bankruptcy. A real local plan.”</td></tr>
+            <tr><td>0:15</td><td class="see">End card: logo + “Free estimate in bio · made for Fox Valley.”</td><td class="hear">“Free estimate in the bio. Built for families right here.”</td></tr>
+          </tbody>
+        </table>
+        <p class="script__why"><b>Why it works:</b> people reflexively stop for their own town. It also unlocks cheap, precise paid geo-targeting (25-mile radius) behind whichever cut earns the best organic hook rate.</p>
+        <p class="script__foot"><span><b>Sound:</b> warm, hopeful local-pride track.</span><span><b>CTA:</b> link in bio · geo-boosted.</span></p>
+      </article>
+
+      <!-- Hook bank -->
+      <h3 style="margin:2.5rem 0 .4rem;font-size:1.2rem;">Hook bank — first lines to test</h3>
+      <p class="section-intro" style="margin-bottom:.4rem;">The hook is 90% of the view. Write ten, shoot the three that scare you a little. A rotating bank to pull from:</p>
+      <ol class="hookbank">
+        <li>“Don’t pay your minimum payment until you watch this.”</li>
+        <li>“The credit card industry hopes you never learn this word: settlement.”</li>
+        <li>“If a collector ever says this to you, they’re breaking the law.”</li>
+        <li>“POV: you finally added up all your cards. Here’s your move.”</li>
+        <li>“I settle debt for a living. Here’s what I’d do with $20k in cards.”</li>
+        <li>“Bankruptcy isn’t your only option — and it’s usually the worst one.”</li>
+        <li>“She hid her mail for 8 months. Then she did one thing.”</li>
+        <li>“Three numbers your credit card company never wants you to compare.”</li>
+        <li>“Comment your balance and I’ll tell you how long the minimum will take.”</li>
+        <li>“Stop ‘consolidating.’ You’re just moving the hole around.”</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== 05 · MEASUREMENT ===== -->
+  <section class="vid-section">
+    <div class="wrap">
+      <p class="eyebrow">05 · What we watch</p>
+      <h2>The numbers that matter</h2>
+      <p class="section-intro">Likes are noise. These five tell us whether the channel is actually feeding the business — and which pillars to make more of.</p>
+      <div class="kpis">
+        <div class="kpi"><b>3-sec hook rate</b><span>% who don’t scroll past the first 3 seconds.</span></div>
+        <div class="kpi"><b>Watch-through</b><span>Average % of the video viewed.</span></div>
+        <div class="kpi"><b>Profile / link clicks</b><span>Taps from the post toward the site.</span></div>
+        <div class="kpi"><b>Estimate completions</b><span>Calculator finishes attributed to video UTMs.</span></div>
+        <div class="kpi"><b>Cost per estimate</b><span>Paid spend ÷ leads, once boosting starts.</span></div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

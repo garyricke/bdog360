@@ -1,0 +1,343 @@
+<!doctype html>
+<!--
+  Bulldog 360 — SAMPLE oversized 6x9 direct-mail postcard (two-sided).
+  Print-ready: @page is set to 9in x 6in landscape; the two faces print as
+  two pages. On screen they render as labeled, scaled previews.
+  Per brand guide §4.1: Tenacious Crimson is reserved for response triggers
+  (phone, PURL, deadline); >=35% whitespace; PURL + QR response mechanism.
+  QR is a stylized placeholder. All contact details are illustrative.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <title>Bulldog 360 — 6×9 Postcard Sample</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&family=Roboto:wght@400;500;700&display=swap">
+  <style>
+    :root {
+      --crimson: #e63946;
+      --crimson-deep: #c01f2c;
+      --onyx: #1e1e24;
+      --onyx-3: #14141a;
+      --indigo: #2b4c7e;
+      --pearl: #f8f9fa;
+      --ink: #14141a;
+      --ink-soft: #4a4a55;
+      --ink-faint: #71717f;
+      --f-display: "Montserrat", system-ui, sans-serif;
+      --f-ui: "Inter", system-ui, sans-serif;
+      --f-body: "Roboto", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #2a2a32;
+      font-family: var(--f-body);
+      color: var(--ink);
+      padding: 40px 16px 64px;
+    }
+    .screen-head {
+      max-width: 9in; margin: 0 auto 28px; color: #d7d7df; text-align: center;
+      font-family: var(--f-ui);
+    }
+    .screen-head h1 { font-family: var(--f-display); font-weight: 900; color: #fff; font-size: 1.4rem; margin: 0 0 .4rem; letter-spacing: -.01em; }
+    .screen-head p { margin: 0; font-size: .9rem; color: #a8a8b2; }
+    .face-label {
+      max-width: 9in; margin: 0 auto; color: #c7c7d0; font-family: var(--f-ui);
+      font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 700;
+      padding: 18px 4px 8px;
+    }
+
+    /* ===== The postcard face ===== */
+    .postcard {
+      width: 9in; height: 6in;
+      margin: 0 auto;
+      background: var(--pearl);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 24px 60px -20px rgba(0,0,0,.6);
+    }
+    /* screen-only safe-area guide */
+    .safe {
+      position: absolute; inset: 0.25in;
+      border: 1px dashed rgba(20,20,26,.16);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    /* brand lockup */
+    .brand { display: inline-flex; align-items: center; gap: .12in; text-decoration: none; }
+    .brand__mark { height: .44in; width: auto; flex: none; }
+    .brand__wm { display: flex; flex-direction: column; gap: .04in; }
+    .brand__name { font-family: var(--f-display); font-weight: 900; font-size: .95rem; line-height: .9; color: var(--pearl); letter-spacing: -.01em; }
+    .brand__name .x { color: var(--crimson); }
+    .brand__tag { font-family: var(--f-ui); font-weight: 700; font-size: .38rem; letter-spacing: .13em; color: rgba(248,249,250,.62); text-transform: uppercase; }
+
+    /* ---------- FRONT ---------- */
+    .front { display: grid; grid-template-columns: 1.35fr 1fr; }
+    .front__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .34; z-index: 0; }
+    .front__brand { margin-bottom: auto; position: relative; z-index: 1; }
+    .front__kicker, .front__hook, .front__sub { position: relative; z-index: 1; }
+    .front__left {
+      position: relative;
+      background:
+        radial-gradient(120% 130% at 85% 0%, rgba(230,57,70,.22), transparent 50%),
+        radial-gradient(120% 120% at 0% 100%, rgba(43,76,126,.5), transparent 55%),
+        var(--onyx);
+      color: var(--pearl);
+      padding: 0.5in 0.45in 0.45in 0.55in;
+      display: flex; flex-direction: column;
+    }
+    .front__left::before {
+      content:""; position:absolute; width:5in; height:5in; right:-2in; top:-1.4in;
+      border-radius:50%; border:1.5px solid rgba(248,249,250,.08);
+    }
+    .front__logo { height: 0.34in; width: auto; margin-bottom: auto; position: relative; }
+    .front__kicker { font-family: var(--f-ui); font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(248,249,250,.6); font-weight: 700; margin: .3in 0 .12in; position: relative; }
+    .front__hook {
+      font-family: var(--f-display); font-weight: 900; color: var(--pearl);
+      font-size: 2.45rem; line-height: 1.02; letter-spacing: -.02em; margin: 0; position: relative;
+    }
+    .front__hook .accent { color: var(--crimson); }
+    .front__sub { font-family: var(--f-body); font-size: .92rem; line-height: 1.4; color: rgba(248,249,250,.8); margin: .16in 0 0; max-width: 26ch; position: relative; }
+
+    .front__right { padding: 0.45in 0.5in 0.4in; display: flex; flex-direction: column; }
+    /* mailing/address zone */
+    .indicia { display: flex; justify-content: space-between; align-items: flex-start; }
+    .stamp {
+      width: 1.0in; height: 0.78in; border: 1px dotted #b9bcc4; border-radius: 4px;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      font-family: var(--f-ui); font-size: .5rem; line-height: 1.25; color: var(--ink-faint);
+      text-transform: uppercase; letter-spacing: .04em;
+    }
+    .addr { margin-top: auto; font-family: var(--f-ui); color: var(--ink); }
+    .addr .barcode { height: .22in; width: 2.6in; margin-bottom: .12in;
+      background: repeating-linear-gradient(90deg, var(--ink) 0 1.5px, transparent 1.5px 3px, var(--ink) 3px 4px, transparent 4px 7px); opacity:.8; }
+    .addr p { margin: 0; font-size: .92rem; line-height: 1.45; }
+    .addr .name { font-weight: 700; font-size: 1.02rem; }
+    .respond {
+      margin-top: .22in; padding-top: .18in; border-top: 2px solid var(--onyx);
+      display: flex; align-items: center; gap: .28in;
+    }
+    .respond__txt { font-family: var(--f-ui); }
+    .respond__txt .lbl { font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); font-weight: 700; }
+    .respond__txt .purl { font-family: var(--f-display); font-weight: 800; font-size: 1.04rem; color: var(--crimson); letter-spacing: -.01em; margin: .04in 0; }
+    .respond__txt .phone { font-family: var(--f-display); font-weight: 800; font-size: 1.04rem; color: var(--ink); }
+    .qr { width: 1.05in; height: 1.05in; flex: none; }
+
+    /* ---------- BACK ---------- */
+    .back { padding: 0.45in 0.55in; display: grid; grid-template-columns: 1.25fr 1fr; gap: 0.45in; }
+    .back__main { display: flex; flex-direction: column; }
+    .back__kicker { font-family: var(--f-ui); font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--indigo); font-weight: 700; margin: 0 0 .1in; }
+    .back__title { font-family: var(--f-display); font-weight: 900; font-size: 1.5rem; letter-spacing: -.02em; color: var(--onyx); margin: 0 0 .18in; line-height: 1.05; }
+    .pc-local { position: relative; border-radius: 6px; overflow: hidden; height: .82in; margin: 0 0 .16in; }
+    .pc-local img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .pc-local::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,20,26,.72), transparent 70%); }
+    .pc-local span { position: absolute; left: .12in; top: 50%; transform: translateY(-50%); z-index: 1; font-family: var(--f-ui); font-weight: 700; font-size: .6rem; color: #fff; letter-spacing: .03em; display: inline-flex; align-items: center; gap: 5px; }
+    .pc-local span svg { width: 13px; height: 13px; }
+    .wiifm { list-style: none; margin: 0; padding: 0; display: grid; gap: .12in; }
+    .wiifm li { display: flex; gap: .14in; align-items: flex-start; font-family: var(--f-body); font-size: .92rem; line-height: 1.35; color: var(--ink); }
+    .wiifm .tick { flex: none; width: .26in; height: .26in; border-radius: 50%; background: rgba(31,157,107,.14); color: #1f9d6b; display: grid; place-items: center; font-weight: 700; font-size: .72rem; font-family: Arial, sans-serif; margin-top: 1px; }
+    .wiifm b { font-family: var(--f-ui); font-weight: 700; }
+    .example {
+      margin-top: auto; background: #eaf0f8; border-radius: 8px; padding: .2in .24in;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .example .blk { text-align: center; }
+    .example .v { font-family: var(--f-display); font-weight: 900; font-size: 1.35rem; letter-spacing: -.02em; color: var(--onyx); line-height: 1; }
+    .example .v.cut { color: var(--crimson); }
+    .example .k { font-family: var(--f-ui); font-size: .56rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-faint); margin-top: 3px; }
+    .example .arrow { font-size: 1.2rem; color: var(--ink-faint); }
+
+    .back__cta {
+      background: var(--onyx); color: var(--pearl); border-radius: 10px;
+      padding: .3in .28in; display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .back__cta .deadline {
+      font-family: var(--f-ui); font-size: .58rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--crimson); font-weight: 800; margin-bottom: .12in;
+    }
+    .back__cta .respond-h { font-family: var(--f-display); font-weight: 900; font-size: 1.15rem; color: var(--pearl); margin: 0 0 .16in; letter-spacing: -.01em; }
+    .back__cta .qr { width: 1.5in; height: 1.5in; background:#fff; padding:.07in; border-radius:8px; margin-bottom:.16in; }
+    .back__cta .purl { font-family: var(--f-display); font-weight: 800; font-size: 1rem; color: var(--crimson); margin: 0; }
+    .back__cta .or { font-family: var(--f-ui); font-size: .62rem; color: rgba(248,249,250,.5); text-transform: uppercase; letter-spacing: .1em; margin: .1in 0; }
+    .back__cta .phone { font-family: var(--f-display); font-weight: 900; font-size: 1.35rem; color: var(--pearl); margin: 0; }
+    .back__fine {
+      grid-column: 1 / -1; border-top: 1px solid rgba(20,20,26,.1); padding-top: .12in; margin-top: .04in;
+      font-family: var(--f-ui); font-size: .5rem; line-height: 1.4; color: var(--ink-faint);
+    }
+    .back__bre { font-family: var(--f-ui); font-size: .56rem; color: var(--indigo); font-weight: 600; margin-top: .06in; }
+
+    /* ===== Print ===== */
+    @page { size: 9in 6in; margin: 0; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .screen-head, .face-label, .safe { display: none !important; }
+      .postcard { box-shadow: none; margin: 0; page-break-after: always; break-after: page; }
+      .postcard:last-of-type { page-break-after: auto; break-after: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="screen-head">
+    <h1>Bulldog 360 — 6×9 Direct-Mail Postcard</h1>
+    <p>Two-sided sample · prints to two 9″×6″ pages (Cmd/Ctrl-P). Dashed line shows the safe area.</p>
+  </div>
+
+  <!-- ============================ FRONT ============================ -->
+  <div class="face-label">Front</div>
+  <div class="postcard front">
+    <div class="safe"></div>
+
+    <div class="front__left">
+      <img class="front__photo" src="assets/photos/family-porch.jpg" alt="">
+      <span class="brand front__brand" aria-label="Bulldog 360">
+        <img class="brand__mark" src="assets/bdog360-mark.png" alt="">
+        <span class="brand__wm">
+          <span class="brand__name">BULLDOG<span class="x">360</span></span>
+          <span class="brand__tag">Full Service Targeted Marketing</span>
+        </span>
+      </span>
+      <p class="front__kicker">Pre-screened notice · Aurora, IL</p>
+      <h2 class="front__hook">Jordan, you may qualify to cut your payments <span class="accent">~50%</span>.</h2>
+      <p class="front__sub">One affordable monthly payment. No upfront fees. A real path to debt-free in 24–48 months.</p>
+    </div>
+
+    <div class="front__right">
+      <div class="indicia">
+        <div style="font-family:var(--f-ui); font-size:.5rem; line-height:1.3; color:var(--ink-faint);">
+          BULLDOG 360<br>123 Main Street<br>Sandwich, IL 60548
+        </div>
+        <div class="stamp">Presorted<br>First-Class<br>U.S. Postage<br>PAID</div>
+      </div>
+
+      <div class="addr">
+        <div class="barcode" aria-hidden="true"></div>
+        <p class="name">Jordan Avery</p>
+        <p>4218 Birch Hollow Lane</p>
+        <p>Aurora, IL 60505-2241</p>
+      </div>
+
+      <div class="respond">
+        <svg class="qr" viewBox="0 0 100 100" role="img" aria-label="QR code to your personal link (sample)"></svg>
+        <div class="respond__txt">
+          <div class="lbl">Scan or visit your link</div>
+          <p class="purl">Jordan.bdog360.com</p>
+          <div class="lbl">Or call</div>
+          <p class="phone">(888)&nbsp;360-2255</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================ BACK ============================ -->
+  <div class="face-label">Back</div>
+  <div class="postcard back">
+    <div class="safe"></div>
+
+    <div class="back__main">
+      <p class="back__kicker">Why Bulldog 360</p>
+      <h3 class="back__title">Trade the stack of bills for one payment you can breathe under.</h3>
+      <figure class="pc-local">
+        <img src="assets/photos/batavia-downtown.jpg" alt="Historic downtown Batavia, Illinois">
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Proudly based in Batavia, IL
+        </span>
+      </figure>
+      <ul class="wiifm">
+        <li><span class="tick">&#10003;</span><span><b>Lower your payments</b> — often by up to 50% of what you owe.</span></li>
+        <li><span class="tick">&#10003;</span><span><b>One monthly deposit</b> into an account you own and control.</span></li>
+        <li><span class="tick">&#10003;</span><span><b>Pay nothing upfront</b> — fees apply only after a debt is settled.</span></li>
+        <li><span class="tick">&#10003;</span><span><b>Debt-free in 24–48 months</b> with a dedicated negotiator on your side.</span></li>
+      </ul>
+
+      <div class="example">
+        <div class="blk"><div class="v">$22,000</div><div class="k">Enrolled debt</div></div>
+        <div class="arrow">&rarr;</div>
+        <div class="blk"><div class="v cut">~$385/mo</div><div class="k">Est. new payment</div></div>
+        <div class="arrow">&rarr;</div>
+        <div class="blk"><div class="v cut">~$9,240</div><div class="k">Est. savings</div></div>
+      </div>
+    </div>
+
+    <div class="back__cta">
+      <div class="deadline">Respond by July 15</div>
+      <p class="respond-h">See your estimate in 60 seconds</p>
+      <svg class="qr" viewBox="0 0 100 100" role="img" aria-label="QR code to your personal link (sample)"></svg>
+      <p class="purl">Jordan.bdog360.com</p>
+      <p class="or">— or call —</p>
+      <p class="phone">(888) 360-2255</p>
+    </div>
+
+    <div class="back__fine">
+      <p style="margin:0;">Bulldog 360 is a debt-resolution provider, not a lender or credit-repair organization, and does not provide legal, tax, or bankruptcy advice. Programs typically run 24–48 months and may adversely affect creditworthiness; not all clients complete the program. Savings figures are based on prior client results and are not a guarantee. Services not available in all states. Figures and recipient shown are illustrative. To stop receiving offers, call (888) 360-2255 or return the enclosed Business Reply Envelope (no postage required).</p>
+      <p class="back__bre">↩ Prefer mail? A postage-paid Business Reply Envelope is enclosed.</p>
+    </div>
+  </div>
+
+  <!-- Faux-QR generator: stylized modules + finder patterns (sample only) -->
+  <script>
+    (function () {
+      var SVGNS = "http://www.w3.org/2000/svg";
+      // deterministic pseudo-random so the QR looks stable across renders
+      function rng(seed){ return function(){ seed = (seed*1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; }; }
+
+      function buildQR(svg) {
+        var N = 21, cell = 100 / N;
+        var rand = rng(20263601);
+        // background
+        var bg = document.createElementNS(SVGNS, "rect");
+        bg.setAttribute("width","100"); bg.setAttribute("height","100");
+        bg.setAttribute("fill","#ffffff");
+        svg.appendChild(bg);
+
+        function isFinder(r,c){
+          return (r<7&&c<7) || (r<7&&c>=N-7) || (r>=N-7&&c<7);
+        }
+        // random data modules
+        for (var r=0;r<N;r++){
+          for (var c=0;c<N;c++){
+            if (isFinder(r,c)) continue;
+            if (rand() > 0.5) {
+              var m = document.createElementNS(SVGNS,"rect");
+              m.setAttribute("x",(c*cell).toFixed(2));
+              m.setAttribute("y",(r*cell).toFixed(2));
+              m.setAttribute("width",cell.toFixed(2));
+              m.setAttribute("height",cell.toFixed(2));
+              m.setAttribute("fill","#14141a");
+              svg.appendChild(m);
+            }
+          }
+        }
+        // finder patterns (3 corners)
+        function finder(x,y){
+          var outer = document.createElementNS(SVGNS,"rect");
+          outer.setAttribute("x",(x*cell).toFixed(2)); outer.setAttribute("y",(y*cell).toFixed(2));
+          outer.setAttribute("width",(7*cell).toFixed(2)); outer.setAttribute("height",(7*cell).toFixed(2));
+          outer.setAttribute("fill","#14141a");
+          svg.appendChild(outer);
+          var inner = document.createElementNS(SVGNS,"rect");
+          inner.setAttribute("x",((x+1)*cell).toFixed(2)); inner.setAttribute("y",((y+1)*cell).toFixed(2));
+          inner.setAttribute("width",(5*cell).toFixed(2)); inner.setAttribute("height",(5*cell).toFixed(2));
+          inner.setAttribute("fill","#ffffff");
+          svg.appendChild(inner);
+          var dot = document.createElementNS(SVGNS,"rect");
+          dot.setAttribute("x",((x+2)*cell).toFixed(2)); dot.setAttribute("y",((y+2)*cell).toFixed(2));
+          dot.setAttribute("width",(3*cell).toFixed(2)); dot.setAttribute("height",(3*cell).toFixed(2));
+          dot.setAttribute("fill","#14141a");
+          svg.appendChild(dot);
+        }
+        finder(0,0); finder(N-7,0); finder(0,N-7);
+      }
+
+      document.querySelectorAll("svg.qr").forEach(buildQR);
+    })();
+  </script>
+
+</body>
+</html>
